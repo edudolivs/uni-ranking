@@ -1,0 +1,14 @@
+# Planilhas do Leiden Ranking: 200–260 MB cada, acima do limite do GitHub.
+# Baixar de novo pelo Zenodo (ver CLAUDE.md); o recorte do Brasil fica em dados/processado/.
+dados/leiden/
+
+# Logs da extração do Leiden
+dados/processado/log_*.txt
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Sistema
+.DS_Store

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rankings Universitários: visão inicial</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11,11,11,0.10);
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --ord1: #86b6ef; --ord2: #5598e7; --ord3: #2a78d6; --ord4: #1c5cab; --ord5: #104281;
+  --radius: 8px;
+  --gap: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926;
+    --ord1: #184f95; --ord2: #256abf; --ord3: #3987e5; --ord4: #6da7ec; --ord5: #9ec5f4;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --s1: #3987e5; --s2: #d95926;
+  --ord1: #184f95; --ord2: #256abf; --ord3: #3987e5; --ord4: #6da7ec; --ord5: #9ec5f4;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--page); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.45; }
+.wrap { max-width: 1400px; margin: 0 auto; padding: var(--gap); }
+header.top { padding: 8px 4px 16px; }
+header.top h1 { font-size: 22px; font-weight: 600; }
+header.top p { color: var(--ink-2); font-size: 14px; margin-top: 4px; max-width: 920px; }
+.aviso { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--s2); border-radius: var(--radius); padding: 10px 14px; font-size: 13px; color: var(--ink-2); margin-bottom: var(--gap); }
+.aviso b { color: var(--ink); }
+.filtros { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; margin-bottom: var(--gap); }
+.filtros label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-2); }
+.filtros select, .filtros input[type="search"] { font: inherit; font-size: 14px; color: var(--ink); background: var(--page); border: 1px solid var(--axis); border-radius: 6px; padding: 6px 10px; min-width: 190px; }
+.filtros .dica { font-size: 12px; color: var(--muted); max-width: 420px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--gap); margin-bottom: var(--gap); }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; }
+.kpi .rot { font-size: 12px; color: var(--ink-2); text-transform: uppercase; letter-spacing: .4px; }
+.kpi .val { font-size: 34px; font-weight: 700; margin: 2px 0; }
+.kpi .sub { font-size: 12px; color: var(--ink-2); }
+.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: var(--gap); margin-bottom: var(--gap); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; min-width: 0; }
+.card h2 { font-size: 15px; font-weight: 600; }
+.card .leg { font-size: 12px; color: var(--ink-2); margin: 2px 0 12px; }
+.caixa { position: relative; width: 100%; }
+details.tv { margin-top: 10px; font-size: 12px; color: var(--ink-2); }
+details.tv summary { cursor: pointer; }
+details.tv .rolagem { max-height: 220px; overflow: auto; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 8px 10px; border-bottom: 2px solid var(--axis); color: var(--ink-2); font-size: 12px; font-weight: 600; white-space: nowrap; user-select: none; }
+td { padding: 8px 10px; border-bottom: 1px solid var(--grid); }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+#tabela th { cursor: pointer; }
+#tabela th:hover { color: var(--ink); }
+tbody tr:hover { background: var(--page); }
+tr.destaque td { font-weight: 600; box-shadow: inset 3px 0 0 var(--s2); }
+.pager { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--ink-2); margin-top: 10px; gap: 12px; flex-wrap: wrap; }
+.pager button { font: inherit; font-size: 13px; color: var(--ink); background: var(--page); border: 1px solid var(--axis); border-radius: 6px; padding: 4px 12px; cursor: pointer; }
+.pager button:disabled { opacity: .4; cursor: default; }
+.notas { font-size: 12px; color: var(--ink-2); margin-top: var(--gap); }
+.notas li { margin: 4px 0 4px 18px; }
+footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
+#tip { position: fixed; pointer-events: none; opacity: 0; background: var(--surface); color: var(--ink); border: 1px solid var(--axis); border-radius: 6px; padding: 8px 10px; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.18); z-index: 10; max-width: 280px; }
+@media (max-width: 560px) { .grade { grid-template-columns: 1fr; } }
+@media print { .filtros { display: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Rankings universitários: visão inicial dos dados</h1>
+    <p>Primeira leitura das bases baixadas para o projeto sobre critérios de avaliação em rankings brasileiros e internacionais. Os números abaixo são contagens e distribuições; não há aqui nenhuma conclusão sobre quais critérios pesam mais.</p>
+  </header>
+
+  <div class="aviso"><b>Dados parciais.</b> Ainda faltam QS, SCImago e RUF. Hoje há ARWU (2021–2026), Leiden Ranking (2022–2025, só universidades do Brasil), IGC (2019 e 2021–2023) e Conceito Enade por curso (2021–2023). As séries têm anos diferentes entre si.</div>
+
+  <section class="filtros" aria-label="Filtros">
+    <label>Edição do Leiden <select id="f-ed"></select></label>
+    <label>Métrica do Leiden <select id="f-met">
+      <option value="PP_top10">% de artigos entre os 10% mais citados</option>
+      <option value="P">Número de publicações (P)</option>
+      <option value="MNCS">Citações normalizadas (MNCS)</option>
+    </select></label>
+    <label>Categoria administrativa (IGC) <select id="f-cat"></select></label>
+    <span class="dica">Edição e métrica valem para os gráficos “Leiden” e para a dispersão. A categoria vale para o gráfico do IGC.</span>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grade">
+    <div class="card">
+      <h2>Universidades brasileiras em cada ranking</h2>
+      <p class="leg">Quantas universidades do Brasil aparecem em cada edição (ARWU: 1.000 por edição; Leiden: apenas as que passam do corte de publicações).</p>
+      <div class="caixa" style="height:300px"><canvas id="c-contagem" role="img" aria-label="Linhas com o número de universidades brasileiras por edição no ARWU e no Leiden"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-contagem"></div></details>
+    </div>
+    <div class="card">
+      <h2 id="t-leiden">Leiden: universidades brasileiras</h2>
+      <p class="leg" id="l-leiden"></p>
+      <div class="caixa" style="height:420px"><canvas id="c-leiden" role="img" aria-label="Barras horizontais com a métrica escolhida do Leiden para as universidades brasileiras"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-leiden"></div></details>
+    </div>
+    <div class="card">
+      <h2>IGC: faixas por ano</h2>
+      <p class="leg" id="l-igc"></p>
+      <div class="caixa" style="height:340px"><canvas id="c-igc" role="img" aria-label="Barras empilhadas com a quantidade de instituições por faixa do IGC em cada ano"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-igc"></div></details>
+    </div>
+    <div class="card">
+      <h2 id="t-disp">Leiden: volume × impacto</h2>
+      <p class="leg" id="l-disp"></p>
+      <div class="caixa" style="height:340px"><canvas id="c-disp" role="img" aria-label="Dispersão com publicações no eixo horizontal e percentual de artigos muito citados no eixo vertical"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-disp"></div></details>
+    </div>
+    <div class="card">
+      <h2>Enade: cursos avaliados por categoria administrativa</h2>
+      <p class="leg">O Enade avalia áreas diferentes em cada ano; não leia a diferença entre anos como crescimento.</p>
+      <div class="caixa" style="height:400px"><canvas id="c-enade" role="img" aria-label="Barras horizontais agrupadas com o número de cursos avaliados no Enade por categoria e ano"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-enade"></div></details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Universidades brasileiras em mais de uma base (cruzamento preliminar)</h2>
+    <p class="leg" id="l-cruz"></p>
+    <div class="filtros" style="border:0;padding:0;margin-bottom:10px">
+      <label>Buscar <input type="search" id="q" placeholder="nome da universidade"></label>
+      <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="so-rank" checked> só quem está no ARWU ou no Leiden</label>
+    </div>
+    <div style="overflow-x:auto"><table id="tabela"></table></div>
+    <div class="pager"><span id="pg-info"></span><span><button id="pg-ant">Anterior</button> <button id="pg-prox">Próxima</button></span></div>
+  </section>
+
+  <ul class="notas">
+    <li><b>Como o cruzamento é feito:</b> os nomes são normalizados (sem acentos, sem “universidade/university de”, com federal/estadual preservados) e unidos por igualdade. Há um único alias manual (Sao Paulo State University = Unesp). Instituições com nome muito diferente podem ficar de fora.</li>
+    <li><b>USP, Unicamp, Unesp e UERJ</b> aparecem no ARWU e no Leiden, mas não nos arquivos do IGC e do Enade usados aqui, provavelmente por pertencerem a sistemas estaduais de ensino. Essa explicação é uma hipótese, não foi verificada.</li>
+    <li><b>ARWU</b> só publica posição exata até a 100ª; depois vêm faixas (ex.: 501–600). Os indicadores do ARWU vêm da API como códigos numéricos sem rótulo e não foram usados.</li>
+    <li><b>Leiden:</b> universidades do Brasil, área “All sciences”, contagem inteira, período mais recente de cada edição. “% top 10%” é a proporção de publicações entre as 10% mais citadas do mundo na área.</li>
+  </ul>
+  <footer id="rodape"></footer>
+</div>
+<div id="tip"></div>
+
+<script>
+const D = __DADOS__;
+
+/* ---------- utilidades ---------- */
+const $ = id => document.getElementById(id);
+const nf = new Intl.NumberFormat('pt-BR');
+const nf1 = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+const nf2 = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const ehUfpb = n => /Paraíba/i.test(n) && /Federal/i.test(n);
+const SIGLAS = { 'University of São Paulo': 'USP', 'University of Campinas': 'Unicamp', 'Universidade Estadual Paulista': 'Unesp',
+  'Pontifical Catholic University of Rio de Janeiro': 'PUC-Rio', 'Rio de Janeiro State University': 'UERJ' };
+const curto = n => SIGLAS[n] || n.replace(/^Universidade Federal d[aeo] /, 'UF ').replace(/^Federal University of /, 'UF ').replace(/^University of /, 'U. ');
+
+const edicoes = [...new Set(D.leiden.map(r => r.edicao))].sort();
+const periodoDe = e => D.leiden.filter(r => r.edicao === e).map(r => r.periodo).sort().pop();
+const leidenEd = e => D.leiden.filter(r => r.edicao === e && r.periodo === periodoDe(e));
+const anosArwu = Object.keys(D.arwu.anos).map(Number).sort();
+const anosIgc = Object.keys(D.igc.por_ano).map(Number).sort();
+const anosEnade = [...new Set(D.enade.resumo.map(r => r.ano))].sort();
+const cats = [...new Set(Object.values(D.igc.por_ano).flat().map(x => x.cat))].sort();
+const FAIXAS = ['1', '2', '3', '4', '5', 'SC'];
+
+const estado = { ed: edicoes[edicoes.length - 1], met: 'PP_top10', cat: 'todas' };
+const metInfo = {
+  PP_top10: { nome: '% de artigos entre os 10% mais citados', fmt: v => nf1.format(v * 100) + '%', val: v => v * 100, eixo: v => v + '%' },
+  P: { nome: 'Publicações (P)', fmt: v => nf.format(v), val: v => v, eixo: v => nf.format(v) },
+  MNCS: { nome: 'Citações normalizadas (MNCS)', fmt: v => nf2.format(v), val: v => v, eixo: v => nf1.format(v) },
+};
+
+/* ---------- tema para o canvas ---------- */
+function tema() {
+  return { ink: css('--ink'), ink2: css('--ink-2'), muted: css('--muted'), grid: css('--grid'), axis: css('--axis'),
+    surface: css('--surface'), s1: css('--s1'), s2: css('--s2'),
+    ord: [css('--ord1'), css('--ord2'), css('--ord3'), css('--ord4'), css('--ord5')] };
+}
+let T = tema();
+const charts = {};
+function novo(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart($(id).getContext('2d'), cfg); }
+Chart.defaults.font.family = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+Chart.defaults.animation = false;
+
+/* tooltip HTML próprio (contraste e quebra de linha sob controle) */
+function tooltipExterno(corpo) {
+  return ctx => {
+    const tip = $('tip');
+    if (ctx.tooltip.opacity === 0) { tip.style.opacity = 0; return; }
+    const linhas = corpo(ctx.tooltip);
+    tip.innerHTML = linhas;
+    const r = ctx.chart.canvas.getBoundingClientRect();
+    let x = r.left + ctx.tooltip.caretX + 14, y = r.top + ctx.tooltip.caretY - 10;
+    tip.style.opacity = 1;
+    const w = tip.offsetWidth;
+    if (x + w > window.innerWidth - 8) x = r.left + ctx.tooltip.caretX - w - 14;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  };
+}
+const baseEixos = (extraX = {}, extraY = {}) => ({
+  x: Object.assign({ grid: { color: T.grid, lineWidth: 1 }, border: { color: T.axis }, ticks: { color: T.muted } }, extraX),
+  y: Object.assign({ grid: { color: T.grid, lineWidth: 1 }, border: { color: T.axis }, ticks: { color: T.muted } }, extraY),
+});
+
+/* ---------- tabelas-espelho ---------- */
+function tabelaHTML(cab, linhas) {
+  return '<table><thead><tr>' + cab.map((c, i) => `<th class="${i ? 'n' : ''}">${c}</th>`).join('') + '</tr></thead><tbody>' +
+    linhas.map(l => '<tr>' + l.map((c, i) => `<td class="${i ? 'n' : ''}">${c}</td>`).join('') + '</tr>').join('') + '</tbody></table>';
+}
+
+/* ---------- KPIs ---------- */
+function kpis() {
+  const a0 = anosArwu[0], a1 = anosArwu[anosArwu.length - 1];
+  const dA = D.arwu.anos[a1].brasil - D.arwu.anos[a0].brasil;
+  const nL = leidenEd(estado.ed).length, nL0 = leidenEd(edicoes[0]).length;
+  const ig = anosIgc[anosIgc.length - 1];
+  const igTot = D.igc.por_ano[ig].reduce((s, x) => s + x.n, 0);
+  const igUni = D.igc.universidades.filter(r => r.ano === ig).length;
+  const en = anosEnade[anosEnade.length - 1];
+  const enTot = D.enade.resumo.filter(r => r.ano === en).reduce((s, r) => s + r.cursos, 0);
+  const sinal = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n);
+  const itens = [
+    ['Brasileiras no ARWU ' + a1, D.arwu.anos[a1].brasil, `${sinal(dA)} desde ${a0} (${D.arwu.anos[a0].brasil})`],
+    ['Brasileiras no Leiden ' + estado.ed, nL, `${sinal(nL - nL0)} desde ${edicoes[0]} (${nL0})`],
+    ['Instituições no IGC ' + ig, nf.format(igTot), `${igUni} delas são universidades`],
+    ['Cursos no Enade ' + en, nf.format(enTot), 'conceito Enade por curso'],
+  ];
+  $('kpis').innerHTML = itens.map(i => `<div class="kpi"><div class="rot">${i[0]}</div><div class="val">${i[1]}</div><div class="sub">${i[2]}</div></div>`).join('');
+}
+
+/* ---------- gráfico 1: contagem por ranking ---------- */
+const plugFim = { id: 'fimLinha', afterDatasetsDraw(ch) {
+  const { ctx } = ch;
+  ch.data.datasets.forEach((ds, i) => {
+    const meta = ch.getDatasetMeta(i);
+    let k = ds.data.length - 1; while (k >= 0 && ds.data[k] == null) k--;
+    if (k < 0) return;
+    const p = meta.data[k];
+    ctx.save(); ctx.fillStyle = T.ink2; ctx.font = '12px system-ui, sans-serif'; ctx.textBaseline = 'middle';
+    ctx.fillText(`${ds.label} ${ds.data[k]}`, p.x + 10, p.y);
+    ctx.restore();
+  });
+} };
+function grafContagem() {
+  const anos = [...new Set([...anosArwu, ...edicoes])].sort();
+  const arwu = anos.map(a => D.arwu.anos[a] ? D.arwu.anos[a].brasil : null);
+  const lei = anos.map(a => edicoes.includes(a) ? leidenEd(a).length : null);
+  novo('c-contagem', { type: 'line', plugins: [plugFim],
+    data: { labels: anos, datasets: [
+      { label: 'ARWU', data: arwu, borderColor: T.s1, backgroundColor: T.s1, borderWidth: 2, pointRadius: 5, pointHoverRadius: 8, pointBorderColor: T.surface, pointBorderWidth: 2, tension: 0 },
+      { label: 'Leiden', data: lei, borderColor: T.s2, backgroundColor: T.s2, borderWidth: 2, pointRadius: 5, pointHoverRadius: 8, pointBorderColor: T.surface, pointBorderWidth: 2, tension: 0 } ] },
+    options: { responsive: true, maintainAspectRatio: false, layout: { padding: { right: 78 } }, interaction: { mode: 'index', intersect: false },
+      scales: baseEixos({ grid: { display: false } }, { beginAtZero: true, title: { display: true, text: 'universidades brasileiras', color: T.muted } }),
+      plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
+        tooltip: { enabled: false, external: tooltipExterno(t => `<b>${t.title[0]}</b>` + t.dataPoints.map(p => `<div>${p.dataset.label}: ${p.parsed.y}</div>`).join('')) } } } });
+  $('tv-contagem').innerHTML = tabelaHTML(['Ano', 'ARWU', 'Leiden'], anos.map((a, i) => [a, arwu[i] ?? '–', lei[i] ?? '–']));
+}
+
+/* ---------- gráfico 2: barras do Leiden ---------- */
+function grafLeiden() {
+  const m = metInfo[estado.met];
+  let linhas = leidenEd(estado.ed).filter(r => r[estado.met] != null).sort((a, b) => b[estado.met] - a[estado.met]);
+  const topo = linhas.slice(0, 12);
+  const uf = linhas.find(r => ehUfpb(r.nome));
+  const mostra = uf && !topo.includes(uf) ? [...topo, uf] : topo;
+  const pos = r => linhas.indexOf(r) + 1;
+  $('t-leiden').textContent = `Leiden ${estado.ed}: ${m.nome}`;
+  $('l-leiden').textContent = `Período ${periodoDe(estado.ed)}. 12 primeiras de ${linhas.length} universidades brasileiras${uf && !topo.includes(uf) ? ', mais a UFPB (em laranja)' : ''}.`;
+  novo('c-leiden', { type: 'bar',
+    data: { labels: mostra.map(r => curto(r.nome)), datasets: [{ data: mostra.map(r => m.val(r[estado.met])),
+      backgroundColor: mostra.map(r => ehUfpb(r.nome) ? T.s2 : T.s1), borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 16 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ beginAtZero: true, ticks: { color: T.muted, callback: m.eixo } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const r = mostra[t.dataPoints[0].dataIndex];
+          return `<b>${r.nome}</b><div>${m.nome}: ${m.fmt(r[estado.met])}</div><div>${pos(r)}ª entre as brasileiras</div>`; }) } } } });
+  $('tv-leiden').innerHTML = tabelaHTML(['Universidade', m.nome, 'Posição entre as brasileiras'], linhas.map(r => [r.nome, m.fmt(r[estado.met]), pos(r)]));
+}
+
+/* ---------- gráfico 3: IGC por faixa ---------- */
+function grafIgc() {
+  const dados = anosIgc.map(a => {
+    const lin = D.igc.por_ano[a].filter(x => estado.cat === 'todas' || x.cat === estado.cat);
+    const o = {}; FAIXAS.forEach(f => o[f] = lin.filter(x => x.faixa === f).reduce((s, x) => s + x.n, 0)); return o;
+  });
+  const cor = f => f === 'SC' ? T.muted : T.ord[+f - 1];
+  const rot = f => f === 'SC' ? 'Sem conceito' : 'Faixa ' + f;
+  const usa = FAIXAS.filter(f => dados.some(d => d[f] > 0));
+  $('l-igc').textContent = `Número de instituições por faixa do IGC (1 a 5; mais escuro = faixa maior). ${estado.cat === 'todas' ? 'Todas as categorias.' : estado.cat + '.'}`;
+  novo('c-igc', { type: 'bar',
+    data: { labels: anosIgc, datasets: usa.map(f => ({ label: rot(f), data: dados.map(d => d[f]), backgroundColor: cor(f), borderColor: T.surface, borderWidth: 2, borderRadius: 3, borderSkipped: false, maxBarThickness: 64 })) },
+    options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+      scales: baseEixos({ stacked: true, grid: { display: false } }, { stacked: true, beginAtZero: true, ticks: { color: T.muted, callback: v => nf.format(v) } }),
+      plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const tot = t.dataPoints.reduce((s, p) => s + p.parsed.y, 0);
+          return `<b>IGC ${t.title[0]}</b>` + t.dataPoints.slice().reverse().map(p => `<div>${p.dataset.label}: ${nf.format(p.parsed.y)} (${tot ? nf1.format(p.parsed.y / tot * 100) : '0,0'}%)</div>`).join('') + `<div style="margin-top:4px">Total: ${nf.format(tot)}</div>`; }) } } } });
+  $('tv-igc').innerHTML = tabelaHTML(['Ano', ...usa.map(rot), 'Total'], anosIgc.map((a, i) => [a, ...usa.map(f => nf.format(dados[i][f])), nf.format(usa.reduce((s, f) => s + dados[i][f], 0))]));
+}
+
+/* ---------- gráfico 4: dispersão ---------- */
+const plugRot = { id: 'rotulos', afterDatasetsDraw(ch) {
+  const { ctx } = ch; const pts = ch._rotulados || [];
+  const meta = ch.getDatasetMeta(0);
+  ctx.save(); ctx.fillStyle = T.ink; ctx.font = '12px system-ui, sans-serif'; ctx.textBaseline = 'middle';
+  pts.forEach(({ i, texto, dx, dy, align }) => { const p = meta.data[i]; ctx.textAlign = align || 'left'; ctx.fillText(texto, p.x + dx, p.y + dy); });
+  ctx.restore();
+} };
+function grafDisp() {
+  const lin = leidenEd(estado.ed).filter(r => r.P != null && r.PP_top10 != null);
+  const pts = lin.map(r => ({ x: r.P, y: r.PP_top10 * 100, r }));
+  const iUsp = lin.reduce((b, r, i) => r.P > lin[b].P ? i : b, 0);
+  const iMax = lin.reduce((b, r, i) => r.PP_top10 > lin[b].PP_top10 ? i : b, 0);
+  const iUf = lin.findIndex(r => ehUfpb(r.nome));
+  const rot = [];
+  const add = (i, dx, dy, align) => { if (i >= 0 && !rot.some(x => x.i === i)) rot.push({ i, texto: curto(lin[i].nome), dx, dy, align }); };
+  add(iUsp, -10, -12, 'right'); add(iMax, 10, -10); add(iUf, 12, 4);
+  $('t-disp').textContent = `Leiden ${estado.ed}: volume × impacto`;
+  $('l-disp').textContent = `Cada ponto é uma universidade brasileira (${lin.length}). Eixo horizontal em escala logarítmica. UFPB em laranja.`;
+  novo('c-disp', { type: 'scatter', plugins: [plugRot],
+    data: { datasets: [{ data: pts, backgroundColor: pts.map(p => ehUfpb(p.r.nome) ? T.s2 : T.s1), borderColor: T.surface, borderWidth: 2,
+      pointRadius: pts.map(p => ehUfpb(p.r.nome) ? 8 : 6), pointHoverRadius: 10, hitRadius: 14 }] },
+    options: { responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ type: 'logarithmic', title: { display: true, text: 'publicações (P)', color: T.muted }, ticks: { color: T.muted, callback: v => [1000, 3000, 10000, 30000].includes(v) ? nf.format(v) : '' } },
+        { beginAtZero: true, title: { display: true, text: '% entre os 10% mais citados', color: T.muted }, ticks: { color: T.muted, callback: v => v + '%' } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const r = pts[t.dataPoints[0].dataIndex].r;
+          return `<b>${r.nome}</b><div>Publicações: ${nf.format(r.P)}</div><div>% top 10%: ${nf1.format(r.PP_top10 * 100)}%</div><div>MNCS: ${nf2.format(r.MNCS)}</div>`; }) } } } });
+  charts['c-disp']._rotulados = rot; charts['c-disp'].update('none');
+  $('tv-disp').innerHTML = tabelaHTML(['Universidade', 'P', '% top 10%', 'MNCS'], lin.slice().sort((a, b) => b.P - a.P).map(r => [r.nome, nf.format(r.P), nf1.format(r.PP_top10 * 100) + '%', nf2.format(r.MNCS)]));
+}
+
+/* ---------- gráfico 5: Enade ---------- */
+function grafEnade() {
+  const ordem = cats.slice().sort((a, b) => D.enade.resumo.filter(r => r.cat === b).reduce((s, r) => s + r.cursos, 0) - D.enade.resumo.filter(r => r.cat === a).reduce((s, r) => s + r.cursos, 0));
+  const cor = [T.ord[1], T.ord[2], T.ord[4]]; // 3 anos em rampa ordinal
+  const val = (a, c) => (D.enade.resumo.find(r => r.ano === a && r.cat === c) || { cursos: 0 }).cursos;
+  novo('c-enade', { type: 'bar',
+    data: { labels: ordem, datasets: anosEnade.map((a, i) => ({ label: String(a), data: ordem.map(c => val(a, c)), backgroundColor: cor[i % 3], borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 12 })) },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, interaction: { mode: 'nearest', axis: 'y', intersect: false },
+      scales: baseEixos({ beginAtZero: true, ticks: { color: T.muted, callback: v => nf.format(v) } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const c = ordem[t.dataPoints[0].dataIndex];
+          return `<b>${c}</b>` + anosEnade.map(a => { const r = D.enade.resumo.find(x => x.ano === a && x.cat === c);
+            return `<div>${a}: ${nf.format(val(a, c))} cursos${r && r.media != null ? ` · conceito contínuo médio ${nf2.format(r.media)}` : ''}</div>`; }).join(''); }) } } } });
+  $('tv-enade').innerHTML = tabelaHTML(['Categoria', ...anosEnade.flatMap(a => [a + ' cursos', a + ' conceito médio'])],
+    ordem.map(c => [c, ...anosEnade.flatMap(a => { const r = D.enade.resumo.find(x => x.ano === a && x.cat === c); return [nf.format(val(a, c)), r && r.media != null ? nf2.format(r.media) : '–']; })]));
+}
+
+/* ---------- tabela de cruzamento ---------- */
+const cols = [
+  { k: 'nome', t: 'Universidade', f: r => r.nome, s: r => r.nome },
+  { k: 'arwu', t: 'ARWU ' + D.cobertura.anos.arwu, n: 1, f: r => r.arwu || '–', s: r => r.arwu_min ?? 1e9 },
+  { k: 'lp', t: 'Leiden ' + D.cobertura.anos.leiden + ': % top 10%', n: 1, f: r => r.leiden_pp != null ? nf1.format(r.leiden_pp * 100) + '%' : '–', s: r => r.leiden_pp ?? -1 },
+  { k: 'lP', t: 'Leiden: publicações', n: 1, f: r => r.leiden_p != null ? nf.format(r.leiden_p) : '–', s: r => r.leiden_p ?? -1 },
+  { k: 'igc', t: 'IGC ' + D.cobertura.anos.igc, n: 1, f: r => r.igc != null ? nf2.format(r.igc) + ' (faixa ' + r.igc_faixa + ')' : '–', s: r => r.igc ?? -1 },
+  { k: 'en', t: 'Enade ' + D.cobertura.anos.enade + ' (médio)', n: 1, f: r => r.enade != null ? nf2.format(r.enade) : '–', s: r => r.enade ?? -1 },
+  { k: 'nf', t: 'Fontes', n: 1, f: r => r.fontes.length + '/4', s: r => r.fontes.length },
+];
+const tab = { ord: 'nf', dir: -1, pag: 0, por: 25 };
+function tabelaCruz() {
+  const q = $('q').value.trim().toLowerCase();
+  const so = $('so-rank').checked;
+  let lin = D.cruzamento.filter(r => (!so || r.arwu || r.leiden_pp != null) && (!q || r.nome.toLowerCase().includes(q)));
+  const c = cols.find(x => x.k === tab.ord);
+  lin.sort((a, b) => { const x = c.s(a), y = c.s(b); return (x < y ? -1 : x > y ? 1 : 0) * tab.dir || a.nome.localeCompare(b.nome, 'pt'); });
+  const paginas = Math.max(1, Math.ceil(lin.length / tab.por)); tab.pag = Math.min(tab.pag, paginas - 1);
+  const vis = lin.slice(tab.pag * tab.por, tab.pag * tab.por + tab.por);
+  $('tabela').innerHTML = '<thead><tr>' + cols.map(x => `<th class="${x.n ? 'n' : ''}" data-k="${x.k}">${x.t}${x.k === tab.ord ? (tab.dir > 0 ? ' ▲' : ' ▼') : ''}</th>`).join('') + '</tr></thead><tbody>' +
+    vis.map(r => `<tr class="${ehUfpb(r.nome) ? 'destaque' : ''}">` + cols.map(x => `<td class="${x.n ? 'n' : ''}">${x.f(r)}</td>`).join('') + '</tr>').join('') + '</tbody>';
+  $('pg-info').textContent = `${lin.length ? tab.pag * tab.por + 1 : 0}–${Math.min(lin.length, (tab.pag + 1) * tab.por)} de ${lin.length}`;
+  $('pg-ant').disabled = tab.pag === 0; $('pg-prox').disabled = tab.pag >= paginas - 1;
+  document.querySelectorAll('#tabela th').forEach(th => th.onclick = () => { const k = th.dataset.k; tab.dir = tab.ord === k ? -tab.dir : (k === 'nome' ? 1 : -1); tab.ord = k; tab.pag = 0; tabelaCruz(); });
+}
+
+/* ---------- montagem ---------- */
+function tudo() {
+  T = tema(); kpis(); grafContagem(); grafLeiden(); grafIgc(); grafDisp(); grafEnade(); tabelaCruz();
+}
+$('f-ed').innerHTML = edicoes.slice().reverse().map(e => `<option value="${e}">${e} (período ${periodoDe(e)})</option>`).join('');
+$('f-cat').innerHTML = '<option value="todas">Todas</option>' + cats.map(c => `<option>${c}</option>`).join('');
+$('f-ed').onchange = e => { estado.ed = +e.target.value; kpis(); grafContagem(); grafLeiden(); grafDisp(); };
+$('f-met').onchange = e => { estado.met = e.target.value; grafLeiden(); };
+$('f-cat').onchange = e => { estado.cat = e.target.value; grafIgc(); };
+$('q').oninput = () => { tab.pag = 0; tabelaCruz(); };
+$('so-rank').onchange = () => { tab.pag = 0; tabelaCruz(); };
+$('pg-ant').onclick = () => { tab.pag--; tabelaCruz(); };
+$('pg-prox').onclick = () => { tab.pag++; tabelaCruz(); };
+const cb = D.cobertura;
+$('l-cruz').textContent = `Universidades brasileiras presentes em pelo menos duas bases (ARWU ${cb.anos.arwu}, Leiden ${cb.anos.leiden}, IGC ${cb.anos.igc}, Enade ${cb.anos.enade}): ${cb.em_2_ou_mais}. Em todas as quatro: ${cb.em_todas}. Cruzamento por nome, preliminar.`;
+$('rodape').textContent = 'Fontes: ShanghaiRanking (ARWU), CWTS Leiden Ranking (CC BY 4.0), Inep (IGC e Conceito Enade). Dados processados em 02/10/2026 por scripts/preparar_dados.py.';
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', tudo);
+tudo();
+</script>
+</body>
+</html>

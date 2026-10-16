@@ -102,13 +102,14 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
     <p>Explore a cobertura, a pesquisa científica, os indicadores de ensino e o cruzamento entre instituições. Selecione um painel para escolher as visualizações. Estes resultados são descritivos e não permitem inferir causalidade.</p>
   </header>
 
-  <div class="aviso"><b>Dados parciais.</b> Ainda faltam QS, SCImago e RUF. Hoje há ARWU (2021–2026), Leiden Ranking (2022–2025, só universidades do Brasil), IGC (2019 e 2021–2023) e Conceito Enade por curso (2021–2023). As séries têm anos diferentes entre si.</div>
+  <div class="aviso"><b>Dados parciais.</b> ARWU (2021–2026), QS (2017–2027), SCImago (2022–2026), Leiden Ranking (2021–2025, só universidades do Brasil), IGC (2019 e 2021–2023), CPC (2019 e 2021–2023), Conceito Enade por curso (2021–2023) e RUF (2019, só sub-ranking de Mercado; 2023–2025 completo). Ainda faltam Leiden 2019–2020 e RUF 2020–2022. As séries têm anos diferentes entre si.</div>
 
   <nav class="navegacao" aria-label="Navegação entre painéis">
     <button type="button" data-aba="geral" aria-pressed="true">Visão geral</button>
     <button type="button" data-aba="pesquisa" aria-pressed="false">Pesquisa e impacto</button>
     <button type="button" data-aba="ensino" aria-pressed="false">Ensino e avaliação</button>
     <button type="button" data-aba="comparacao" aria-pressed="false">Comparar universidades</button>
+    <button type="button" data-aba="correlacoes" aria-pressed="false">Correlações</button>
     <button type="button" data-aba="metodologia" aria-pressed="false">Fontes e limites</button>
   </nav>
   <p id="resumo-visao" class="resumo-visao" aria-live="polite">Cobertura das bases disponíveis e evolução das universidades brasileiras nos rankings.</p>
@@ -120,7 +121,9 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
       <option value="P">Número de publicações (P)</option>
       <option value="MNCS">Citações normalizadas (MNCS)</option>
     </select></label>
+    <label data-filtro="pesquisa">Indicador do QS <select id="f-qs"></select></label>
     <label data-filtro="ensino">Categoria administrativa (IGC) <select id="f-cat"></select></label>
+    <label data-filtro="ensino">Indicador do RUF <select id="f-ruf"></select></label>
     <span class="dica" id="dica-filtros">Selecione os filtros pertinentes à visualização.</span>
   </section>
 
@@ -129,8 +132,8 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
   <section class="grade" id="grade-graficos">
     <div class="card" data-visao="geral">
       <h2>Universidades brasileiras em cada ranking</h2>
-      <p class="leg">Quantas universidades do Brasil aparecem em cada edição (ARWU: 1.000 por edição; Leiden: apenas as que passam do corte de publicações).</p>
-      <div class="caixa" style="height:300px"><canvas id="c-contagem" role="img" aria-label="Linhas com o número de universidades brasileiras por edição no ARWU e no Leiden"></canvas></div>
+      <p class="leg">Quantas universidades do Brasil aparecem em cada edição (ARWU e QS: ~1.000-1.500 por edição; Leiden e SCImago: todas que passam do corte da fonte).</p>
+      <div class="caixa" style="height:300px"><canvas id="c-contagem" role="img" aria-label="Linhas com o número de universidades brasileiras por edição em cada ranking"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-contagem"></div></details>
     </div>
     <div class="card" data-visao="pesquisa">
@@ -138,6 +141,18 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
       <p class="leg" id="l-leiden"></p>
       <div class="caixa" style="height:420px"><canvas id="c-leiden" role="img" aria-label="Barras horizontais com a métrica escolhida do Leiden para as universidades brasileiras"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-leiden"></div></details>
+    </div>
+    <div class="card" data-visao="pesquisa">
+      <h2 id="t-qs">QS: universidades brasileiras</h2>
+      <p class="leg" id="l-qs"></p>
+      <div class="caixa" style="height:420px"><canvas id="c-qs" role="img" aria-label="Barras horizontais com o indicador escolhido do QS para as universidades brasileiras"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-qs"></div></details>
+    </div>
+    <div class="card" data-visao="pesquisa">
+      <h2 id="t-scimago">SCImago: universidades brasileiras</h2>
+      <p class="leg" id="l-scimago"></p>
+      <div class="caixa" style="height:420px"><canvas id="c-scimago" role="img" aria-label="Barras horizontais com a posição global no SCImago para as universidades brasileiras"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-scimago"></div></details>
     </div>
     <div class="card" data-visao="ensino">
       <h2>IGC: faixas por ano</h2>
@@ -157,6 +172,45 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
       <div class="caixa" style="height:400px"><canvas id="c-enade" role="img" aria-label="Barras horizontais agrupadas com o número de cursos avaliados no Enade por categoria e ano"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-enade"></div></details>
     </div>
+    <div class="card" data-visao="ensino">
+      <h2>CPC: cursos avaliados por categoria administrativa</h2>
+      <p class="leg">Conceito Preliminar de Curso (Inep), um dos componentes do IGC. O escopo de áreas avaliadas também muda a cada ano.</p>
+      <div class="caixa" style="height:400px"><canvas id="c-cpc" role="img" aria-label="Barras horizontais agrupadas com o número de cursos avaliados no CPC por categoria e ano"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cpc"></div></details>
+    </div>
+    <div class="card" data-visao="ensino">
+      <h2 id="t-ruf">RUF: universidades brasileiras</h2>
+      <p class="leg" id="l-ruf"></p>
+      <div class="caixa" style="height:420px"><canvas id="c-ruf" role="img" aria-label="Barras horizontais com o indicador escolhido do RUF para as universidades brasileiras"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-ruf"></div></details>
+    </div>
+  </section>
+
+  <section class="grade" id="grade-correlacoes" hidden>
+    <div class="card" data-visao="correlacoes">
+      <h2>Estabilidade: posição entre edições consecutivas</h2>
+      <p class="leg">Correlação de Spearman da posição de cada universidade entre uma edição e a seguinte, por ranking. Próximo de 1 = quem estava bem colocado continua bem colocado.</p>
+      <div class="caixa" style="height:260px"><canvas id="c-cor-estab" role="img" aria-label="Barras com a correlação de Spearman de estabilidade por ranking"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-estab"></div></details>
+    </div>
+    <div class="card" data-visao="correlacoes">
+      <h2>Hipótese (a): pesquisa/citações × posição, rankings internacionais</h2>
+      <p class="leg">Edição mais recente de cada par. Sinal negativo é o esperado: indicador de pesquisa mais alto associado a posição numericamente menor (melhor).</p>
+      <div class="caixa" style="height:260px"><canvas id="c-cor-a" role="img" aria-label="Barras com a correlação de Spearman entre indicadores de pesquisa e posição nos rankings internacionais"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-a"></div></details>
+    </div>
+    <div class="card" data-visao="correlacoes">
+      <h2>Hipótese (b): ensino/mercado × posição, RUF</h2>
+      <p class="leg">Edição mais recente de cada par.</p>
+      <div class="caixa" style="height:260px"><canvas id="c-cor-b" role="img" aria-label="Barras com a correlação de Spearman entre indicadores de ensino e mercado e a posição no RUF"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-b"></div></details>
+    </div>
+    <div class="card" data-visao="correlacoes">
+      <h2>Correlação de postos entre rankings</h2>
+      <p class="leg">Universidades em comum entre pares de rankings, edição mais recente de cada par.</p>
+      <div class="caixa" style="height:260px"><canvas id="c-cor-entre" role="img" aria-label="Barras com a correlação de Spearman de posição entre pares de rankings"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-entre"></div></details>
+    </div>
   </section>
 
   <section class="card" data-visao="comparacao">
@@ -164,7 +218,7 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
     <p class="leg" id="l-cruz"></p>
     <div class="filtros" style="border:0;padding:0;margin-bottom:10px">
       <label>Buscar <input type="search" id="q" placeholder="nome da universidade"></label>
-      <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="so-rank" checked> só quem está no ARWU ou no Leiden</label>
+      <label style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="so-rank" checked> só quem está em algum ranking internacional (ARWU, Leiden, QS ou SCImago)</label>
     </div>
     <div style="overflow-x:auto"><table id="tabela"></table></div>
     <div class="pager"><span id="pg-info"></span><span><button id="pg-ant">Anterior</button> <button id="pg-prox">Próxima</button></span></div>
@@ -177,6 +231,11 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
     <li><b>USP, Unicamp, Unesp e UERJ</b> aparecem no ARWU e no Leiden, mas não nos arquivos do IGC e do Enade usados aqui, provavelmente por pertencerem a sistemas estaduais de ensino. Essa explicação é uma hipótese, não foi verificada.</li>
     <li><b>ARWU</b> só publica posição exata até a 100ª; depois vêm faixas (ex.: 501–600). Os indicadores do ARWU vêm da API como códigos numéricos sem rótulo e não foram usados.</li>
     <li><b>Leiden:</b> universidades do Brasil, área “All sciences”, contagem inteira, período mais recente de cada edição. “% top 10%” é a proporção de publicações entre as 10% mais citadas do mundo na área.</li>
+    <li><b>QS:</b> cada edição (2017–2027) vem num arquivo com nomenclatura própria de coluna; os indicadores (reputação acadêmica, reputação com empregadores, proporção docente/aluno, citações por docente etc.) não existem em todas as edições — ausente fica em branco, nunca em zero. 2017–2022 vêm de um único arquivo histórico, com só posição e nota geral, sem o detalhe por indicador.</li>
+    <li><b>SCImago:</b> Scimago Institutions Rankings, só o setor “Universities” (o SIR também cobre hospitais, governo, ONGs e empresas, que ficam fora daqui). Posição exibida é a global; não há detalhe por indicador na base usada.</li>
+    <li><b>RUF:</b> o arquivo de 2019 <b>não é a posição geral</b> do RUF — é a sub-classificação só de Mercado (a coluna de posição do arquivo original está ordenada exatamente pela nota de mercado). Por isso 2019 entra nos gráficos de indicador de mercado, mas não na posição geral nem na correlação de estabilidade. 2023–2025 trazem os 5 indicadores completos (Ensino, Pesquisa, Mercado, Inovação, Internacionalização) e a posição geral.</li>
+    <li><b>CPC</b> (Conceito Preliminar de Curso, Inep) é um dos insumos do próprio IGC — por isso tende a correlacionar fortemente com ele; não é uma fonte independente do IGC, é parte dele.</li>
+    <li><b>Correlações:</b> calculadas só com universidades em comum entre as duas variáveis, no(s) ano(s) em que ambas existem (mínimo 5 em comum). <code>n</code> pequeno não sustenta generalização. Posição usa número menor = melhor; nota/indicador usa número maior = melhor — por isso um sinal negativo de rho entre posição e indicador é o esperado quando o indicador “ajuda” a posição.</li>
     </ul>
   </section>
   <footer id="rodape"></footer>
@@ -203,14 +262,39 @@ const leidenEd = e => D.leiden.filter(r => r.edicao === e && r.periodo === perio
 const anosArwu = Object.keys(D.arwu.anos).map(Number).sort();
 const anosIgc = Object.keys(D.igc.por_ano).map(Number).sort();
 const anosEnade = [...new Set(D.enade.resumo.map(r => r.ano))].sort();
+const anosCpc = [...new Set((D.cpc ? D.cpc.resumo : []).map(r => r.ano))].sort();
 const cats = [...new Set(Object.values(D.igc.por_ano).flat().map(x => x.cat))].sort();
 const FAIXAS = ['1', '2', '3', '4', '5', 'SC'];
 
-const estado = { ed: edicoes[edicoes.length - 1], met: 'PP_top10', cat: 'todas' };
+const qs = D.qs || [];
+const scimago = D.scimago || [];
+const ruf = D.ruf || [];
+const anosQs = [...new Set(qs.map(r => r.ano))].sort();
+const anosScimago = [...new Set(scimago.map(r => r.ano))].sort();
+const anosRuf = [...new Set(ruf.map(r => r.ano))].sort();
+const qsAno = a => qs.filter(r => r.ano === a);
+const scimagoAno = a => scimago.filter(r => r.ano === a);
+const rufAno = a => ruf.filter(r => r.ano === a);
+
+const estado = { ed: edicoes[edicoes.length - 1], met: 'PP_top10', cat: 'todas', qsEd: anosQs[anosQs.length - 1], qsMet: 'score_geral', rufEd: anosRuf[anosRuf.length - 1], rufMet: 'nota_geral' };
 const metInfo = {
   PP_top10: { nome: '% de artigos entre os 10% mais citados', fmt: v => nf1.format(v * 100) + '%', val: v => v * 100, eixo: v => v + '%' },
   P: { nome: 'Publicações (P)', fmt: v => nf.format(v), val: v => v, eixo: v => nf.format(v) },
   MNCS: { nome: 'Citações normalizadas (MNCS)', fmt: v => nf2.format(v), val: v => v, eixo: v => nf1.format(v) },
+};
+const qsMetInfo = {
+  score_geral: { nome: 'Nota geral', fmt: v => nf1.format(v), val: v => v, eixo: v => nf.format(v) },
+  ar_score: { nome: 'Reputação acadêmica', fmt: v => nf1.format(v), val: v => v, eixo: v => nf.format(v) },
+  er_score: { nome: 'Reputação com empregadores', fmt: v => nf1.format(v), val: v => v, eixo: v => nf.format(v) },
+  cpf_score: { nome: 'Citações por docente', fmt: v => nf1.format(v), val: v => v, eixo: v => nf.format(v) },
+};
+const rufMetInfo = {
+  nota_geral: { nome: 'Nota geral', campo: 'nota_geral' },
+  nota_ensino: { nome: 'Nota de ensino', campo: 'nota_ensino' },
+  nota_pesquisa: { nome: 'Nota de pesquisa', campo: 'nota_pesquisa' },
+  nota_mercado: { nome: 'Nota de mercado', campo: 'nota_mercado' },
+  nota_inovacao: { nome: 'Nota de inovação', campo: 'nota_inovacao' },
+  nota_internacionalizacao: { nome: 'Nota de internacionalização', campo: 'nota_internacionalizacao' },
 };
 
 /* ---------- tema para o canvas ---------- */
@@ -285,18 +369,24 @@ const plugFim = { id: 'fimLinha', afterDatasetsDraw(ch) {
   });
 } };
 function grafContagem() {
-  const anos = [...new Set([...anosArwu, ...edicoes])].sort();
+  const anos = [...new Set([...anosArwu, ...edicoes, ...anosQs, ...anosScimago])].sort();
   const arwu = anos.map(a => D.arwu.anos[a] ? D.arwu.anos[a].brasil : null);
   const lei = anos.map(a => edicoes.includes(a) ? leidenEd(a).length : null);
+  const qsC = anos.map(a => anosQs.includes(a) ? qsAno(a).length : null);
+  const sciC = anos.map(a => anosScimago.includes(a) ? scimagoAno(a).length : null);
+  // ord3 == s1 no design system (mesmo tom de azul) -- usar ord1/ord5 pra não colidir com a cor do ARWU
+  const series = [
+    { label: 'ARWU', data: arwu, cor: T.s1 }, { label: 'Leiden', data: lei, cor: T.s2 },
+    { label: 'QS', data: qsC, cor: T.ord[0] }, { label: 'SCImago', data: sciC, cor: T.ord[4] },
+  ];
   novo('c-contagem', { type: 'line', plugins: [plugFim],
-    data: { labels: anos, datasets: [
-      { label: 'ARWU', data: arwu, borderColor: T.s1, backgroundColor: T.s1, borderWidth: 2, pointRadius: 5, pointHoverRadius: 8, pointBorderColor: T.surface, pointBorderWidth: 2, tension: 0 },
-      { label: 'Leiden', data: lei, borderColor: T.s2, backgroundColor: T.s2, borderWidth: 2, pointRadius: 5, pointHoverRadius: 8, pointBorderColor: T.surface, pointBorderWidth: 2, tension: 0 } ] },
+    data: { labels: anos, datasets: series.map(s => ({ label: s.label, data: s.data, borderColor: s.cor, backgroundColor: s.cor, borderWidth: 2, pointRadius: 5, pointHoverRadius: 8, pointBorderColor: T.surface, pointBorderWidth: 2, tension: 0 })) },
     options: { responsive: true, maintainAspectRatio: false, layout: { padding: { right: 78 } }, interaction: { mode: 'index', intersect: false },
       scales: baseEixos({ grid: { display: false } }, { beginAtZero: true, title: { display: true, text: 'universidades brasileiras', color: T.muted } }),
       plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
         tooltip: { enabled: false, external: tooltipExterno(t => `<b>${t.title[0]}</b>` + t.dataPoints.map(p => `<div>${p.dataset.label}: ${p.parsed.y}</div>`).join('')) } } } });
-  $('tv-contagem').innerHTML = tabelaHTML(['Ano', 'ARWU', 'Leiden'], anos.map((a, i) => [a, arwu[i] ?? '–', lei[i] ?? '–']));
+  $('tv-contagem').innerHTML = tabelaHTML(['Ano', 'ARWU', 'Leiden', 'QS', 'SCImago'],
+    anos.map((a, i) => [a, arwu[i] ?? '–', lei[i] ?? '–', qsC[i] ?? '–', sciC[i] ?? '–']));
 }
 
 /* ---------- gráfico 2: barras do Leiden ---------- */
@@ -320,6 +410,49 @@ function grafLeiden() {
   $('tv-leiden').innerHTML = tabelaHTML(['Universidade', m.nome, 'Posição entre as brasileiras'], linhas.map(r => [r.nome, m.fmt(r[estado.met]), pos(r)]));
 }
 
+/* ---------- gráfico QS ---------- */
+function grafQs() {
+  const m = qsMetInfo[estado.qsMet];
+  let linhas = qsAno(estado.qsEd).filter(r => r[estado.qsMet] != null).sort((a, b) => b[estado.qsMet] - a[estado.qsMet]);
+  const topo = linhas.slice(0, 12);
+  const uf = linhas.find(r => ehUfpb(r.nome));
+  const mostra = uf && !topo.includes(uf) ? [...topo, uf] : topo;
+  const pos = r => linhas.indexOf(r) + 1;
+  $('t-qs').textContent = `QS ${estado.qsEd}: ${m.nome}`;
+  $('l-qs').textContent = `${linhas.length} universidades brasileiras com ${m.nome.toLowerCase()} disponível${uf && !topo.includes(uf) ? ', mais a UFPB (em laranja)' : ''}. Ordenado pelo indicador, não pela posição oficial do QS.`;
+  if (!mostra.length) { $('c-qs').closest('.caixa').innerHTML = '<p class="leg">Sem dado desse indicador nessa edição.</p>'; $('tv-qs').innerHTML = ''; return; }
+  novo('c-qs', { type: 'bar',
+    data: { labels: mostra.map(r => curto(r.nome)), datasets: [{ data: mostra.map(r => m.val(r[estado.qsMet])),
+      backgroundColor: mostra.map(r => ehUfpb(r.nome) ? T.s2 : T.ord[2]), borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 16 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ beginAtZero: true, ticks: { color: T.muted, callback: m.eixo } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const r = mostra[t.dataPoints[0].dataIndex];
+          return `<b>${r.nome}</b><div>${m.nome}: ${m.fmt(r[estado.qsMet])}</div><div>Posição QS: ${r.rank_raw}</div>`; }) } } } });
+  $('tv-qs').innerHTML = tabelaHTML(['Universidade', m.nome, 'Posição QS'], linhas.map(r => [r.nome, m.fmt(r[estado.qsMet]), r.rank_raw]));
+}
+
+/* ---------- gráfico SCImago ---------- */
+function grafScimago() {
+  const ano = anosScimago[anosScimago.length - 1];
+  let linhas = scimagoAno(ano).slice().sort((a, b) => a.rank_global - b.rank_global);
+  const topo = linhas.slice(0, 12);
+  const uf = linhas.find(r => ehUfpb(r.nome));
+  const mostra = uf && !topo.includes(uf) ? [...topo, uf] : topo;
+  $('t-scimago').textContent = `SCImago ${ano}: posição global`;
+  $('l-scimago').textContent = `12 primeiras de ${linhas.length} universidades brasileiras no SIR, por posição global${uf && !topo.includes(uf) ? ', mais a UFPB (em laranja)' : ''}. Barra maior = posição melhor (invertido para leitura).`;
+  const maxGlobal = Math.max(...mostra.map(r => r.rank_global));
+  novo('c-scimago', { type: 'bar',
+    data: { labels: mostra.map(r => curto(r.nome)), datasets: [{ data: mostra.map(r => maxGlobal + 1 - r.rank_global),
+      backgroundColor: mostra.map(r => ehUfpb(r.nome) ? T.s2 : T.ord[3]), borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 16 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ beginAtZero: true, ticks: { display: false } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const r = mostra[t.dataPoints[0].dataIndex];
+          return `<b>${r.nome}</b><div>Posição no Brasil: ${r.rank_br}ª</div><div>Posição global: ${nf.format(r.rank_global)}ª</div>`; }) } } } });
+  $('tv-scimago').innerHTML = tabelaHTML(['Universidade', 'Posição no Brasil', 'Posição global'], linhas.map(r => [r.nome, r.rank_br, nf.format(r.rank_global)]));
+}
+
 /* ---------- gráfico 3: IGC por faixa ---------- */
 function grafIgc() {
   const dados = anosIgc.map(a => {
@@ -338,6 +471,25 @@ function grafIgc() {
         tooltip: { enabled: false, external: tooltipExterno(t => { const tot = t.dataPoints.reduce((s, p) => s + p.parsed.y, 0);
           return `<b>IGC ${t.title[0]}</b>` + t.dataPoints.slice().reverse().map(p => `<div>${p.dataset.label}: ${nf.format(p.parsed.y)} (${tot ? nf1.format(p.parsed.y / tot * 100) : '0,0'}%)</div>`).join('') + `<div style="margin-top:4px">Total: ${nf.format(tot)}</div>`; }) } } } });
   $('tv-igc').innerHTML = tabelaHTML(['Ano', ...usa.map(rot), 'Total'], anosIgc.map((a, i) => [a, ...usa.map(f => nf.format(dados[i][f])), nf.format(usa.reduce((s, f) => s + dados[i][f], 0))]));
+}
+
+/* ---------- gráfico CPC ---------- */
+function grafCpc() {
+  const resumo = (D.cpc && D.cpc.resumo) || [];
+  const catsCpc = [...new Set(resumo.map(r => r.cat))];
+  const ordem = catsCpc.slice().sort((a, b) => resumo.filter(r => r.cat === b).reduce((s, r) => s + r.cursos, 0) - resumo.filter(r => r.cat === a).reduce((s, r) => s + r.cursos, 0));
+  const cor = [T.ord[1], T.ord[2], T.ord[4], T.ord[0]];
+  const val = (a, c) => (resumo.find(r => r.ano === a && r.cat === c) || { cursos: 0 }).cursos;
+  novo('c-cpc', { type: 'bar',
+    data: { labels: ordem, datasets: anosCpc.map((a, i) => ({ label: String(a), data: ordem.map(c => val(a, c)), backgroundColor: cor[i % cor.length], borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 12 })) },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, interaction: { mode: 'nearest', axis: 'y', intersect: false },
+      scales: baseEixos({ beginAtZero: true, ticks: { color: T.muted, callback: v => nf.format(v) } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const c = ordem[t.dataPoints[0].dataIndex];
+          return `<b>${c}</b>` + anosCpc.map(a => { const r = resumo.find(x => x.ano === a && x.cat === c);
+            return `<div>${a}: ${nf.format(val(a, c))} cursos${r && r.media != null ? ` · CPC contínuo médio ${nf2.format(r.media)}` : ''}</div>`; }).join(''); }) } } } });
+  $('tv-cpc').innerHTML = tabelaHTML(['Categoria', ...anosCpc.flatMap(a => [a + ' cursos', a + ' CPC médio'])],
+    ordem.map(c => [c, ...anosCpc.flatMap(a => { const r = resumo.find(x => x.ano === a && x.cat === c); return [nf.format(val(a, c)), r && r.media != null ? nf2.format(r.media) : '–']; })]));
 }
 
 /* ---------- gráfico 4: dispersão ---------- */
@@ -389,21 +541,73 @@ function grafEnade() {
     ordem.map(c => [c, ...anosEnade.flatMap(a => { const r = D.enade.resumo.find(x => x.ano === a && x.cat === c); return [nf.format(val(a, c)), r && r.media != null ? nf2.format(r.media) : '–']; })]));
 }
 
+/* ---------- gráfico RUF ---------- */
+function grafRuf() {
+  const m = rufMetInfo[estado.rufMet];
+  let linhas = rufAno(estado.rufEd).filter(r => r[m.campo] != null).sort((a, b) => b[m.campo] - a[m.campo]);
+  const topo = linhas.slice(0, 12);
+  const uf = linhas.find(r => ehUfpb(r.nome));
+  const mostra = uf && !topo.includes(uf) ? [...topo, uf] : topo;
+  $('t-ruf').textContent = `RUF ${estado.rufEd}: ${m.nome}`;
+  $('l-ruf').textContent = `12 primeiras de ${linhas.length} universidades com ${m.nome.toLowerCase()} disponível${uf && !topo.includes(uf) ? ', mais a UFPB (em laranja)' : ''}.`;
+  if (!mostra.length) { $('tv-ruf').innerHTML = '<p class="leg">Sem dado desse indicador nessa edição.</p>'; return; }
+  novo('c-ruf', { type: 'bar',
+    data: { labels: mostra.map(r => curto(r.nome)), datasets: [{ data: mostra.map(r => r[m.campo]),
+      backgroundColor: mostra.map(r => ehUfpb(r.nome) ? T.s2 : T.ord[4]), borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 16 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ beginAtZero: true, ticks: { color: T.muted, callback: v => nf1.format(v) } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const r = mostra[t.dataPoints[0].dataIndex];
+          return `<b>${r.nome}</b><div>${m.nome}: ${nf1.format(r[m.campo])}</div><div>Posição geral RUF: ${r.ranking ?? '–'}</div>`; }) } } } });
+  $('tv-ruf').innerHTML = tabelaHTML(['Universidade', m.nome, 'Posição geral RUF'], linhas.map(r => [r.nome, nf1.format(r[m.campo]), r.ranking ?? '–']));
+}
+
+/* ---------- painel de correlações ---------- */
+function ultimaPorRotulo(itens, campoAno) {
+  const porRotulo = {};
+  itens.forEach(it => { if (!porRotulo[it.rotulo] || it[campoAno] > porRotulo[it.rotulo][campoAno]) porRotulo[it.rotulo] = it; });
+  return Object.values(porRotulo);
+}
+function grafBarraCorrelacao(idCanvas, idTabela, itens, campoAno, rotuloAno) {
+  if (!itens.length) { $(idTabela).innerHTML = '<p class="leg">Sem pares suficientes (mínimo 5 universidades em comum) para calcular.</p>'; return; }
+  const ultimos = ultimaPorRotulo(itens, campoAno).sort((a, b) => b.rho - a.rho);
+  novo(idCanvas, { type: 'bar',
+    data: { labels: ultimos.map(r => r.rotulo), datasets: [{ data: ultimos.map(r => r.rho),
+      backgroundColor: ultimos.map(r => r.rho >= 0 ? T.s1 : T.s2), borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 20 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ min: -1, max: 1, ticks: { color: T.muted, callback: v => nf1.format(v) } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const r = ultimos[t.dataPoints[0].dataIndex];
+          return `<b>${r.rotulo}</b><div>rho de Spearman: ${nf2.format(r.rho)}</div><div>${rotuloAno}: ${r[campoAno]}</div><div>n = ${r.n} universidades</div>`; }) } } } });
+  $(idTabela).innerHTML = tabelaHTML(['Par', 'rho', rotuloAno, 'n'], ultimos.map(r => [r.rotulo, nf2.format(r.rho), r[campoAno], r.n]));
+}
+function grafCorrelacoes() {
+  const c = D.correlacoes || { estabilidade: [], a_pesquisa_internacional: [], b_ensino_mercado_brasileiro: [], entre_rankings: [] };
+  grafBarraCorrelacao('c-cor-estab', 'tv-cor-estab', c.estabilidade, 'para', 'até a edição');
+  grafBarraCorrelacao('c-cor-a', 'tv-cor-a', c.a_pesquisa_internacional, 'ano', 'edição');
+  grafBarraCorrelacao('c-cor-b', 'tv-cor-b', c.b_ensino_mercado_brasileiro, 'ano', 'edição');
+  grafBarraCorrelacao('c-cor-entre', 'tv-cor-entre', c.entre_rankings, 'ano', 'edição');
+}
+
 /* ---------- tabela de cruzamento ---------- */
+const totalFontes = Object.keys(D.cobertura.anos).length;
 const cols = [
   { k: 'nome', t: 'Universidade', f: r => r.nome, s: r => r.nome },
-  { k: 'arwu', t: 'ARWU ' + D.cobertura.anos.arwu, n: 1, f: r => r.arwu || '–', s: r => r.arwu_min ?? 1e9 },
-  { k: 'lp', t: 'Leiden ' + D.cobertura.anos.leiden + ': % top 10%', n: 1, f: r => r.leiden_pp != null ? nf1.format(r.leiden_pp * 100) + '%' : '–', s: r => r.leiden_pp ?? -1 },
-  { k: 'lP', t: 'Leiden: publicações', n: 1, f: r => r.leiden_p != null ? nf.format(r.leiden_p) : '–', s: r => r.leiden_p ?? -1 },
-  { k: 'igc', t: 'IGC ' + D.cobertura.anos.igc, n: 1, f: r => r.igc != null ? nf2.format(r.igc) + ' (faixa ' + r.igc_faixa + ')' : '–', s: r => r.igc ?? -1 },
-  { k: 'en', t: 'Enade ' + D.cobertura.anos.enade + ' (médio)', n: 1, f: r => r.enade != null ? nf2.format(r.enade) : '–', s: r => r.enade ?? -1 },
-  { k: 'nf', t: 'Fontes', n: 1, f: r => r.fontes.length + '/4', s: r => r.fontes.length },
+  { k: 'arwu', t: 'ARWU ' + D.cobertura.anos.arwu, n: 1, f: r => r.v_arwu ?? '–', s: r => r.v_arwu ?? 1e9 },
+  { k: 'qs', t: 'QS ' + D.cobertura.anos.qs, n: 1, f: r => r.v_qs ?? '–', s: r => r.v_qs ?? 1e9 },
+  { k: 'sci', t: 'SCImago ' + D.cobertura.anos.scimago + ' (global)', n: 1, f: r => r.v_scimago != null ? nf.format(r.v_scimago) : '–', s: r => r.v_scimago ?? 1e9 },
+  { k: 'lp', t: 'Leiden ' + D.cobertura.anos.leiden + ': % top 10%', n: 1, f: r => r.v_leiden != null ? nf1.format(r.v_leiden * 100) + '%' : '–', s: r => r.v_leiden ?? -1 },
+  { k: 'igc', t: 'IGC ' + D.cobertura.anos.igc, n: 1, f: r => r.v_igc != null ? nf2.format(r.v_igc) : '–', s: r => r.v_igc ?? -1 },
+  { k: 'cpc', t: 'CPC ' + D.cobertura.anos.cpc + ' (médio)', n: 1, f: r => r.v_cpc != null ? nf2.format(r.v_cpc) : '–', s: r => r.v_cpc ?? -1 },
+  { k: 'en', t: 'Enade ' + D.cobertura.anos.enade + ' (médio)', n: 1, f: r => r.v_enade != null ? nf2.format(r.v_enade) : '–', s: r => r.v_enade ?? -1 },
+  { k: 'ruf', t: 'RUF ' + D.cobertura.anos.ruf, n: 1, f: r => r.v_ruf ?? '–', s: r => r.v_ruf ?? 1e9 },
+  { k: 'nf', t: 'Fontes', n: 1, f: r => r.fontes.length + '/' + totalFontes, s: r => r.fontes.length },
 ];
 const tab = { ord: 'nf', dir: -1, pag: 0, por: 25 };
 function tabelaCruz() {
   const q = $('q').value.trim().toLowerCase();
   const so = $('so-rank').checked;
-  let lin = D.cruzamento.filter(r => (!so || r.arwu || r.leiden_pp != null) && (!q || r.nome.toLowerCase().includes(q)));
+  let lin = D.cruzamento.filter(r => (!so || r.v_arwu != null || r.v_leiden != null || r.v_qs != null || r.v_scimago != null) && (!q || r.nome.toLowerCase().includes(q)));
   const c = cols.find(x => x.k === tab.ord);
   lin.sort((a, b) => { const x = c.s(a), y = c.s(b); return (x < y ? -1 : x > y ? 1 : 0) * tab.dir || a.nome.localeCompare(b.nome, 'pt'); });
   const paginas = Math.max(1, Math.ceil(lin.length / tab.por)); tab.pag = Math.min(tab.pag, paginas - 1);
@@ -417,29 +621,34 @@ function tabelaCruz() {
 
 /* ---------- montagem ---------- */
 function tudo() {
-  T = tema(); kpis(); grafContagem(); grafLeiden(); grafIgc(); grafDisp(); grafEnade(); tabelaCruz();
+  T = tema(); kpis(); grafContagem(); grafLeiden(); grafQs(); grafScimago(); grafIgc(); grafCpc(); grafDisp(); grafEnade(); grafRuf(); grafCorrelacoes(); tabelaCruz();
 }
 $('f-ed').innerHTML = edicoes.slice().reverse().map(e => `<option value="${e}">${e} (período ${periodoDe(e)})</option>`).join('');
 $('f-cat').innerHTML = '<option value="todas">Todas</option>' + cats.map(c => `<option>${c}</option>`).join('');
+$('f-qs').innerHTML = Object.entries(qsMetInfo).map(([k, v]) => `<option value="${k}">${v.nome}</option>`).join('');
+$('f-ruf').innerHTML = Object.entries(rufMetInfo).map(([k, v]) => `<option value="${k}">${v.nome}</option>`).join('');
 $('f-ed').onchange = e => { estado.ed = +e.target.value; kpis(); grafContagem(); grafLeiden(); grafDisp(); };
 $('f-met').onchange = e => { estado.met = e.target.value; grafLeiden(); };
+$('f-qs').onchange = e => { estado.qsMet = e.target.value; grafQs(); };
 $('f-cat').onchange = e => { estado.cat = e.target.value; grafIgc(); };
+$('f-ruf').onchange = e => { estado.rufMet = e.target.value; grafRuf(); };
 $('q').oninput = () => { tab.pag = 0; tabelaCruz(); };
 $('so-rank').onchange = () => { tab.pag = 0; tabelaCruz(); };
 $('pg-ant').onclick = () => { tab.pag--; tabelaCruz(); };
 $('pg-prox').onclick = () => { tab.pag++; tabelaCruz(); };
 const cb = D.cobertura;
-$('l-cruz').textContent = `Universidades brasileiras presentes em pelo menos duas bases (ARWU ${cb.anos.arwu}, Leiden ${cb.anos.leiden}, IGC ${cb.anos.igc}, Enade ${cb.anos.enade}): ${cb.em_2_ou_mais}. Em todas as quatro: ${cb.em_todas}. Cruzamento por nome, preliminar.`;
-$('rodape').textContent = 'Fontes: ShanghaiRanking (ARWU), CWTS Leiden Ranking (CC BY 4.0), Inep (IGC e Conceito Enade). Dados processados em 02/10/2026 por scripts/preparar_dados.py.';
+$('l-cruz').textContent = `Universidades brasileiras presentes em pelo menos duas bases (ARWU ${cb.anos.arwu}, QS ${cb.anos.qs}, SCImago ${cb.anos.scimago}, Leiden ${cb.anos.leiden}, IGC ${cb.anos.igc}, CPC ${cb.anos.cpc}, Enade ${cb.anos.enade}, RUF ${cb.anos.ruf}): ${cb.em_2_ou_mais}. Em todas as ${totalFontes}: ${cb.em_todas}. Cruzamento por nome, preliminar.`;
+$('rodape').textContent = 'Fontes: ShanghaiRanking (ARWU), QS Quacquarelli Symonds, SCImago Lab, CWTS Leiden Ranking (CC BY 4.0), Inep (IGC, CPC e Conceito Enade), Folha (RUF). Dados processados por scripts/preparar_dados.py.';
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', tudo);
 tudo();
 
 /* ---------- navegação por botões (sem trocar/recalcular os dados) ---------- */
 const resumosVisao = {
   geral: 'Cobertura das bases disponíveis e evolução das universidades brasileiras nos rankings.',
-  pesquisa: 'Indicadores de produção e impacto científico no Leiden; a relação entre variáveis é descritiva, não causal.',
-  ensino: 'Distribuições do IGC e do Conceito Enade. Áreas avaliadas no Enade variam de um ano para outro.',
-  comparacao: 'Cruze instituições das bases disponíveis; correspondências por nome são preliminares.',
+  pesquisa: 'Indicadores de produção, citações e reputação acadêmica nos rankings internacionais (Leiden, QS, SCImago); a relação entre variáveis é descritiva, não causal.',
+  ensino: 'Distribuições do IGC, do CPC, do Conceito Enade e do RUF. Áreas avaliadas no Enade e no CPC variam de um ano para outro.',
+  comparacao: 'Cruze instituições das 8 bases disponíveis; correspondências por nome são preliminares.',
+  correlacoes: 'Correlação de Spearman entre posição e características, e entre rankings diferentes, com o que já está disponível. Associações, não causas.',
   metodologia: 'Conheça as fontes, os limites de cobertura e os cuidados necessários para interpretar os resultados.'
 };
 function selecionarVisao(nome) {
@@ -447,7 +656,8 @@ function selecionarVisao(nome) {
   document.querySelectorAll('[data-visao]').forEach(el => {
     el.hidden = el.dataset.visao !== nome;
   });
-  $('grade-graficos').hidden = nome === 'comparacao' || nome === 'metodologia';
+  $('grade-graficos').hidden = nome === 'comparacao' || nome === 'correlacoes' || nome === 'metodologia';
+  $('grade-correlacoes').hidden = nome !== 'correlacoes';
   $('filtros-painel').hidden = nome !== 'pesquisa' && nome !== 'ensino';
   document.querySelectorAll('[data-filtro]').forEach(el => {
     el.hidden = el.dataset.filtro !== nome;
@@ -457,8 +667,8 @@ function selecionarVisao(nome) {
   });
   $('resumo-visao').textContent = resumosVisao[nome];
   $('dica-filtros').textContent = nome === 'pesquisa'
-    ? 'Edição e métrica controlam os gráficos de produção e impacto.'
-    : 'A categoria administrativa controla a distribuição do IGC.';
+    ? 'Edição e métrica do Leiden, e indicador do QS, controlam os gráficos de produção e impacto.'
+    : 'Categoria administrativa (IGC) e indicador (RUF) controlam os gráficos dessa seção.';
   // Chart.js precisa recalcular dimensões ao abrir um painel antes oculto.
   window.requestAnimationFrame(() => {
     Object.values(charts).forEach(grafico => {

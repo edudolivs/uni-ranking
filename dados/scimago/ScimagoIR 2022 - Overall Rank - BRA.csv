@@ -1,0 +1,206 @@
+Rank;Global Rank;Institution;Country;Sector
+1;45;Universidade de Sao Paulo *;BRA;Universities
+2;362;Universidade Estadual Paulista Julio de Mesquita Filho;BRA;Universities
+3;520;Universidade Estadual de Campinas;BRA;Universities
+4;569;Universidade Federal do Rio Grande do Sul;BRA;Universities
+5;570;Universidade Federal do Rio de Janeiro;BRA;Universities
+6;635;Universidade Federal de Minas Gerais;BRA;Universities
+7;892;Fundacao Oswaldo Cruz *;BRA;Health
+8;1095;Universidade Federal do Parana;BRA;Universities
+9;1311;Universidade Federal de Santa Catarina;BRA;Universities
+10;1322;Universidade Federal de Sao Paulo *;BRA;Universities
+11;1573;Empresa Brasileira de Pesquisa Agropecuaria;BRA;Government
+12;1578;Universidade de Brasilia;BRA;Universities
+13;1869;Centro de Pesquisa Goncalo Moniz;BRA;Government
+14;2013;Instituto Oswaldo Cruz;BRA;Health
+15;2101;Instituto Carlos Chagas;BRA;Health
+16;2124;Centro de Pesquisa Aggeu Magalhaes;BRA;Government
+17;2132;Centro de Pesquisas Rene Rachou;BRA;Government
+18;2135;Ministerio da Saude;BRA;Health
+19;2138;Universidade Federal de Sao Carlos;BRA;Universities
+20;2199;Universidade Federal de Vicosa;BRA;Universities
+21;2268;Universidade Estadual de Maringa;BRA;Universities
+22;2296;Universidade Federal de Goias;BRA;Universities
+23;2314;Instituto Nacional de Infectologia Evandro Chagas;BRA;Health
+24;2354;Universidade Federal da Bahia;BRA;Universities
+25;2379;Universidade Federal de Santa Maria *;BRA;Universities
+26;2427;Universidade Federal do Ceara;BRA;Universities
+27;2521;Universidade Federal Fluminense;BRA;Universities
+28;2605;Universidade Federal de Pernambuco;BRA;Universities
+29;2663;Coordenacao de Aperfeicoamento de Pessoal de Nivel Superior;BRA;Government
+30;2670;Hospital de Amor;BRA;Health
+31;2681;Hospital de Clinicas de Porto Alegre;BRA;Health
+32;2820;Pontificia Universidade Catolica do Rio Grande do Sul;BRA;Universities
+33;2838;Instituto Butantan;BRA;Health
+34;2848;Instituto D'Or Pesquisa e Ensino;BRA;Non-Profit
+35;2850;Sociedade Beneficiente Israelita Brasileira Albert Einstein;BRA;Health
+36;2910;Universidade do Estado do Rio de Janeiro;BRA;Universities
+37;2918;Hospital Sirio-Libanes;BRA;Health
+38;2945;Hospital das Clinicas da Faculdade de Medicina da Universidade de Sao Paulo;BRA;Health
+39;2958;Universidade Federal do Rio Grande do Norte;BRA;Universities
+40;3076;Universidade Federal de Pelotas;BRA;Universities
+41;3113;Universidade Estadual de Londrina;BRA;Universities
+42;3191;Rede D’Or Sao Luiz *;BRA;Health
+43;3198;Hospital do Cancer A.C. Camargo;BRA;Health
+44;3242;Centro Nacional de Pesquisa em Energia e Materiais *;BRA;Non-Profit
+45;3265;Universidade Federal de Lavras;BRA;Universities
+46;3287;Universidade Federal da Paraiba;BRA;Universities
+47;3322;Universidade Sao Francisco;BRA;Universities
+48;3330;Faculdade de Medicina de Sao Jose do Rio Preto;BRA;Universities
+49;3348;Instituto Agronomico Campinas *;BRA;Government
+50;3483;Universidade Guarulhos;BRA;Universities
+51;3492;Faculdade de Ciencias Medicas da Santa Casa de Sao Paulo;BRA;Universities
+52;3497;Universidade Federal do Para;BRA;Universities
+53;3555;Universidade Federal de Uberlandia;BRA;Universities
+54;3589;Hospital Universitario Clementino Fraga Filho;BRA;Health
+55;3608;Universidade Federal do ABC;BRA;Universities
+56;3611;Instituto Fernandes Figueira;BRA;Health
+57;3635;Instituto Nacional del Cancer, Brasil;BRA;Government
+58;3717;Universidade Federal do Espirito Santo;BRA;Universities
+59;3734;Universidade Federal Rural de Pernambuco;BRA;Universities
+60;3774;Escola Nacional de Saude Publica Sergio Arouca;BRA;Universities
+61;3877;Universidade do Estado do Amazonas;BRA;Universities
+62;3957;Universidade do Vale do Rio dos Sinos;BRA;Universities
+63;4098;Hospital das Clinicas da Universidade Federal de Minas Gerais;BRA;Health
+64;4110;Santa Casa de Misericordia de Porto Alegre;BRA;Health
+64;4110;Laboratorio Interinstitucional de e-Astronomia;BRA;Government
+66;4130;Instituto de Medicina Integral Professor Fernando Figueira;BRA;Health
+67;4137;Pontificia Universidade Catolica de Campinas;BRA;Universities
+68;4194;Universidade Federal de Mato Grosso do Sul;BRA;Universities
+69;4221;Instituto Adolfo Lutz;BRA;Health
+70;4288;Instituto Nacional de Pesquisas da Amazonia;BRA;Government
+71;4298;Instituto Tecnologico Vale;BRA;Non-Profit
+72;4322;Hospital Moinhos de Vento;BRA;Health
+72;4322;Universidade Federal de Juiz de Fora *;BRA;Universities
+74;4403;Universidade do Estado do Para;BRA;Universities
+75;4435;Universidade Federal de Campina Grande;BRA;Universities
+75;4435;Universidade Feevale;BRA;Universities
+77;4484;Universidade Estadual de Montes Claros;BRA;Universities
+78;4569;Universidade Federal do Piaui;BRA;Universities
+79;4586;Instituto Nacional de Pesquisas Espaciais;BRA;Government
+80;4598;Conselho Nacional de Desenvolvimento Cientifico e Tecnologico;BRA;Government
+81;4602;Universidade Federal de Sergipe;BRA;Universities
+82;4621;Universidade Federal de Mato Grosso;BRA;Universities
+83;4627;Pontificia Universidade Catolica do Rio de Janeiro;BRA;Universities
+83;4627;Hospital Beneficencia Portuguesa Sao Paulo;BRA;Health
+85;4660;Universidade do Estado de Santa Catarina;BRA;Universities
+86;4683;Universidade Federal Rural do Rio de Janeiro;BRA;Universities
+87;4777;Universidade Estadual de Ponta Grossa;BRA;Universities
+88;4789;Pontificia Universidade Catolica do Parana;BRA;Universities
+89;4795;Fundacao Getulio Vargas;BRA;Universities
+90;4801;Hospital do Servidor Publico Estadual de Sao Paulo;BRA;Health
+91;4809;Estacio Participacoes SA *;BRA;Companies
+92;4820;Museu Paraense Emilio Goeldi;BRA;Government
+93;4824;Universidade Catolica de Brasilia;BRA;Universities
+94;4838;Universidade Tecnologica Federal do Parana;BRA;Universities
+95;4841;Universidade do Sul de Santa Catarina;BRA;Universities
+95;4841;Universidade Federal de Ciencias da Saude de Porto Alegre;BRA;Universities
+97;4855;Universidade Federal de Ouro Preto;BRA;Universities
+97;4855;Universidade Federal do Tocantins;BRA;Universities
+99;4867;Universidade Federal da Grande Dourados;BRA;Universities
+100;4909;Universidade Estadual do Oeste do Parana;BRA;Universities
+101;4915;Universidade Federal de Alagoas;BRA;Universities
+102;4939;Universidade Federal do Amapa;BRA;Universities
+103;4964;Universidade de Taubate;BRA;Universities
+104;4976;Universidade Federal do Vale do Sao Francisco;BRA;Universities
+105;4979;Universidade Estadual do Centro-Oeste;BRA;Universities
+106;4993;Universidade do Oeste Paulista;BRA;Universities
+106;4993;Escola Bahiana de Medicina e Saude Publica;BRA;Universities
+108;5020;Universidade Federal Rural do Semi-Arido;BRA;Universities
+109;5039;Universidade Federal dos Vales do Jequitinhonha e Mucuri;BRA;Universities
+110;5040;Universidade Federal do Maranhao;BRA;Universities
+111;5071;Universidade Catolica Dom Bosco;BRA;Universities
+112;5079;Universidade Estadual do Norte Fluminense Darcy Ribeiro;BRA;Universities
+112;5079;Faculdade de Medicina do ABC;BRA;Universities
+114;5083;Instituto Militar de Engenharia;BRA;Government
+115;5114;Universidade Federal do Rio Grande;BRA;Universities
+116;5123;Universidade do Extremo Sul Catarinense;BRA;Universities
+117;5236;Universidade de Caxias do Sul;BRA;Universities
+118;5240;Pontificia Universidade Catolica de Sao Paulo;BRA;Universities
+119;5260;Empresa de Pesquisa Agropecuaria e Extensao Rural de Santa Catarina;BRA;Government
+120;5262;Universidade Federal do Triangulo Mineiro;BRA;Universities
+121;5311;Universidade do Grande Rio;BRA;Universities
+122;5322;Universidade Federal de Rondonia;BRA;Universities
+123;5332;Universidade Federal de Sao Joao del Rei;BRA;Universities
+124;5341;Universidade Regional do Cariri;BRA;Universities
+125;5386;Universidade Federal de Alfenas;BRA;Universities
+126;5421;Universidade Federal do Amazonas;BRA;Universities
+127;5480;Universidade Estadual do Sudoeste da Bahia;BRA;Universities
+128;5498;Hospital de Clinicas da Universidade Federal do Parana;BRA;Health
+129;5503;Universidade do Estado de Mato Grosso;BRA;Universities
+129;5503;Universidade Estadual de Mato Grosso do Sul;BRA;Universities
+131;5546;Universidade Federal do Reconcavo da Bahia;BRA;Universities
+132;5573;Universidade Federal Rural da Amazonia;BRA;Universities
+132;5573;Universidade La Salle, Brazil;BRA;Universities
+134;5612;Universidade do Vale do Taquari;BRA;Universities
+135;5629;Universidade de Fortaleza;BRA;Universities
+136;5654;Universidade de Passo Fundo;BRA;Universities
+136;5654;Universidade Federal do Pampa;BRA;Universities
+138;5659;Universidade Nove de Julho;BRA;Universities
+139;5680;Instituto Nacional de Matematica Pura e Aplicada;BRA;Government
+140;5691;Universidade Federal da Fronteira Sul;BRA;Universities
+141;5705;Universidade Federal do Acre;BRA;Universities
+142;5761;Universidade Estadual do Vale do Acarau;BRA;Universities
+143;5769;Laboratorio Nacional de Astrofisica;BRA;Government
+144;5777;Universidade Estadual do Ceara;BRA;Universities
+144;5777;Ministerio da Ciencia, Tecnologia e Inovacao, Brasil *;BRA;Government
+144;5777;Universidade Estadual de Santa Cruz;BRA;Universities
+147;5826;Laboratorio Nacional de Computacao Cientifica;BRA;Government
+148;5836;Laboratorio Nacional de Luz Sincrotron;BRA;Non-Profit
+148;5836;Universidade Estadual da Paraiba;BRA;Universities
+150;5863;Faculdade Sao Leopoldo Mandic;BRA;Universities
+150;5863;Fundacao Universidade Regional de Blumenau;BRA;Universities
+152;5872;Universidade Tiradentes;BRA;Universities
+153;5895;Universidade de Pernambuco;BRA;Universities
+154;5898;Universidade Federal do Oeste do Para;BRA;Universities
+155;5902;Universidade do Estado da Bahia;BRA;Universities
+156;5917;Universidade Vila Velha;BRA;Universities
+157;5938;Universidade de Santo Amaro;BRA;Universities
+158;5965;Pontificia Universidade Catolica de Minas Gerais;BRA;Universities
+159;5971;Instituto Federal de Educacao, Ciencia e Tecnologia do Rio de Janeiro;BRA;Universities
+160;5986;Universidade Federal do Estado do Rio de Janeiro;BRA;Universities
+161;6002;Universidade Estadual de Feira de Santana;BRA;Universities
+162;6040;Centro Brasileiro de Pesquisas Fisicas;BRA;Government
+163;6095;Universidade Luterana do Brasil;BRA;Universities
+164;6146;Observatorio Nacional;BRA;Government
+165;6189;Instituto Federal de Educacao, Ciencia e Tecnologia Espirito Santo;BRA;Universities
+166;6201;Universidade Estacio de Sa;BRA;Universities
+167;6217;Universidade Federal de Itajuba;BRA;Universities
+167;6217;Universidade Comunitaria da Regiao de Chapeco;BRA;Universities
+169;6224;Universidade de Santa Cruz do Sul;BRA;Universities
+170;6248;Universidade de Sorocaba;BRA;Universities
+171;6433;Universidade Federal de Roraima;BRA;Universities
+172;6467;Universidade Norte do Parana;BRA;Universities
+173;6501;Universidade Estadual do Maranhao;BRA;Universities
+174;6538;Universidade Estadual de Goias;BRA;Universities
+175;6544;Instituto Nacional de Metrologia, Calidad y Tecnologia;BRA;Government
+176;6575;Petrobras Brasil;BRA;Companies
+177;6592;Universidade do Vale do Paraiba;BRA;Universities
+177;6592;Centro Federal de Educacao Tecnologica de Minas Gerais;BRA;Universities
+179;6606;Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara;BRA;Universities
+180;6626;Universidade da Regiao de Joinville;BRA;Universities
+181;6685;Faculdade Evangelica Mackenzie do Parana;BRA;Universities
+182;6693;Universidade do Estado do Rio Grande do Norte;BRA;Universities
+183;6774;Instituto de Botanica de Sao Paulo;BRA;Government
+184;6787;Instituto de Pesquisas Jardim Botanico do Rio de Janeiro;BRA;Government
+185;6809;Universidade do Vale do Itajai;BRA;Universities
+186;6821;Centro Federal de Educacao Tecnologica Celso Suckow da Fonseca;BRA;Universities
+187;6864;Universidade Regional Integrada do Alto Uruguai e das Missoes;BRA;Universities
+188;6907;Pontificia Universidade Catolica de Goias;BRA;Universities
+189;6937;Universidade Cidade de Sao Paulo;BRA;Universities
+190;6949;Universidade Catolica de Pelotas;BRA;Universities
+191;6962;Comissao Nacional de Energia Nuclear *;BRA;Government
+192;7018;Instituto Federal de Educacao, Ciencia e Tecnologia de Sao Paulo;BRA;Universities
+193;7049;Instituto Tecnologico de Aeronautica;BRA;Universities
+194;7079;Universidade de Franca;BRA;Universities
+195;7083;Universidade Federal do Cariri;BRA;Universities
+196;7090;Universidade Paulista;BRA;Universities
+197;7123;Instituto de Pesquisas Energeticas e Nucleares;BRA;Government
+198;7167;Universidade Estadual do Piaui;BRA;Universities
+199;7295;Universidade Franciscana;BRA;Universities
+200;7309;Universidade do Estado de Minas Gerais;BRA;Universities
+201;7331;Universidade Federal da Integracao Latino-Americana;BRA;Universities
+202;7336;Universidade Positivo;BRA;Universities
+203;7602;Centro Universitario da FEI;BRA;Universities
+204;7608;Universidade Cruzeiro do Sul;BRA;Universities
+205;7688;Escola de Administracao de Empresas de Sao Paulo da Fundacao Getulio Vargas;BRA;Universities

@@ -1,0 +1,204 @@
+﻿Universidade;Estado;Ranking;"Pública ou Privada";"Posição em Ensino";"Nota em Ensino";"Posição em Pesquisa";"Nota em Pesquisa";"Posição em Mercado";"Nota em Mercado";"Posição em Inovação";"Nota em Inovação";"Posição em Internacionalização";"Nota em Internacionalização";Nota
+"Universidade de São Paulo";SP;1;Estadual;2;31.35;1;41.57;1;18;1;3.95;1;3.96;98.83
+"Universidade Estadual de Campinas";SP;2;Estadual;1;31.79;2;41.46;8;17.37;8;3.62;3;3.88;98.12
+"Universidade Federal do Rio Grande do Sul";RS;3;Federal;2;31.35;3;40.97;15;16.74;9;3.58;5;3.8;96.44
+"Universidade Federal do Rio de Janeiro";RJ;4;Federal;7;30.79;8;39.81;4;17.73;2;3.87;6;3.75;95.95
+"Universidade Federal de Minas Gerais";MG;5;Federal;10;30.1;4;40.67;3;17.82;6;3.65;13;3.57;95.81
+"Universidade Estadual Paulista Júlio de Mesquita Filho";SP;6;Estadual;13;29.5;6;39.95;7;17.46;13;3.21;9;3.66;93.78
+"Universidade Federal de Santa Catarina";SC;7;Federal;4;30.93;7;39.88;24;15.93;13;3.21;8;3.69;93.64
+"Universidade de Brasília";DF;8;Federal;6;30.83;11;38.28;19;16.38;20;3.05;12;3.62;92.16
+"Universidade Federal do Paraná";PR;9;Federal;19;27.88;10;38.33;8;17.37;4;3.7;20;3.38;90.66
+"Universidade Federal de São Paulo";SP;10;Federal;4;30.93;5;40.48;70;11.79;36;2.66;4;3.87;89.73
+"Universidade Federal de Pernambuco";PE;11;Federal;12;29.64;24;36.31;8;17.37;29;2.8;34;3.14;89.26
+"Universidade Federal de São Carlos";SP;12;Federal;9;30.44;9;39.36;58;12.87;28;2.83;15;3.5;89
+"Universidade Federal de Santa Maria";RS;13;Federal;15;28.99;13;37.87;39;14.58;25;2.93;29;3.24;87.61
+"Universidade Federal de Uberlândia";MG;14;Federal;16;28.68;17;37.25;30;15.39;11;3.35;54;2.91;87.58
+"Universidade Federal de Viçosa";MG;15;Federal;8;30.64;12;38.17;70;11.79;3;3.8;33;3.15;87.55
+"Universidade Federal do Rio Grande do Norte";RN;16;Federal;20;27.8;15;37.5;30;15.39;19;3.08;18;3.45;87.22
+"Universidade Federal Fluminense";RJ;17;Federal;11;29.82;29;35.07;19;16.38;26;2.87;44;3.05;87.19
+"Universidade Federal da Bahia";BA;18;Federal;24;26.95;21;36.79;8;17.37;33;2.75;31;3.23;87.09
+"Universidade Federal de Goiás";GO;19;Federal;20;27.8;23;36.4;15;16.74;27;2.86;37;3.11;86.91
+"Universidade Federal do Ceará";CE;20;Federal;27;26.7;14;37.6;19;16.38;34;2.74;19;3.43;86.85
+"Universidade do Estado do Rio de Janeiro";RJ;21;Estadual;30;26.53;25;36.15;13;16.92;39;2.6;27;3.27;85.47
+"Pontifícia Universidade Católica do Rio Grande do Sul";RS;22;Privada;45;24.78;19;36.99;19;16.38;10;3.38;11;3.64;85.17
+"Universidade Federal do Espírito Santo";ES;23;Federal;34;26.29;20;36.93;39;14.58;16;3.15;23;3.33;84.28
+"Universidade Estadual de Maringá";PR;24;Estadual;18;28.1;28;35.41;39;14.58;39;2.6;65;2.66;83.35
+"Pontifícia Universidade Católica do Rio de Janeiro";RJ;25;Privada;44;24.79;27;35.52;30;15.39;15;3.16;9;3.66;82.52
+"Universidade Federal de Lavras";MG;26;Federal;14;29.47;22;36.71;95;9.54;18;3.12;48;3;81.84
+"Universidade Estadual de Londrina";PR;27;Estadual;36;25.88;34;33.73;27;15.66;36;2.66;59;2.85;80.78
+"Universidade Federal da Paraíba";PB;28;Federal;23;27.08;35;33.47;30;15.39;60;2.15;64;2.67;80.76
+"Universidade Federal de Sergipe";SE;29;Federal;39;25.38;31;34.91;39;14.58;35;2.69;39;3.09;80.65
+"Universidade Federal de Juiz de Fora";MG;30;Federal;26;26.74;30;34.97;58;12.87;31;2.77;25;3.28;80.63
+"Universidade Federal do Pará";PA;31;Federal;41;25.18;38;32.99;30;15.39;5;3.68;61;2.79;80.03
+"Pontifícia Universidade Católica do Paraná";PR;32;Privada;48;24.28;44;31.34;13;16.92;7;3.64;23;3.33;79.51
+"Universidade Federal de Pelotas";RS;33;Federal;37;25.79;18;37.1;95;9.54;39;2.6;28;3.25;78.28
+"Universidade do Vale do Rio dos Sinos";RS;34;Privada;55;23.38;39;32.89;39;14.58;42;2.59;38;3.1;76.54
+"Universidade Tecnológica Federal do Paraná";PR;35;Federal;22;27.36;52;29.89;77;11.16;24;2.94;69;2.54;73.89
+"Universidade Federal de Mato Grosso do Sul";MS;36;Federal;58;22.62;41;32.13;58;12.87;45;2.54;52;2.94;73.1
+"Fundação Universidade Federal do ABC";SP;37;Federal;17;28.38;16;37.31;189;1.08;49;2.33;2;3.91;73.01
+"Universidade Federal de Mato Grosso";MT;38;Federal;40;25.28;57;28.62;39;14.58;84;1.72;67;2.56;72.76
+"Universidade Federal de Alagoas";AL;39;Federal;59;22.49;50;30.35;39;14.58;59;2.17;69;2.54;72.13
+"Universidade Presbiteriana Mackenzie";SP;40;Privada;47;24.41;77;24.59;4;17.73;55;2.26;54;2.91;71.9
+"Universidade Estadual de Ponta Grossa";PR;41;Estadual;49;24.06;43;31.38;77;11.16;56;2.25;45;3.03;71.88
+"Universidade de Pernambuco";PE;42;Estadual;66;21.2;40;32.24;50;13.59;135;0.97;14;3.55;71.55
+"Universidade Federal do Amazonas";AM;43;Federal;53;23.53;59;28.3;30;15.39;71;1.86;76;2.43;71.51
+"Universidade Federal de Ouro Preto";MG;44;Federal;35;26.09;36;33.27;133;6.12;12;3.26;65;2.66;71.4
+"Fundação Universidade do Estado de Santa Catarina";SC;45;Estadual;50;23.98;45;30.97;70;11.79;57;2.21;97;2.08;71.03
+"Universidade Federal Rural do Rio de Janeiro";RJ;46;Federal;29;26.6;47;30.78;95;9.54;66;1.93;92;2.13;70.98
+"Universidade Estadual do Norte Fluminense Darcy Ribeiro";RJ;47;Estadual;28;26.68;26;35.68;172;2.61;30;2.79;41;3.07;70.83
+"Universidade Federal do Piauí";PI;48;Federal;64;21.46;48;30.73;50;13.59;79;1.78;58;2.86;70.42
+"Universidade Federal de Campina Grande";PB;49;Federal;43;25.16;55;28.85;77;11.16;47;2.44;123;1.64;69.25
+"Universidade Estadual do Oeste do Paraná";PR;50;Estadual;41;25.18;69;26.79;58;12.87;32;2.76;132;1.46;69.06
+"Fundação Universidade Federal de Ciências da Saúde de Porto Alegre";RS;51;Federal;25;26.85;32;34.28;172;2.61;84;1.72;51;2.95;68.41
+"Universidade de Fortaleza";CE;52;Privada;76;19.37;64;27.71;19;16.38;98;1.54;21;3.36;68.36
+"Universidade Federal Rural de Pernambuco";PE;53;Federal;51;23.89;37;33.1;133;6.12;50;2.31;74;2.46;67.88
+"Universidade Católica de Brasília";DF;54;Privada;88;17.59;54;29;30;15.39;48;2.37;15;3.5;67.85
+"Universidade Federal do Maranhão";MA;55;Federal;57;22.92;61;27.86;58;12.87;60;2.15;105;1.95;67.75
+"Universidade Federal de Itajubá";MG;56;Federal;33;26.32;42;31.87;157;3.96;43;2.56;57;2.9;67.61
+"Universidade Estadual do Ceará";CE;57;Estadual;61;22.32;58;28.42;50;13.59;131;1.04;99;2.07;67.44
+"Universidade Federal do Triângulo Mineiro";MG;58;Federal;32;26.45;51;29.94;133;6.12;137;0.93;35;3.13;66.57
+"Universidade Federal de Alfenas";MG;59;Federal;38;25.63;49;30.56;133;6.12;74;1.85;84;2.28;66.44
+"Universidade Federal do Rio Grande";RS;60;Federal;54;23.47;33;33.92;157;3.96;87;1.71;42;3.06;66.12
+"Universidade Federal de São João Del Rei";MG;61;Federal;52;23.57;46;30.79;133;6.12;50;2.31;32;3.2;65.99
+"Universidade de Caxias do Sul";RS;62;Privada;79;19.08;66;27.38;50;13.59;16;3.15;85;2.26;65.46
+"Pontifícia Universidade Católica de Minas Gerais";MG;63;Privada;62;22.28;108;19.59;4;17.73;23;2.99;124;1.63;64.22
+"Pontifícia Universidade Católica de São Paulo";SP;64;Privada;31;26.51;112;18.54;8;17.37;163;0.41;166;0.97;63.8
+"Universidade de Passo Fundo";RS;65;Privada;94;17.02;56;28.68;58;12.87;66;1.93;63;2.68;63.18
+"Universidade Estadual de Santa Cruz";BA;66;Estadual;80;18.85;53;29.58;116;7.65;94;1.58;42;3.06;60.72
+"Universidade Federal do Estado do Rio de Janeiro";RJ;67;Federal;46;24.69;62;27.84;157;3.96;100;1.52;87;2.24;60.25
+"Universidade Estadual de Feira de Santana";BA;68;Estadual;70;19.79;67;27.31;95;9.54;129;1.09;72;2.51;60.24
+"Pontifícia Universidade Católica de Campinas";SP;69;Privada;67;20.96;103;20.32;24;15.93;93;1.61;145;1.26;60.08
+"Universidade Tiradentes";SE;70;Privada;102;16;73;25.67;58;12.87;62;2.07;25;3.28;59.89
+"Universidade Nove de Julho";SP;71;Privada;84;17.97;81;23.05;27;15.66;144;0.86;91;2.18;59.72
+"Fundação Universidade Federal da Grande Dourados";MS;72;Federal;60;22.48;63;27.77;133;6.12;114;1.27;113;1.78;59.42
+"Universidade Católica Dom Bosco";MS;73;Privada;112;14.59;60;27.87;58;12.87;162;0.44;22;3.34;59.11
+"Universidade Regional de Blumenau";SC;74;Municipal;90;17.46;84;22.62;70;11.79;20;3.05;116;1.77;56.69
+"Universidade Positivo";PR;75;Privada;109;15.44;99;20.7;30;15.39;58;2.19;53;2.93;56.65
+"Universidade do Estado da Bahia";BA;76;Estadual;63;21.79;124;15.75;27;15.66;143;0.87;173;0.79;54.86
+"Universidade Estadual de Montes Claros";MG;77;Estadual;87;17.81;65;27.5;133;6.12;118;1.21;103;2;54.64
+"Universidade Luterana do Brasil";RS;78;Privada;89;17.5;87;21.76;77;11.16;71;1.86;92;2.13;54.41
+"Universidade do Vale do Itajaí";SC;78;Privada;72;19.56;120;17.56;39;14.58;136;0.96;118;1.75;54.41
+"Universidade Paulista";SP;80;Privada;83;18.12;122;15.94;2;17.91;165;0.39;109;1.91;54.27
+"Universidade Federal dos Vales do Jequitinhonha e Mucuri";MG;81;Federal;77;19.19;68;26.87;157;3.96;53;2.28;104;1.96;54.26
+"Fundação Universidade Federal do Tocantins";TO;82;Federal;68;20.34;94;21.06;95;9.54;98;1.54;163;1;53.48
+"Fundação Universidade Federal do Vale do São Francisco";PE;83;Federal;86;17.85;71;25.87;133;6.12;77;1.8;118;1.75;53.39
+"Universidade Vila Velha";ES;84;Privada;107;15.46;88;21.74;70;11.79;89;1.69;71;2.53;53.21
+"Fundação Universidade Federal do Pampa";RS;85;Federal;65;21.32;75;24.97;172;2.61;90;1.66;97;2.08;52.64
+"Universidade do Oeste Paulista";SP;86;Privada;73;19.53;102;20.34;95;9.54;152;0.68;113;1.78;51.87
+"Universidade Federal Rural da Amazônia";PA;87;Federal;82;18.55;70;26.72;172;2.61;64;1.96;107;1.92;51.76
+"Universidade Estadual do Centro Oeste";PR;88;Estadual;56;23.23;107;19.78;157;3.96;20;3.05;164;0.99;51.01
+"Universidade do Vale do Taquari";RS;89;Privada;71;19.62;89;21.56;133;6.12;105;1.46;89;2.19;50.95
+"Universidade do Extremo Sul Catarinense";SC;90;Privada;143;12.22;76;24.69;95;9.54;106;1.43;45;3.03;50.91
+"Universidade de Sorocaba";SP;91;Privada;142;12.31;90;21.46;77;11.16;38;2.65;29;3.24;50.82
+"Universidade de Ribeirão Preto";SP;92;Privada;74;19.52;130;15.35;70;11.79;84;1.72;80;2.33;50.71
+"Universidade do Sul de Santa Catarina";SC;93;Privada;147;12.16;92;21.28;50;13.59;130;1.06;73;2.48;50.57
+"Universidade Estácio de Sá";RJ;94;Privada;99;16.06;132;14.77;15;16.74;83;1.73;145;1.26;50.56
+"Universidade Federal Rural do Semi-árido";RN;95;Federal;74;19.52;74;25.21;172;2.61;113;1.29;148;1.18;49.81
+"Universidade do Grande Rio Professor José de Souza Herdy";RJ;96;Privada;138;12.7;85;22.11;77;11.16;160;0.46;47;3.01;49.44
+"Universidade do Estado de Mato Grosso";MT;97;Estadual;81;18.62;119;18.01;95;9.54;90;1.66;129;1.53;49.36
+"Universidade Cruzeiro do Sul";SP;98;Privada;98;16.15;121;16.82;70;11.79;118;1.21;60;2.8;48.77
+"Universidade Estadual de Mato Grosso do Sul";MS;99;Estadual;85;17.88;93;21.13;133;6.12;77;1.8;121;1.66;48.59
+"Universidade de Franca";SP;100;Privada;127;13.28;91;21.31;77;11.16;158;0.52;112;1.81;48.08
+"Universidade São Francisco";SP;101;Privada;135;12.9;97;20.77;77;11.16;172;0.32;68;2.55;47.7
+"Universidade Regional do Cariri";CE;102;Estadual;107;15.46;79;23.8;133;6.12;167;0.37;111;1.82;47.57
+"Fundação Universidade Federal de Rondônia";RO;102;Federal;92;17.06;116;18.21;95;9.54;116;1.25;130;1.51;47.57
+"Universidade Salvador";BA;104;Privada;148;12.11;135;14.36;30;15.39;52;2.29;54;2.91;47.06
+"Universidade Estadual do Sudoeste da Bahia";BA;105;Estadual;139;12.61;86;21.81;95;9.54;107;1.41;120;1.67;47.04
+"Universidade do Estado do Amazonas";AM;106;Estadual;175;6.27;78;23.83;58;12.87;111;1.33;62;2.71;47.01
+"Pontifícia Universidade Católica de Goiás";GO;107;Privada;104;15.7;151;11.52;15;16.74;63;1.97;188;0.47;46.4
+"Universidade Federal do Recôncavo da Bahia";BA;108;Federal;100;16.05;100;20.68;133;6.12;53;2.28;152;1.14;46.27
+"Universidade Católica de Pernambuco";PE;109;Privada;128;13.21;126;15.58;24;15.93;185;0.06;133;1.42;46.2
+"Universidade Cidade de São Paulo";SP;110;Privada;130;13.16;110;18.91;95;9.54;140;0.91;36;3.12;45.64
+"Universidade Cesumar";PR;111;Privada;78;19.1;155;10.44;39;14.58;;;131;1.49;45.61
+"Universidade Feevale";RS;112;Privada;113;14.52;96;20.94;116;7.65;123;1.15;144;1.3;45.56
+"Universidade de Santa Cruz do Sul";RS;113;Privada;114;14.36;105;19.99;116;7.65;168;0.36;117;1.76;44.12
+"Universidade Anhembi Morumbi";SP;114;Privada;101;16.03;147;12.4;50;13.59;161;0.45;156;1.1;43.57
+"Universidade Federal do Amapá";AP;115;Federal;96;16.52;97;20.77;172;2.61;109;1.39;94;2.11;43.4
+"Universidade Estadual da Paraíba";PB;116;Estadual;152;11.29;104;20.17;95;9.54;127;1.11;147;1.22;43.33
+"Universidade do Estado do Pará";PA;117;Estadual;124;13.42;129;15.43;77;11.16;70;1.87;153;1.12;43
+"Universidade do Estado de Minas Gerais";MG;118;Estadual;69;20.18;144;12.54;116;7.65;101;1.49;164;0.99;42.85
+"Universidade Santo Amaro";SP;119;Privada;123;13.43;118;18.1;116;7.65;123;1.15;80;2.33;42.66
+"Universidade Federal da Fronteira Sul";SC;120;Federal;91;17.2;101;20.58;172;2.61;149;0.76;136;1.4;42.55
+"Universidade Metodista de Piracicaba";SP;121;Privada;129;13.2;114;18.32;116;7.65;168;0.36;75;2.44;41.97
+"Universidade Pitágoras Unopar Anhanguera";PR;122;Privada;144;12.2;141;12.91;50;13.59;103;1.48;121;1.66;41.84
+"Universidade Estadual de Goiás";GO;123;Estadual;122;13.45;134;14.64;77;11.16;108;1.4;167;0.95;41.6
+"Universidade La Salle";RS;124;Privada;159;10.14;83;22.76;157;3.96;149;0.76;49;2.99;40.61
+"Universidade Católica de Pelotas";RS;125;Privada;192;2.47;72;25.69;116;7.65;118;1.21;17;3.47;40.49
+"Universidade Santa Cecília";SP;126;Privada;93;17.04;159;9.99;116;7.65;43;2.56;78;2.35;39.59
+"Universidade do Oeste de Santa Catarina";SC;127;Privada;115;14.14;147;12.4;77;11.16;147;0.79;161;1.04;39.53
+"Universidade de Mogi das Cruzes";SP;128;Privada;136;12.84;140;13.1;95;9.54;142;0.88;77;2.39;38.75
+"Universidade Franciscana";RS;129;Privada;110;15.43;136;14.2;116;7.65;156;0.56;171;0.89;38.73
+"Universidade da Região de Joinville";SC;130;Privada;120;13.85;143;12.56;95;9.54;125;1.12;135;1.41;38.48
+"Universidade de Uberaba";MG;131;Privada;97;16.24;165;9.08;77;11.16;134;0.99;182;0.65;38.12
+"Universidade Regional Integrada do Alto Uruguai e das Missões";RS;132;Privada;149;11.96;142;12.8;77;11.16;103;1.48;184;0.63;38.03
+"Universidade do Vale do Paraíba";SP;133;Privada;166;7.73;95;21.02;157;3.96;65;1.94;50;2.96;37.61
+"Universidade Veiga de Almeida";RJ;134;Privada;167;7.6;139;13.43;58;12.87;101;1.49;94;2.11;37.5
+"Universidade Federal do Acre";AC;135;Federal;153;11.25;106;19.79;172;2.61;112;1.32;87;2.24;37.21
+"Universidade Comunitária da Região de Chapecó";SC;136;Privada;132;13.05;123;15.83;133;6.12;159;0.47;136;1.4;36.87
+"Universidade Estadual Vale do Acaraú";CE;137;Estadual;118;13.91;138;13.49;116;7.65;187;0.03;176;0.76;35.84
+"Universidade do Estado do Rio Grande do Norte";RN;138;Estadual;106;15.48;150;12.17;133;6.12;121;1.2;180;0.71;35.68
+"Universidade Federal do Oeste do Pará";PA;139;Federal;163;8.44;80;23.26;;;94;1.58;82;2.3;35.58
+"Universidade Estadual do Maranhão";MA;140;Estadual;169;7.29;137;14.15;77;11.16;74;1.85;155;1.11;35.56
+"Universidade da Integração Internacional da Lusofonia Afro-brasileira";CE;141;Federal;145;12.19;109;19.37;172;2.61;189;0.01;143;1.32;35.5
+"Universidade Federal do Cariri";CE;142;Federal;131;13.12;117;18.13;172;2.61;188;0.02;127;1.57;35.45
+"Universidade Universus Veritas Guarulhos";SP;143;Privada;180;5.92;115;18.26;133;6.12;76;1.82;39;3.09;35.21
+"Universidade Federal da Integração Latino-americana";PR;144;Federal;150;11.61;113;18.49;189;1.08;68;1.89;105;1.95;35.02
+"Universidade Regional do Noroeste do Estado do Rio Grande do Sul";RS;145;Privada;125;13.36;161;9.49;77;11.16;168;0.36;200;0.18;34.55
+"Universidade São Judas Tadeu";SP;146;Privada;164;7.98;162;9.43;39;14.58;178;0.18;96;2.09;34.26
+"Universidade Federal do Oeste da Bahia";BA;147;Federal;133;12.99;125;15.73;157;3.96;183;0.09;136;1.4;34.17
+"Universidade Federal do Sul da Bahia";BA;148;Federal;121;13.79;126;15.58;189;1.08;117;1.23;100;2.04;33.72
+"Universidade Potiguar";RN;149;Privada;186;5.28;145;12.44;39;14.58;176;0.23;151;1.15;33.68
+"Universidade Federal de Roraima";RR;150;Federal;151;11.37;131;15.34;157;3.96;151;0.72;101;2.02;33.41
+"Universidade de Cuiabá";MT;151;Privada;181;5.87;158;10.06;50;13.59;145;0.85;102;2.01;32.38
+"Universidade Fumec";MG;152;Privada;126;13.31;181;6.29;95;9.54;80;1.77;174;0.78;31.69
+"Universidade Evangélica de Goiás";GO;153;Privada;165;7.85;156;10.33;95;9.54;88;1.7;85;2.26;31.68
+"Universidade Tuiuti do Paraná";PR;154;Privada;95;16.7;184;5.98;116;7.65;173;0.3;179;0.72;31.35
+"Universidade Ibirapuera";SP;155;Privada;190;3.59;82;23.04;199;0.18;184;0.08;7;3.72;30.61
+"Universidade Metodista de São Paulo";SP;156;Privada;140;12.57;175;7.77;95;9.54;179;0.15;192;0.31;30.34
+"Universidade Estadual do Piauí";PI;157;Estadual;160;9.69;169;8.62;77;11.16;166;0.38;190;0.43;30.28
+"Universidade Ceuma";MA;158;Privada;193;2.38;133;14.65;77;11.16;;;110;1.9;30.09
+"Universidade José do Rosário Velano";MG;159;Privada;111;14.6;172;7.94;133;6.12;164;0.4;186;0.59;29.65
+"Universidade Católica de Santos";SP;160;Privada;105;15.61;178;7.08;133;6.12;;;175;0.77;29.58
+"Universidade Paranaense";PR;161;Privada;156;11.05;174;7.81;95;9.54;177;0.2;193;0.3;28.9
+"Universidade Federal do Sul e Sudeste do Pará";PA;162;Federal;157;10.88;146;12.41;172;2.61;81;1.76;157;1.09;28.75
+"Universidade de Marília";SP;163;Privada;184;5.59;149;12.22;95;9.54;182;0.1;153;1.12;28.57
+"Universidade de Taubaté";SP;164;Municipal;169;7.29;152;11.2;116;7.65;174;0.29;133;1.42;27.85
+"Universidade de Araraquara";SP;165;Privada;194;2.01;128;15.48;133;6.12;46;2.51;124;1.63;27.75
+"Universidade Estadual do Paraná";PR;166;Estadual;102;16;182;6.25;157;3.96;186;0.04;190;0.43;26.68
+"Universidade Estadual do Norte do Paraná";PR;167;Estadual;161;9.16;160;9.61;133;6.12;145;0.85;176;0.76;26.5
+"Universidade Estadual do Rio Grande do Sul";RS;168;Estadual;158;10.78;154;10.78;189;1.08;71;1.86;113;1.78;26.28
+"Universidade Metropolitana de Santos";SP;169;Privada;168;7.57;157;10.12;157;3.96;69;1.88;79;2.34;25.87
+"Universidade Brasil";SP;170;Privada;199;1.08;111;18.77;172;2.61;121;1.2;89;2.19;25.85
+"Universidade de Itaúna";MG;171;Privada;146;12.18;190;4.69;133;6.12;153;0.62;148;1.18;24.79
+"Universidade Federal de Jataí";GO;172;Federal;162;8.61;153;11.18;172;2.61;115;1.26;160;1.08;24.74
+"Universidade da Amazônia";PA;173;Privada;179;5.99;197;3.25;58;12.87;125;1.12;170;0.91;24.14
+"Universidade Castelo Branco";RJ;173;Privada;153;11.25;199;2.78;116;7.65;157;0.54;107;1.92;24.14
+"Universidade Federal do Delta do Parnaíba";PI;175;Federal;141;12.5;163;9.29;189;1.08;179;0.15;157;1.09;24.11
+"Universidade Salgado de Oliveira";RJ;176;Privada;200;0.83;166;8.98;58;12.87;;;142;1.34;24.02
+"Universidade Católica de Petrópolis";RJ;177;Privada;117;13.92;192;3.59;133;6.12;;;193;0.3;23.93
+"Universidade Anhanguera";MS;178;Privada;176;6.19;179;6.79;95;9.54;128;1.1;196;0.29;23.91
+"Universidade de Vassouras";RJ;179;Privada;116;14.1;195;3.35;157;3.96;133;1.02;139;1.37;23.8
+"Universidade Católica do Salvador";BA;180;Privada;173;6.57;188;5.34;77;11.16;;;182;0.65;23.72
+"Universidade Municipal de São Caetano do Sul";SP;181;Municipal;133;12.99;187;5.38;157;3.96;;;150;1.16;23.49
+"Universidade do Vale do Sapucaí";MG;182;Privada;174;6.33;164;9.28;133;6.12;138;0.92;185;0.6;23.25
+"Universidade Federal do Agreste de Pernambuco";PE;183;Federal;155;11.13;176;7.73;;;90;1.66;141;1.36;21.88
+"Universidade Federal de Catalão";GO;184;Federal;137;12.74;183;5.99;189;1.08;153;0.62;162;1.01;21.44
+"Universidade Anhanguera de São Paulo";SP;185;Privada;198;1.29;167;8.94;116;7.65;138;0.92;126;1.62;20.42
+"Universidade Estadual do Tocantins";TO;186;Estadual;119;13.88;196;3.33;172;2.61;171;0.34;203;0.03;20.19
+"Universidade de Cruz Alta";RS;187;Privada;177;6.17;177;7.41;157;3.96;96;1.56;189;0.45;19.55
+"Universidade Iguaçu";RJ;188;Privada;196;1.42;168;8.64;133;6.12;;;82;2.3;18.48
+"Universidade do Planalto Catarinense";SC;189;Privada;197;1.32;180;6.36;95;9.54;153;0.62;197;0.26;18.1
+"Universidade Nilton Lins";AM;190;Privada;203;0.57;170;8.09;116;7.65;181;0.13;139;1.37;17.81
+"Universidade de Rio Verde";GO;191;Municipal;191;2.82;189;5.11;133;6.12;82;1.75;178;0.75;16.55
+"Universidade Vale do Rio Doce";MG;192;Privada;188;4.89;200;2.03;116;7.65;97;1.55;201;0.17;16.29
+"Universidade do Estado do Amapá";AP;193;Estadual;182;5.77;171;8.03;189;1.08;175;0.28;181;0.7;15.86
+"Universidade do Contestado";SC;194;Privada;195;1.82;185;5.88;157;3.96;132;1.03;128;1.54;14.23
+"Universidade Estadual de Ciências da Saúde de Alagoas";AL;195;Estadual;187;5.01;172;7.94;;;;;169;0.92;13.87
+"Universidade Estadual da Região Tocantina do Maranhão";MA;196;Estadual;183;5.66;186;5.69;189;1.08;148;0.78;187;0.56;13.77
+"Universidade Federal de Rondonópolis";MT;197;Federal;171;7.23;194;3.47;189;1.08;140;0.91;172;0.82;13.51
+"Universidade Estadual de Alagoas";AL;198;Estadual;172;6.78;193;3.49;172;2.61;;;193;0.3;13.18
+"Universidade Santa Úrsula";RJ;199;Privada;178;6.13;191;4.37;189;1.08;;;168;0.94;12.52
+"Universidade Estadual de Roraima";RR;200;Estadual;189;3.88;198;2.93;172;2.61;110;1.36;199;0.19;10.97
+"Universidade Cândido Mendes";RJ;201;Privada;201;0.67;201;1.85;116;7.65;;;198;0.24;10.41
+"Universidade Alto Vale do Rio do Peixe";SC;202;Privada;185;5.47;202;0.78;199;0.18;;;157;1.09;7.52
+"Universidade de Gurupi";TO;203;Municipal;202;0.65;203;0.65;172;2.61;;;202;0.06;3.97

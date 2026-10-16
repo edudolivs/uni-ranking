@@ -34,28 +34,42 @@ python3 -m venv .venv && .venv/bin/pip install openpyxl python-docx
 
 # 1. Leiden: extrai só o Brasil das planilhas grandes (uma edição por chamada; segundos cada)
 .venv/bin/python scripts/extrair_leiden.py "dados/leiden/CWTS Leiden Ranking 2024.xlsx" 2024
-# 2. Agrega ARWU + IGC + Enade + CSVs do Leiden em dados/processado/dados_dashboard.json
+# 2. QS, SCImago, RUF: extraem dados/qs|scimago|ruf/ para dados/processado/
+.venv/bin/python scripts/extrair_qs.py
+.venv/bin/python scripts/extrair_scimago.py
+.venv/bin/python scripts/extrair_ruf.py
+# 3. Agrega ARWU + IGC + CPC + Enade + Leiden + QS + SCImago + RUF em dados/processado/dados_dashboard.json
+#    (lê dados/cpc/*.xlsx direto, sem extrator próprio -- mesma granularidade do Enade)
 .venv/bin/python scripts/preparar_dados.py
-# 3. Embute o JSON no template e grava dashboard_rankings.html
+# 4. Embute o JSON no template e grava dashboard_rankings.html
 python3 scripts/gerar_dashboard.py
 ```
 
 `preparar_dados.py` imprime contagens de controle. Com os dados atuais, os valores esperados são:
 - **ARWU**, brasileiras por ano: 21, 21, 18, 18, 18, 14 (2021–2026).
-- **Leiden**, brasileiras por edição: 35, 37, 38, 39 (2022–2025).
+- **Leiden**, brasileiras por edição: ~35 a 39 (2021–2025; 2021 entrou depois, confira o log antes de assumir o número).
 - **IGC**, linhas por ano: 2.090 (2019), 2.012 (2021), 2.023 (2022), 2.101 (2023).
+- **CPC**, cursos por ano: 8.368 (2019), 7.997 (2021), 9.891 (2022), 9.812 (2023) -- próximo do Enade, mas não idêntico (escopos levemente diferentes).
 - **Enade**, cursos por ano: 7.997, 9.896, 9.812 (2021–2023).
+- **QS**, brasileiras por ano: 22, 22, 22, 20, 22, 27 (2017–2022), depois 35, 35, 35, 24, 22 (2023–2027) -- a queda em 2026/2027 é real na fonte, não é bug.
+- **SCImago**, universidades (setor "Universities") por ano: 151, 170, 166, 165, 171 (2022–2026).
+- **RUF**: 192 (2019, só sub-ranking de Mercado -- ver nota abaixo), ~203-204 por ano (2023–2025).
 
 ## Arquitetura do pipeline
 
-`extrair_leiden.py` → `dados/processado/leiden_br_<ed>.csv` → `preparar_dados.py` → `dados_dashboard.json` → `gerar_dashboard.py` + `dashboard_template.html` → `dashboard_rankings.html`
+`extrair_leiden.py` / `extrair_qs.py` / `extrair_scimago.py` / `extrair_ruf.py` → `dados/processado/*.csv` → `preparar_dados.py` (lê também `dados/cpc/*.xlsx` direto) → `dados_dashboard.json` → `gerar_dashboard.py` + `dashboard_template.html` → `dashboard_rankings.html`
 
-- **Leiden:** cada xlsx tem 200 a 260 MB e a aba `Results` descompacta para cerca de 1 GB de XML. Leia sempre com `openpyxl` em `read_only` e em fluxo, nunca com pandas inteiro. O filtro mantém Brasil, `Field == "All sciences"`, `Frac_counting == 0` e todos os períodos. **Os nomes das colunas mudam entre edições** (`P_top10` em 2022 e `P_top_10` em 2025, `impact_P` e `P`), por isso `extrair_leiden.py` normaliza removendo `_` e usando minúsculas. `PP_top10` é fração (0,09 = 9%).
+- **Leiden:** cada xlsx tem 170 a 262 MB e a aba `Results` descompacta para cerca de 1 GB de XML. Leia sempre com `openpyxl` em `read_only` e em fluxo, nunca com pandas inteiro. O filtro mantém Brasil, `Field == "All sciences"`, `Frac_counting == 0` e todos os períodos. **Os nomes das colunas mudam entre edições** (`P_top10` em 2022 e `P_top_10` em 2025, `impact_P` e `P`), por isso `extrair_leiden.py` normaliza removendo `_` e usando minúsculas. `PP_top10` é fração (0,09 = 9%). Os `.xlsx` brutos não são versionados (ver `## Git`); só os CSVs já filtrados em `dados/processado/`.
 - **ARWU** (`dados/arwu/arwu_<ano>.json`): JSON da API pública `https://www.shanghairanking.com/api/pub/v1/arwu/rank?version=<ano>`, com 1.000 universidades por ano. A posição só é exata até a 100ª; depois vem em faixas ("801-900"), e `ranking_min` guarda o limite inferior para ordenar. `indData` traz códigos de indicador (165 a 170) **sem rótulo**: não atribua significado sem confirmar na fonte.
+- **QS** (`dados/qs/*.csv`, `extrair_qs.py`): **6 arquivos, 6 esquemas de coluna diferentes** (2017-2022 é um único CSV longo multi-ano sem indicadores por categoria; 2023 a 2027 são wide, cada um com nomenclatura própria para reputação acadêmica/empregador, proporção docente-aluno e citações por docente). Encoding varia (`cp1252`/`utf-8-sig`) -- cada arquivo tem o encoding certo hardcoded no script, não adivinhe. Indicador ausente na edição fica nulo.
+- **SCImago** (`dados/scimago/*.csv`, `extrair_scimago.py`): já vem filtrado por Brasil na origem; o script filtra `Sector == "Universities"` (o SIR também cobre hospitais, governo, ONGs e empresas). Separador `;`.
+- **RUF** (`dados/ruf/*.csv`, `extrair_ruf.py`): **o arquivo de 2019 NÃO é a posição geral do RUF** -- é a sub-classificação de Mercado (a coluna "Ranking" do CSV original está ordenada exatamente pela nota de mercado, empates inclusive). `extrair_ruf.py` já corrige isso: `ranking` fica nulo em 2019, só `pos_mercado`/`nota_mercado` são preenchidos. 2023-2025 trazem os 5 indicadores completos (Ensino, Pesquisa, Mercado, Inovação, Internacionalização) e a posição geral.
 - **IGC** (`dados/igc/`, Inep): a primeira aba muda de nome por ano; os cabeçalhos têm espaços e `*` (limpos no código). Há **linhas de rodapé com notas**, filtradas por `ano_valido()`. Não existe edição 2020. A URL é `https://download.inep.gov.br/educacao_superior/indicadores/resultados/<ano>/IGC_<ano>.xlsx` (em 2022 é `igc_2022.xlsx`).
+- **CPC** (`dados/cpc/*.xlsx`, Inep): Conceito Preliminar de Curso, um dos componentes do próprio IGC -- por isso tende a correlacionar fortemente com ele, não é uma fonte independente. Mesma estrutura do Enade (lido por `ler_cpc()` em `preparar_dados.py`, que espelha `ler_enade()`); nomes de aba e ordem de coluna variam por ano, tratados por dicionário de índice (não por posição fixa).
 - **Enade** (`dados/enade/conceito_enade_<ano>.xlsx`): uma linha por curso; a aba se chama `PLANILHA_ENADE` ou `Planilha1` conforme o ano. Cada ano avalia áreas diferentes, então totais entre anos não indicam crescimento.
-- **Cruzamento entre bases:** só por nome, via `chave()` em `preparar_dados.py` (sem acentos, sem palavras como "universidade/university/de", `TRAD` traduz state/estadual etc.). Equivalências que os tokens não resolvem vão em `ALIAS`; hoje só Unesp. **USP, Unicamp, Unesp e UERJ não aparecem no IGC/Enade.** A hipótese, não verificada, é que pertencem a sistemas estaduais.
-- **Dashboard:** o template usa Chart.js por CDN (precisa de internet ao abrir) e cores da skill `dataviz`, já validadas para daltonismo, nos temas claro e escuro. A UFPB é destacada em laranja (`ehUfpb`). Cada gráfico tem uma tabela-espelho em `<details>`.
+- **Cruzamento entre bases:** só por nome, via `chave()` em `preparar_dados.py` (sem acentos, sem palavras como "universidade/university/de", `TRAD` traduz state/estadual etc.). Equivalências que os tokens não resolvem vão em `ALIAS`; hoje só Unesp. **USP, Unicamp, Unesp e UERJ não aparecem no IGC/CPC/Enade.** A hipótese, não verificada, é que pertencem a sistemas estaduais. `cruzar()` é genérico para N fontes (hoje 8); cada fonte entra só com a edição/ano mais recente.
+- **Correlação de Spearman** (`correlacionar()` em `preparar_dados.py`): implementada em Python puro (rank médio em empate + Pearson nos postos), sem dependência nova. Cobre estabilidade temporal (posição entre edições consecutivas), indicador×posição nos grupos internacional e brasileiro, e correlação de postos entre pares de rankings. `n` sempre reportado ao lado de `rho`; sem p-value forçado em amostra pequena. Mínimo de 5 universidades em comum para calcular.
+- **Dashboard:** o template usa Chart.js por CDN (precisa de internet ao abrir) e cores da skill `dataviz`, já validadas para daltonismo, nos temas claro e escuro. **Atenção:** `--ord3` é idêntico a `--s1` (mesmo azul) -- não use `ord[2]` num gráfico que já usa `T.s1`, ou as séries ficam indistinguíveis (já aconteceu no gráfico de cobertura; corrigido usando `ord[0]`/`ord[4]`). A UFPB é destacada em laranja (`ehUfpb`). Cada gráfico tem uma tabela-espelho em `<details>`. 6 painéis por botão: Visão geral, Pesquisa e impacto, Ensino e avaliação, Comparar universidades, Correlações, Fontes e limites.
 
 ## O documento (`projeto-de-pesquisa.docx`)
 
@@ -69,20 +83,21 @@ python3 scripts/gerar_dashboard.py
 
 **Feito**
 - Projeto escrito no formato do modelo, já enxugado (justificativa, referencial teórico e metodologia mais curtos; 15 → 10 referências).
-- Bases baixadas: ARWU 2021–2026, Leiden 2022–2025, IGC 2019 e 2021–2023, Enade 2021–2023.
-- Pipeline e dashboard inicial (`dashboard_rankings.html`). O JavaScript foi testado sem erros num ambiente simulado, sem navegador, e **ainda não foi conferido visualmente**.
+- Bases baixadas: ARWU 2021–2026, Leiden 2021–2025, QS 2017–2027, SCImago 2022–2026, RUF 2019+2023–2025, IGC 2019 e 2021–2023, CPC 2019 e 2021–2023, Enade 2021–2023 -- as 8 fontes que a pergunta de pesquisa original previa (QS/ARWU/Leiden/SCImago internacionais; RUF/IGC-CPC/Enade brasileiros).
+- Pipeline completo (`extrair_leiden.py`, `extrair_qs.py`, `extrair_scimago.py`, `extrair_ruf.py`, `preparar_dados.py`, `gerar_dashboard.py`) e dashboard (`dashboard_rankings.html`), 6 painéis por botão (estilo Power BI, sem rolagem). Testado com Chromium headless (Playwright): clique nos 6 painéis, zero erro de console, screenshots conferidos nos temas claro e escuro.
+- **Correlação de Spearman implementada** (`correlacionar()` em `preparar_dados.py`, painel "Correlações" no dashboard): estabilidade temporal por ranking, indicador×posição nos grupos internacional e brasileiro, correlação de postos entre pares de rankings. Python puro, sem dependência nova.
+- Confirmado: Selten et al. (2020) de fato usa correlação de Spearman -- a citação no texto do `.docx` está correta.
 
 **Pendente / em aberto**
-- **Faltam QS, SCImago e RUF.** O QS e o SCImago bloqueiam download automático (403); o RUF não tem dados abertos. Download manual: SCImago pelo botão "Download data" em scimagoir.com; QS em topuniversities.com. Não contorne bloqueios.
-- **O RUF parece não ter edições de 2020 a 2022.** Isso conflita com as "cinco edições anuais consecutivas (ex.: 2021–2025)" da Metodologia; confirme e ajuste o texto ou a janela temporal.
-- **Leiden 2019–2021** não foi baixado (os DOIs no Zenodo estão listados em traditional.leidenranking.com/downloads). **IGC 2024/2025:** o Inep mostra uma aba de 2025, mas o link do arquivo não foi encontrado.
+- **Leiden 2019–2020** não foi baixado (2021 já entrou). DOIs no Zenodo: 10.5281/zenodo.3339177 (2019), 10.5281/zenodo.4745545 (2020) -- mesmo padrão de `extrair_leiden.py` já resolve, só falta baixar os xlsx (~200 MB cada).
+- **RUF 2020–2022** seguem sem dado aberto. **RUF 2019 não é a posição geral**, é só a sub-classificação de Mercado (ver `## Arquitetura do pipeline`) -- isso ainda conflita com as "cinco edições anuais consecutivas" da Metodologia; confirme e ajuste o texto ou a janela temporal.
+- **IGC/CPC 2024/2025:** o Inep mostra uma aba de 2025, mas o link do arquivo não foi encontrado nesta rodada.
 - **No documento:**
-  - Os meses do cronograma ainda são os do modelo.
+  - Os meses do cronograma ainda são os do modelo (Mar–Jul); a pesquisa já roda em set/out/2026 pelas datas de acesso das referências citadas -- precisa dos meses reais.
   - O co-orientador está em branco.
-  - Falta confirmar que Selten et al. (2020) usam a correlação de Spearman.
-  - Os pesos do RUF vêm do Jornal da USP, não do site da Folha.
-- **Análise:** ainda não há correlações nem comparação entre rankings; o dashboard é só descritivo.
+  - Os pesos do RUF ainda citam o Jornal da USP; agora há CSV oficial 2025 com os 5 indicadores, dá pra trocar por fonte primária.
+  - A seção de limitações/resultados esperados ainda não reflete que a correlação existe (dizia "dashboard é só descritivo").
 
 ## Git
 
-O `.gitignore` exclui `dados/leiden/`, porque os xlsx têm 200–260 MB e o GitHub recusa arquivos acima de 100 MB. Num clone novo, baixe as planilhas de novo pelo Zenodo antes de rodar `extrair_leiden.py`; os CSVs com o recorte do Brasil já estão versionados em `dados/processado/`. Também ficam fora os logs da extração, `__pycache__/` e `.venv/`. As demais bases (ARWU, IGC, Enade, cerca de 12 MB) estão no repositório.
+O `.gitignore` exclui `dados/leiden/`, porque os xlsx têm 170–262 MB e o GitHub recusa arquivos acima de 100 MB. Num clone novo, baixe as planilhas de novo pelo Zenodo antes de rodar `extrair_leiden.py`; os CSVs com o recorte do Brasil já estão versionados em `dados/processado/`. Também ficam fora os logs da extração, `__pycache__/` e `.venv/`. As demais bases (ARWU, QS, SCImago, RUF, IGC, CPC, Enade, poucas dezenas de MB no total) estão no repositório.

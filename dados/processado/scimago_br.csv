@@ -1,0 +1,824 @@
+ano,nome,rank_br,rank_global,quartil
+2022,Universidade de Sao Paulo,1,45,
+2022,Universidade Estadual Paulista Julio de Mesquita Filho,2,362,
+2022,Universidade Estadual de Campinas,3,520,
+2022,Universidade Federal do Rio Grande do Sul,4,569,
+2022,Universidade Federal do Rio de Janeiro,5,570,
+2022,Universidade Federal de Minas Gerais,6,635,
+2022,Universidade Federal do Parana,8,1095,
+2022,Universidade Federal de Santa Catarina,9,1311,
+2022,Universidade Federal de Sao Paulo,10,1322,
+2022,Universidade de Brasilia,12,1578,
+2022,Universidade Federal de Sao Carlos,19,2138,
+2022,Universidade Federal de Vicosa,20,2199,
+2022,Universidade Estadual de Maringa,21,2268,
+2022,Universidade Federal de Goias,22,2296,
+2022,Universidade Federal da Bahia,24,2354,
+2022,Universidade Federal de Santa Maria,25,2379,
+2022,Universidade Federal do Ceara,26,2427,
+2022,Universidade Federal Fluminense,27,2521,
+2022,Universidade Federal de Pernambuco,28,2605,
+2022,Pontificia Universidade Catolica do Rio Grande do Sul,32,2820,
+2022,Universidade do Estado do Rio de Janeiro,36,2910,
+2022,Universidade Federal do Rio Grande do Norte,39,2958,
+2022,Universidade Federal de Pelotas,40,3076,
+2022,Universidade Estadual de Londrina,41,3113,
+2022,Universidade Federal de Lavras,45,3265,
+2022,Universidade Federal da Paraiba,46,3287,
+2022,Universidade Sao Francisco,47,3322,
+2022,Faculdade de Medicina de Sao Jose do Rio Preto,48,3330,
+2022,Universidade Guarulhos,50,3483,
+2022,Faculdade de Ciencias Medicas da Santa Casa de Sao Paulo,51,3492,
+2022,Universidade Federal do Para,52,3497,
+2022,Universidade Federal de Uberlandia,53,3555,
+2022,Universidade Federal do ABC,55,3608,
+2022,Universidade Federal do Espirito Santo,58,3717,
+2022,Universidade Federal Rural de Pernambuco,59,3734,
+2022,Escola Nacional de Saude Publica Sergio Arouca,60,3774,
+2022,Universidade do Estado do Amazonas,61,3877,
+2022,Universidade do Vale do Rio dos Sinos,62,3957,
+2022,Pontificia Universidade Catolica de Campinas,67,4137,
+2022,Universidade Federal de Mato Grosso do Sul,68,4194,
+2022,Universidade Federal de Juiz de Fora,72,4322,
+2022,Universidade do Estado do Para,74,4403,
+2022,Universidade Federal de Campina Grande,75,4435,
+2022,Universidade Feevale,75,4435,
+2022,Universidade Estadual de Montes Claros,77,4484,
+2022,Universidade Federal do Piaui,78,4569,
+2022,Universidade Federal de Sergipe,81,4602,
+2022,Universidade Federal de Mato Grosso,82,4621,
+2022,Pontificia Universidade Catolica do Rio de Janeiro,83,4627,
+2022,Universidade do Estado de Santa Catarina,85,4660,
+2022,Universidade Federal Rural do Rio de Janeiro,86,4683,
+2022,Universidade Estadual de Ponta Grossa,87,4777,
+2022,Pontificia Universidade Catolica do Parana,88,4789,
+2022,Fundacao Getulio Vargas,89,4795,
+2022,Universidade Catolica de Brasilia,93,4824,
+2022,Universidade Tecnologica Federal do Parana,94,4838,
+2022,Universidade do Sul de Santa Catarina,95,4841,
+2022,Universidade Federal de Ciencias da Saude de Porto Alegre,95,4841,
+2022,Universidade Federal de Ouro Preto,97,4855,
+2022,Universidade Federal do Tocantins,97,4855,
+2022,Universidade Federal da Grande Dourados,99,4867,
+2022,Universidade Estadual do Oeste do Parana,100,4909,
+2022,Universidade Federal de Alagoas,101,4915,
+2022,Universidade Federal do Amapa,102,4939,
+2022,Universidade de Taubate,103,4964,
+2022,Universidade Federal do Vale do Sao Francisco,104,4976,
+2022,Universidade Estadual do Centro-Oeste,105,4979,
+2022,Universidade do Oeste Paulista,106,4993,
+2022,Escola Bahiana de Medicina e Saude Publica,106,4993,
+2022,Universidade Federal Rural do Semi-Arido,108,5020,
+2022,Universidade Federal dos Vales do Jequitinhonha e Mucuri,109,5039,
+2022,Universidade Federal do Maranhao,110,5040,
+2022,Universidade Catolica Dom Bosco,111,5071,
+2022,Universidade Estadual do Norte Fluminense Darcy Ribeiro,112,5079,
+2022,Faculdade de Medicina do ABC,112,5079,
+2022,Universidade Federal do Rio Grande,115,5114,
+2022,Universidade do Extremo Sul Catarinense,116,5123,
+2022,Universidade de Caxias do Sul,117,5236,
+2022,Pontificia Universidade Catolica de Sao Paulo,118,5240,
+2022,Universidade Federal do Triangulo Mineiro,120,5262,
+2022,Universidade do Grande Rio,121,5311,
+2022,Universidade Federal de Rondonia,122,5322,
+2022,Universidade Federal de Sao Joao del Rei,123,5332,
+2022,Universidade Regional do Cariri,124,5341,
+2022,Universidade Federal de Alfenas,125,5386,
+2022,Universidade Federal do Amazonas,126,5421,
+2022,Universidade Estadual do Sudoeste da Bahia,127,5480,
+2022,Universidade do Estado de Mato Grosso,129,5503,
+2022,Universidade Estadual de Mato Grosso do Sul,129,5503,
+2022,Universidade Federal do Reconcavo da Bahia,131,5546,
+2022,Universidade Federal Rural da Amazonia,132,5573,
+2022,"Universidade La Salle, Brazil",132,5573,
+2022,Universidade do Vale do Taquari,134,5612,
+2022,Universidade de Fortaleza,135,5629,
+2022,Universidade de Passo Fundo,136,5654,
+2022,Universidade Federal do Pampa,136,5654,
+2022,Universidade Nove de Julho,138,5659,
+2022,Universidade Federal da Fronteira Sul,140,5691,
+2022,Universidade Federal do Acre,141,5705,
+2022,Universidade Estadual do Vale do Acarau,142,5761,
+2022,Universidade Estadual do Ceara,144,5777,
+2022,Universidade Estadual de Santa Cruz,144,5777,
+2022,Universidade Estadual da Paraiba,148,5836,
+2022,Faculdade Sao Leopoldo Mandic,150,5863,
+2022,Fundacao Universidade Regional de Blumenau,150,5863,
+2022,Universidade Tiradentes,152,5872,
+2022,Universidade de Pernambuco,153,5895,
+2022,Universidade Federal do Oeste do Para,154,5898,
+2022,Universidade do Estado da Bahia,155,5902,
+2022,Universidade Vila Velha,156,5917,
+2022,Universidade de Santo Amaro,157,5938,
+2022,Pontificia Universidade Catolica de Minas Gerais,158,5965,
+2022,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio de Janeiro",159,5971,
+2022,Universidade Federal do Estado do Rio de Janeiro,160,5986,
+2022,Universidade Estadual de Feira de Santana,161,6002,
+2022,Universidade Luterana do Brasil,163,6095,
+2022,"Instituto Federal de Educacao, Ciencia e Tecnologia Espirito Santo",165,6189,
+2022,Universidade Estacio de Sa,166,6201,
+2022,Universidade Federal de Itajuba,167,6217,
+2022,Universidade Comunitaria da Regiao de Chapeco,167,6217,
+2022,Universidade de Santa Cruz do Sul,169,6224,
+2022,Universidade de Sorocaba,170,6248,
+2022,Universidade Federal de Roraima,171,6433,
+2022,Universidade Norte do Parana,172,6467,
+2022,Universidade Estadual do Maranhao,173,6501,
+2022,Universidade Estadual de Goias,174,6538,
+2022,Universidade do Vale do Paraiba,177,6592,
+2022,Centro Federal de Educacao Tecnologica de Minas Gerais,177,6592,
+2022,"Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara",179,6606,
+2022,Universidade da Regiao de Joinville,180,6626,
+2022,Faculdade Evangelica Mackenzie do Parana,181,6685,
+2022,Universidade do Estado do Rio Grande do Norte,182,6693,
+2022,Universidade do Vale do Itajai,185,6809,
+2022,Centro Federal de Educacao Tecnologica Celso Suckow da Fonseca,186,6821,
+2022,Universidade Regional Integrada do Alto Uruguai e das Missoes,187,6864,
+2022,Pontificia Universidade Catolica de Goias,188,6907,
+2022,Universidade Cidade de Sao Paulo,189,6937,
+2022,Universidade Catolica de Pelotas,190,6949,
+2022,"Instituto Federal de Educacao, Ciencia e Tecnologia de Sao Paulo",192,7018,
+2022,Instituto Tecnologico de Aeronautica,193,7049,
+2022,Universidade de Franca,194,7079,
+2022,Universidade Federal do Cariri,195,7083,
+2022,Universidade Paulista,196,7090,
+2022,Universidade Estadual do Piaui,198,7167,
+2022,Universidade Franciscana,199,7295,
+2022,Universidade do Estado de Minas Gerais,200,7309,
+2022,Universidade Federal da Integracao Latino-Americana,201,7331,
+2022,Universidade Positivo,202,7336,
+2022,Centro Universitario da FEI,203,7602,
+2022,Universidade Cruzeiro do Sul,204,7608,
+2022,Escola de Administracao de Empresas de Sao Paulo da Fundacao Getulio Vargas,205,7688,
+2023,Universidade de Sao Paulo,1,50,
+2023,Universidade Estadual Paulista Julio de Mesquita Filho,2,486,
+2023,Universidade Estadual de Campinas,3,600,
+2023,Universidade Federal do Rio de Janeiro,4,710,
+2023,Universidade Federal do Rio Grande do Sul,5,733,
+2023,Universidade Federal de Minas Gerais,6,793,
+2023,Universidade Federal de Santa Catarina,9,1434,
+2023,Universidade Federal do Parana,10,1446,
+2023,Universidade Federal de Sao Paulo,12,1681,
+2023,Universidade de Brasilia,17,2210,
+2023,Universidade Federal de Vicosa,34,2971,
+2023,Universidade Federal de Sao Carlos,35,2980,
+2023,Universidade Federal do Ceara,37,3029,
+2023,Universidade Estadual de Maringa,38,3064,
+2023,Universidade Federal de Goias,39,3109,
+2023,Universidade Federal da Bahia,43,3173,
+2023,Universidade Federal de Santa Maria,44,3183,
+2023,Universidade Federal de Pernambuco,47,3327,
+2023,Universidade Federal do Rio Grande do Norte,47,3327,
+2023,Universidade Federal Fluminense,52,3389,
+2023,Universidade do Estado do Rio de Janeiro,54,3531,
+2023,Universidade Sao Francisco,56,3551,
+2023,Pontificia Universidade Catolica do Rio Grande do Sul,60,3797,
+2023,Universidade Federal do ABC,61,3927,
+2023,Universidade Federal de Pelotas,62,3938,
+2023,Universidade Federal da Paraiba,63,4030,
+2023,Faculdade de Medicina de Sao Jose do Rio Preto,66,4107,
+2023,Universidade Estadual de Londrina,67,4164,
+2023,Universidade Federal do Para,69,4377,
+2023,Universidade Federal de Lavras,70,4379,
+2023,Universidade Federal de Uberlandia,72,4457,
+2023,Pontificia Universidade Catolica do Rio de Janeiro,74,4613,
+2023,Universidade Federal do Espirito Santo,75,4622,
+2023,Universidade Federal Rural de Pernambuco,78,4816,
+2023,Universidade Federal de Juiz de Fora,80,4891,
+2023,Escola Nacional de Saude Publica Sergio Arouca,83,5021,
+2023,Universidade do Estado do Amazonas,88,5160,
+2023,Universidade de Fortaleza,89,5163,
+2023,Universidade Federal de Campina Grande,90,5179,
+2023,Pontificia Universidade Catolica do Parana,93,5219,
+2023,Universidade Tecnologica Federal do Parana,94,5266,
+2023,Universidade Tiradentes,96,5328,
+2023,Universidade Federal de Mato Grosso do Sul,97,5345,
+2023,Universidade Federal de Ciencias da Saude de Porto Alegre,101,5537,
+2023,Universidade do Estado de Santa Catarina,102,5571,
+2023,Universidade Federal do Piaui,103,5577,
+2023,Universidade da Integracao Internacional da Lusofonia Afro-Brasileira,104,5601,
+2023,Fundacao Getulio Vargas,105,5635,
+2023,Universidade do Grande Rio,107,5638,
+2023,Universidade Federal de Sergipe,108,5644,
+2023,Universidade do Vale do Rio dos Sinos,109,5678,
+2023,Universidade Estadual do Norte Fluminense Darcy Ribeiro,111,5752,
+2023,Faculdade de Ciencias Medicas da Santa Casa de Sao Paulo,112,5778,
+2023,Universidade Federal do Tocantins,113,5787,
+2023,Universidade Federal de Ouro Preto,116,5901,
+2023,Pontificia Universidade Catolica de Campinas,117,5925,
+2023,Universidade Federal de Mato Grosso,118,5946,
+2023,Faculdade de Medicina do ABC,120,6022,
+2023,Universidade Federal de Sao Joao del Rei,122,6045,
+2023,"Universidade La Salle, Brazil",124,6054,
+2023,Universidade Federal Rural do Rio de Janeiro,126,6122,
+2023,Universidade de Caxias do Sul,128,6182,
+2023,Universidade do Estado do Para,129,6187,
+2023,Universidade Federal da Grande Dourados,130,6193,
+2023,Universidade Estadual de Montes Claros,131,6212,
+2023,Universidade de Sorocaba,132,6228,
+2023,Universidade Estadual de Ponta Grossa,134,6269,
+2023,Universidade Federal do Rio Grande,135,6286,
+2023,Universidade Federal do Triangulo Mineiro,136,6294,
+2023,Universidade Federal do Vale do Sao Francisco,137,6296,
+2023,Universidade Federal de Alagoas,138,6303,
+2023,Universidade Catolica de Brasilia,140,6329,
+2023,Universidade Feevale,143,6336,
+2023,Universidade Federal do Maranhao,144,6345,
+2023,Universidade Federal do Agreste de Pernambuco,145,6351,
+2023,Universidade Regional do Cariri,146,6402,
+2023,Universidade Federal de Alfenas,146,6402,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio de Janeiro",148,6460,
+2023,Universidade de Pernambuco,149,6471,
+2023,Universidade Federal do Delta do Parnaiba,150,6476,
+2023,Universidade Federal do Amazonas,151,6503,
+2023,Universidade de Passo Fundo,153,6571,
+2023,Universidade Estadual do Ceara,154,6585,
+2023,Universidade Estadual do Vale do Acarau,155,6603,
+2023,Universidade Federal dos Vales do Jequitinhonha e Mucuri,156,6617,
+2023,Universidade do Vale do Taquari,157,6659,
+2023,Universidade Federal do Pampa,158,6665,
+2023,Universidade de Santa Cruz do Sul,159,6685,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia Goiano",160,6724,
+2023,Universidade do Oeste Paulista,161,6755,
+2023,Universidade Federal do Cariri,162,6785,
+2023,Universidade Federal Rural do Semi-Arido,163,6791,
+2023,Universidade Catolica Dom Bosco,164,6810,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia da Paraiba",165,6813,
+2023,Centro Universitario Christus,166,6835,
+2023,Universidade Nove de Julho,167,6842,
+2023,Faculdade Sao Leopoldo Mandic,167,6842,
+2023,Universidade Estadual do Oeste do Parana,169,6894,
+2023,Universidade Vila Velha,170,6899,
+2023,Universidade do Estado de Mato Grosso,171,6903,
+2023,Universidade Estadual de Santa Cruz,172,6904,
+2023,Universidade Federal do Amapa,173,6919,
+2023,Universidade Federal de Roraima,174,6946,
+2023,Universidade Estadual do Centro-Oeste,176,6970,
+2023,Universidade Federal de Jatai,176,6970,
+2023,Universidade Federal do Estado do Rio de Janeiro,178,6978,
+2023,Fundacao Universidade Regional de Blumenau,178,6978,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio Grande do Norte",180,7005,
+2023,Pontificia Universidade Catolica de Sao Paulo,181,7012,
+2023,Universidade Federal de Itajuba,182,7023,
+2023,Centro Federal de Educacao Tecnologica Celso Suckow da Fonseca,183,7025,
+2023,Universidade Federal do Reconcavo da Bahia,184,7034,
+2023,Universidade do Extremo Sul Catarinense,185,7062,
+2023,Universidade do Sul de Santa Catarina,186,7076,
+2023,Universidade Federal do Acre,187,7084,
+2023,Pontificia Universidade Catolica de Minas Gerais,188,7142,
+2023,Escola Bahiana de Medicina e Saude Publica,189,7168,
+2023,Universidade Luterana do Brasil,190,7172,
+2023,Universidade de Santo Amaro,191,7173,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Mato Grosso",191,7173,
+2023,Universidade do Vale do Itajai,193,7198,
+2023,Universidade Estadual de Feira de Santana,194,7223,
+2023,Instituto Tecnologico de Aeronautica,195,7257,
+2023,Universidade Franciscana,196,7298,
+2023,Universidade Federal de Rondonia,197,7302,
+2023,Universidade Estadual da Paraiba,198,7308,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia do Parana",199,7321,
+2023,Universidade Federal da Fronteira Sul,200,7329,
+2023,Centro Federal de Educacao Tecnologica de Minas Gerais,201,7333,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Santa Catarina",202,7335,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara",203,7350,
+2023,Universidade Federal do Oeste do Para,204,7364,
+2023,Universidade Federal do Oeste da Bahia,205,7385,
+2023,Universidade Presbiteriana Mackenzie,206,7420,
+2023,Universidade de Franca,207,7429,
+2023,Universidade Cruzeiro do Sul,207,7429,
+2023,Universidade Federal Rural da Amazonia,207,7429,
+2023,Universidade Estadual do Sudoeste da Bahia,210,7442,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia Espirito Santo",211,7450,
+2023,Universidade Estacio de Sa,212,7491,
+2023,Universidade Norte do Parana,213,7494,
+2023,Instituto Federal Catarinense,214,7503,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Sao Paulo",214,7503,
+2023,Universidade Estadual de Mato Grosso do Sul,216,7520,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia do Para",217,7555,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia do Maranhao",218,7570,
+2023,Universidade Cidade de Sao Paulo,219,7582,
+2023,Universidade da Regiao de Joinville,220,7628,
+2023,Universidade do Estado da Bahia,221,7648,
+2023,Universidade Federal do Sul da Bahia,222,7688,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Piaui",223,7723,
+2023,Escola de Administracao de Empresas de Sao Paulo da Fundacao Getulio Vargas,224,7738,
+2023,Pontificia Universidade Catolica de Goias,225,7740,
+2023,Universidade Paulista,226,7757,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Minas Gerais",227,7834,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Goias",228,7841,
+2023,Universidade Estadual do Piaui,229,7860,
+2023,Universidade Catolica de Pelotas,230,7862,
+2023,Universidade do Estado do Rio Grande do Norte,231,7874,
+2023,Universidade Estadual do Maranhao,232,7924,
+2023,Centro Universitario de Maringa,234,7960,
+2023,Universidade Estadual de Goias,235,7993,
+2023,Universidade Federal de Catalao,236,8042,
+2023,Universidade Federal da Integracao Latino-Americana,237,8052,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia de Pernambuco",238,8108,
+2023,Centro Universitario da FEI,239,8122,
+2023,"Instituto Federal de Educacao, Ciencia e Tecnologia da Bahia",239,8122,
+2023,Universidade Federal do Sul e Sudeste do Para,242,8179,
+2023,Universidade Positivo,243,8183,
+2023,Universidade do Estado de Minas Gerais,244,8214,
+2024,Universidade de Sao Paulo,1,45,
+2024,Universidade Estadual Paulista Julio de Mesquita Filho,2,522,
+2024,Universidade Estadual de Campinas,3,568,
+2024,Universidade Federal de Minas Gerais,4,627,
+2024,Universidade Federal do Rio de Janeiro,5,648,
+2024,Universidade Federal do Rio Grande do Sul,6,718,
+2024,Universidade Federal de Santa Catarina,8,1208,
+2024,Universidade Federal do Parana,9,1298,
+2024,Universidade de Brasilia,12,1634,
+2024,Universidade Federal de Sao Paulo,18,1842,
+2024,Pontificia Universidade Catolica do Rio Grande do Sul,24,2336,
+2024,Universidade Federal de Goias,25,2372,
+2024,Universidade Federal do Ceara,27,2413,
+2024,Universidade Federal da Bahia,28,2485,
+2024,Universidade Federal Fluminense,29,2489,
+2024,Universidade Federal do Rio Grande do Norte,30,2568,
+2024,Universidade Federal de Pernambuco,33,2687,
+2024,Universidade Federal de Sao Carlos,34,2749,
+2024,Universidade Federal de Santa Maria,35,2755,
+2024,Universidade Federal da Paraiba,39,3132,
+2024,Universidade Federal de Pelotas,41,3158,
+2024,Universidade Federal de Vicosa,42,3188,
+2024,Universidade do Estado do Rio de Janeiro,43,3277,
+2024,Escola Nacional de Saude Publica Sergio Arouca,44,3353,
+2024,Universidade Federal do Para,45,3374,
+2024,Universidade Estadual de Maringa,45,3374,
+2024,Instituto Militar de Engenharia,47,3397,
+2024,Universidade Federal de Lavras,48,3481,
+2024,Universidade Federal do Espirito Santo,49,3493,
+2024,Universidade Sao Francisco,50,3586,
+2024,Fundacao Getulio Vargas,51,3596,
+2024,Universidade de Fortaleza,52,3671,
+2024,Pontificia Universidade Catolica do Rio de Janeiro,53,3741,
+2024,Universidade Estadual de Londrina,54,3760,
+2024,Universidade Federal de Uberlandia,57,3896,
+2024,Pontificia Universidade Catolica do Parana,58,4161,
+2024,Universidade Federal de Juiz de Fora,59,4167,
+2024,Universidade Federal de Mato Grosso do Sul,64,4409,
+2024,Universidade Federal do ABC,66,4459,
+2024,Universidade Tecnologica Federal do Parana,70,4585,
+2024,Faculdade de Medicina de Sao Jose do Rio Preto,71,4617,
+2024,Universidade Tiradentes,74,4776,
+2024,Universidade Federal do Piaui,76,4788,
+2024,Universidade do Vale do Rio dos Sinos,77,4808,
+2024,Universidade Federal de Sergipe,79,4949,
+2024,Universidade Federal Rural de Pernambuco,80,4996,
+2024,Universidade da Integracao Internacional da Lusofonia Afro-Brasileira,81,5010,
+2024,Universidade do Estado de Santa Catarina,82,5199,
+2024,Universidade Catolica Dom Bosco,83,5219,
+2024,Universidade Cruzeiro do Sul,84,5222,
+2024,Universidade Federal do Rio Grande,85,5258,
+2024,Escola de Administracao de Empresas de Sao Paulo da Fundacao Getulio Vargas,87,5309,
+2024,Universidade Federal de Ciencias da Saude de Porto Alegre,91,5381,
+2024,Universidade Federal de Campina Grande,93,5437,
+2024,Universidade Federal de Ouro Preto,95,5458,
+2024,Universidade Federal do Tocantins,96,5484,
+2024,Universidade Federal de Jatai,97,5519,
+2024,Universidade do Estado do Amazonas,98,5579,
+2024,Universidade Federal de Mato Grosso,99,5601,
+2024,Universidade de Caxias do Sul,100,5636,
+2024,Universidade Federal de Alagoas,101,5639,
+2024,Pontificia Universidade Catolica de Campinas,102,5647,
+2024,Universidade Catolica de Brasilia,103,5661,
+2024,Universidade Estacio de Sa,103,5661,
+2024,Universidade Federal do Maranhao,107,5755,
+2024,Faculdades Pequeno Principe,108,5789,
+2024,Universidade Federal Rural do Rio de Janeiro,111,5866,
+2024,Universidade de Sorocaba,112,5911,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio Grande do Norte",114,5937,
+2024,Faculdade de Ciencias Medicas da Santa Casa de Sao Paulo,115,6008,
+2024,Universidade do Oeste Paulista,116,6028,
+2024,Universidade Federal de Alfenas,117,6058,
+2024,Universidade do Vale do Taquari,118,6090,
+2024,Universidade Federal da Grande Dourados,118,6090,
+2024,Universidade de Pernambuco,120,6094,
+2024,Universidade Estadual do Ceara,121,6100,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio de Janeiro",123,6149,
+2024,Pontificia Universidade Catolica de Minas Gerais,125,6193,
+2024,Centro Universitario SENAI CIMATEC,127,6239,
+2024,Universidade do Sul de Santa Catarina,128,6305,
+2024,Universidade Federal do Amazonas,129,6309,
+2024,Universidade Estadual de Ponta Grossa,130,6364,
+2024,Universidade Estadual do Norte Fluminense Darcy Ribeiro,131,6404,
+2024,Universidade Federal de Sao Joao del Rei,132,6418,
+2024,Universidade Federal da Integracao Latino-Americana,133,6434,
+2024,Universidade Federal do Pampa,134,6471,
+2024,Universidade Federal do Vale do Sao Francisco,134,6471,
+2024,Universidade Federal dos Vales do Jequitinhonha e Mucuri,137,6482,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara",137,6482,
+2024,"Universidade La Salle, Brazil",139,6494,
+2024,Universidade Estadual de Montes Claros,141,6526,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia de Santa Catarina",143,6583,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia Espirito Santo",144,6609,
+2024,Centro Universitario de Maringa,146,6648,
+2024,Centro Federal de Educacao Tecnologica de Minas Gerais,147,6652,
+2024,Universidade Nove de Julho,147,6652,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia de Piaui",150,6680,
+2024,Universidade Federal do Triangulo Mineiro,151,6694,
+2024,Universidade Estadual do Oeste do Parana,154,6712,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia Goiano",155,6722,
+2024,Universidade Federal do Reconcavo da Bahia,156,6742,
+2024,Universidade Paulista,157,6750,
+2024,Universidade Feevale,158,6772,
+2024,Centro Federal de Educacao Tecnologica Celso Suckow da Fonseca,159,6775,
+2024,Universidade Federal do Estado do Rio de Janeiro,162,6796,
+2024,Pontificia Universidade Catolica de Sao Paulo,164,6826,
+2024,Universidade Federal do Amapa,166,6838,
+2024,Universidade de Santa Cruz do Sul,167,6852,
+2024,Universidade Federal de Itajuba,169,6896,
+2024,Faculdade Sao Leopoldo Mandic,169,6896,
+2024,Universidade do Estado de Mato Grosso,171,6903,
+2024,Universidade Estadual de Feira de Santana,172,6943,
+2024,Universidade Federal do Oeste da Bahia,173,6961,
+2024,Universidade Estadual do Centro-Oeste,173,6961,
+2024,Universidade Federal Rural do Semi-Arido,175,7004,
+2024,Instituto Federal Catarinense,179,7077,
+2024,Universidade Federal da Fronteira Sul,180,7112,
+2024,Universidade de Passo Fundo,181,7113,
+2024,Escola Bahiana de Medicina e Saude Publica,182,7118,
+2024,Universidade do Estado do Para,183,7136,
+2024,Universidade do Vale do Itajai,184,7192,
+2024,Universidade do Extremo Sul Catarinense,185,7197,
+2024,Universidade Federal Rural da Amazonia,186,7201,
+2024,Faculdade de Medicina do ABC,187,7218,
+2024,Universidade Regional do Cariri,188,7252,
+2024,Centro Universitario Christus,189,7267,
+2024,Universidade do Grande Rio,190,7278,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia de Sao Paulo",192,7296,
+2024,Universidade Estadual de Santa Cruz,193,7306,
+2024,Universidade do Estado da Bahia,195,7350,
+2024,Universidade Federal de Rondonia,196,7369,
+2024,Universidade Estadual do Maranhao,197,7376,
+2024,Universidade Luterana do Brasil,198,7396,
+2024,Instituto Tecnologico de Aeronautica,199,7401,
+2024,Universidade Estadual do Sudoeste da Bahia,201,7406,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia do Para",202,7426,
+2024,Fundacao Universidade Regional de Blumenau,205,7484,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia do Maranhao",206,7538,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia da Paraiba",207,7556,
+2024,Universidade Federal do Oeste do Para,208,7572,
+2024,Universidade Estadual de Mato Grosso do Sul,212,7617,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia de Minas Gerais",213,7653,
+2024,Universidade Estadual do Piaui,214,7677,
+2024,Universidade Federal de Roraima,215,7726,
+2024,Universidade de Santo Amaro,216,7747,
+2024,Universidade Estadual da Paraiba,217,7757,
+2024,Universidade Cidade de Sao Paulo,219,7771,
+2024,Universidade do Estado de Minas Gerais,220,7803,
+2024,Universidade Catolica de Pelotas,222,7821,
+2024,Universidade Federal do Acre,223,7843,
+2024,Pontificia Universidade Catolica de Goias,224,7867,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia do Parana",227,7904,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia de Pernambuco",229,7957,
+2024,Universidade da Regiao de Joinville,230,7980,
+2024,Universidade Positivo,231,7987,
+2024,Universidade Estadual de Goias,232,7994,
+2024,Universidade Franciscana,233,8022,
+2024,Universidade Federal do Delta do Parnaiba,236,8130,
+2024,Universidade de Franca,238,8176,
+2024,Universidade Federal do Agreste de Pernambuco,239,8254,
+2024,Universidade do Estado do Rio Grande do Norte,240,8302,
+2024,Universidade Federal do Sul e Sudeste do Para,242,8373,
+2024,Universidade Federal do Cariri,243,8374,
+2024,Centro Universitario da FEI,244,8502,
+2024,Universidade Presbiteriana Mackenzie,245,8566,
+2024,"Instituto Federal de Educacao, Ciencia e Tecnologia de Goias",248,8982,
+2025,Universidade de Sao Paulo,1,61,
+2025,Universidade Estadual de Campinas,2,658,
+2025,Universidade Estadual Paulista Julio de Mesquita Filho,3,722,
+2025,Universidade Federal de Minas Gerais,4,843,
+2025,Universidade Federal do Rio de Janeiro,5,869,
+2025,Universidade Federal do Rio Grande do Sul,6,937,
+2025,Universidade Federal de Santa Catarina,10,1557,
+2025,Universidade Federal do Parana,14,1752,
+2025,Universidade de Brasilia,20,2010,
+2025,Universidade Federal de Sao Paulo,23,2171,
+2025,Universidade Federal de Goias,41,2813,
+2025,Universidade Federal do Ceara,43,2874,
+2025,Universidade Federal da Bahia,45,2925,
+2025,Universidade Federal de Santa Maria,47,2965,
+2025,Universidade Federal Fluminense,48,2970,
+2025,Pontificia Universidade Catolica do Rio Grande do Sul,50,3051,
+2025,Universidade Federal de Sao Carlos,54,3279,
+2025,Pontificia Universidade Catolica do Rio de Janeiro,55,3309,
+2025,Universidade Federal do Rio Grande do Norte,56,3319,
+2025,Universidade Federal de Pernambuco,58,3428,
+2025,Fundacao Getulio Vargas,60,3536,
+2025,Universidade Federal do Para,62,3691,
+2025,Escola Nacional de Saude Publica Sergio Arouca,63,3721,
+2025,Universidade Federal da Paraiba,64,3758,
+2025,Universidade Federal do Espirito Santo,65,3763,
+2025,Universidade Federal de Vicosa,66,3775,
+2025,Instituto Militar de Engenharia,67,3780,
+2025,Universidade do Estado do Rio de Janeiro,68,3810,
+2025,Universidade Federal de Lavras,72,4263,
+2025,Universidade Federal de Pelotas,74,4284,
+2025,Universidade Federal de Uberlandia,76,4361,
+2025,Universidade de Fortaleza,77,4365,
+2025,Escola de Administracao de Empresas de Sao Paulo da Fundacao Getulio Vargas,80,4566,
+2025,Universidade Estadual de Londrina,81,4577,
+2025,Universidade Estadual de Maringa,82,4590,
+2025,Universidade Sao Francisco,84,4663,
+2025,Universidade Federal do ABC,87,4707,
+2025,Universidade Federal de Juiz de Fora,88,4733,
+2025,Universidade Federal de Mato Grosso do Sul,89,4777,
+2025,Universidade Tecnologica Federal do Parana,94,5062,
+2025,Universidade do Vale do Rio dos Sinos,95,5070,
+2025,Pontificia Universidade Catolica do Parana,95,5070,
+2025,Universidade Federal do Piaui,98,5175,
+2025,Universidade da Integracao Internacional da Lusofonia Afro-Brasileira,99,5202,
+2025,Universidade Tiradentes,100,5279,
+2025,Universidade Estadual do Norte Fluminense Darcy Ribeiro,101,5343,
+2025,Universidade Federal de Jatai,102,5392,
+2025,Universidade Federal de Sergipe,105,5579,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia Espirito Santo",107,5632,
+2025,Faculdade de Medicina de Sao Jose do Rio Preto,108,5652,
+2025,Universidade Catolica de Brasilia,109,5677,
+2025,Universidade Nove de Julho,111,5723,
+2025,Universidade do Estado de Santa Catarina,112,5972,
+2025,Universidade Federal Rural de Pernambuco,113,6017,
+2025,Universidade Federal do Maranhao,114,6054,
+2025,Universidade de Caxias do Sul,115,6092,
+2025,Universidade Federal Rural do Rio de Janeiro,116,6106,
+2025,Universidade Federal de Alagoas,117,6141,
+2025,Universidade Federal de Campina Grande,118,6166,
+2025,Universidade Presbiteriana Mackenzie,119,6202,
+2025,Universidade Federal do Amazonas,120,6314,
+2025,Universidade Federal de Ouro Preto,121,6321,
+2025,Universidade Estacio de Sa,122,6338,
+2025,Universidade Federal do Rio Grande,123,6477,
+2025,Universidade Federal de Mato Grosso,124,6497,
+2025,Pontificia Universidade Catolica de Sao Paulo,125,6527,
+2025,Universidade Federal do Tocantins,126,6544,
+2025,Universidade do Sul de Santa Catarina,127,6569,
+2025,Universidade Estadual de Ponta Grossa,129,6594,
+2025,Pontificia Universidade Catolica de Campinas,130,6614,
+2025,Centro Federal de Educacao Tecnologica de Minas Gerais,131,6645,
+2025,Faculdade de Ciencias Medicas da Santa Casa de Sao Paulo,132,6678,
+2025,Universidade Estadual do Ceara,133,6680,
+2025,Centro Universitario SENAI CIMATEC,134,6692,
+2025,Centro Universitario de Maringa,135,6753,
+2025,Universidade Federal de Sao Joao del Rei,137,6800,
+2025,Universidade Federal de Ciencias da Saude de Porto Alegre,138,6812,
+2025,Universidade Estadual do Oeste do Parana,139,6827,
+2025,Universidade de Pernambuco,141,6900,
+2025,Universidade Estadual de Santa Cruz,142,6930,
+2025,Universidade do Extremo Sul Catarinense,144,6935,
+2025,Universidade Federal de Alfenas,145,6943,
+2025,Universidade Federal do Pampa,146,6947,
+2025,Universidade Federal do Amapa,147,6955,
+2025,Universidade do Estado do Amazonas,148,7008,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia de Santa Catarina",150,7020,
+2025,Universidade Estadual de Feira de Santana,151,7025,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio Grande do Norte",152,7093,
+2025,Universidade Estadual de Montes Claros,153,7102,
+2025,Universidade Paulista,154,7106,
+2025,Universidade Federal Rural da Amazonia,155,7110,
+2025,Universidade Estadual do Centro-Oeste,155,7110,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara",155,7110,
+2025,Universidade Federal dos Vales do Jequitinhonha e Mucuri,158,7156,
+2025,Universidade Federal da Grande Dourados,159,7197,
+2025,Universidade Federal da Integracao Latino-Americana,159,7197,
+2025,Universidade Federal do Vale do Sao Francisco,161,7209,
+2025,Universidade do Estado do Para,163,7266,
+2025,Universidade Federal da Fronteira Sul,164,7274,
+2025,Universidade Federal do Delta do Parnaiba,165,7283,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia de Sao Paulo",166,7288,
+2025,Universidade Federal do Reconcavo da Bahia,167,7306,
+2025,Pontificia Universidade Catolica de Minas Gerais,168,7357,
+2025,Universidade Federal do Triangulo Mineiro,169,7361,
+2025,Universidade do Oeste Paulista,171,7448,
+2025,Centro Universitario Christus,173,7466,
+2025,Centro Federal de Educacao Tecnologica Celso Suckow da Fonseca,173,7466,
+2025,Universidade Federal do Estado do Rio de Janeiro,175,7508,
+2025,"Universidade La Salle, Brazil",176,7537,
+2025,Instituto de Ensino e Pesquisa,177,7554,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia do Parana",178,7585,
+2025,Instituto Tecnologico de Aeronautica,179,7602,
+2025,Instituto Federal Catarinense,180,7650,
+2025,Universidade Estadual do Sudoeste da Bahia,180,7650,
+2025,Universidade de Santa Cruz do Sul,182,7658,
+2025,Faculdade de Medicina do ABC,183,7664,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia Goiano",184,7670,
+2025,Faculdade de Ciencias Medicas de Minas Gerais,185,7679,
+2025,Universidade de Passo Fundo,185,7679,
+2025,Fundacao Universidade Regional de Blumenau,187,7708,
+2025,Universidade Federal de Rondonia,188,7712,
+2025,Pontificia Universidade Catolica de Goias,188,7712,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio de Janeiro",190,7752,
+2025,Universidade do Estado de Mato Grosso,192,7767,
+2025,Universidade de Ribeirao Preto,193,7827,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia de Piaui",195,7845,
+2025,Universidade do Estado da Bahia,196,7865,
+2025,Universidade do Vale do Taquari,197,7869,
+2025,Escola Bahiana de Medicina e Saude Publica,198,7879,
+2025,Universidade Federal Rural do Semi-Arido,199,7899,
+2025,Universidade Estadual do Maranhao,200,7914,
+2025,Universidade Estadual da Paraiba,201,7960,
+2025,Universidade Federal do Oeste da Bahia,202,7983,
+2025,Faculdade Sao Leopoldo Mandic,203,8004,
+2025,Universidade Federal do Oeste do Para,204,8035,
+2025,Universidade Federal de Itajuba,205,8069,
+2025,Universidade do Estado de Minas Gerais,206,8071,
+2025,Universidade Regional do Cariri,208,8154,
+2025,Universidade de Santo Amaro,208,8154,
+2025,Universidade Federal do Acre,210,8200,
+2025,Universidade Estadual de Goias,212,8227,
+2025,Universidade Luterana do Brasil,213,8234,
+2025,Universidade Feevale,214,8290,
+2025,Universidade Estadual de Mato Grosso do Sul,215,8310,
+2025,Universidade Estadual do Piaui,216,8313,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia da Paraiba",217,8335,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia do Para",220,8375,
+2025,Universidade do Vale do Itajai,221,8381,
+2025,Universidade Federal de Roraima,222,8399,
+2025,Universidade Catolica de Pelotas,223,8424,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia de Minas Gerais",225,8520,
+2025,Universidade Regional Integrada do Alto Uruguai e das Missoes,226,8565,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia do Maranhao",227,8601,
+2025,Universidade Federal do Sul da Bahia,228,8629,
+2025,Universidade da Regiao de Joinville,229,8648,
+2025,Universidade Positivo,231,8744,
+2025,Universidade Evangelica de Goias,232,8800,
+2025,Universidade Federal do Sul e Sudeste do Para,233,8821,
+2025,Universidade Federal do Cariri,234,8829,
+2025,Universidade do Estado do Rio Grande do Norte,237,8985,
+2025,Centro Universitario da FEI,238,8993,
+2025,Universidade Estadual do Vale do Acarau,239,9303,
+2025,Universidade Federal do Agreste de Pernambuco,240,9310,
+2025,"Instituto Federal de Educacao, Ciencia e Tecnologia de Goias",244,9638,
+2025,Centro de Educacao em Saude Abram Szajman,245,9697,
+2026,Universidade de Sao Paulo,1,99,1
+2026,Universidade Federal de Minas Gerais,2,739,1
+2026,Universidade Estadual de Campinas,3,890,1
+2026,Universidade Estadual Paulista Julio de Mesquita Filho,4,930,1
+2026,Universidade Federal do Rio de Janeiro,5,1001,1
+2026,Universidade Federal do Rio Grande do Sul,7,1267,1
+2026,Universidade Federal de Santa Catarina,16,1945,1
+2026,Universidade Federal do Parana,24,2122,1
+2026,Universidade de Brasilia,37,2574,1
+2026,Universidade Federal de Sao Paulo,38,2777,1
+2026,Universidade Federal do Rio Grande do Norte,44,3333,1
+2026,Universidade do Estado do Rio de Janeiro,46,3664,1
+2026,Fundacao Getulio Vargas,47,3697,1
+2026,Universidade Federal da Bahia,49,3717,1
+2026,Universidade Federal Fluminense,52,3787,1
+2026,Universidade Federal do Ceara,54,3819,1
+2026,Universidade Federal de Goias,55,3850,1
+2026,Universidade Federal de Pernambuco,56,3890,1
+2026,Universidade Federal de Sao Carlos,58,3976,1
+2026,Universidade Federal do Espirito Santo,59,4026,1
+2026,Universidade Federal de Santa Maria,60,4080,1
+2026,Escola Nacional de Saude Publica Sergio Arouca,62,4182,1
+2026,Pontificia Universidade Catolica do Rio Grande do Sul,65,4296,1
+2026,Universidade Federal de Vicosa,67,4323,1
+2026,Universidade Federal do Para,68,4327,1
+2026,Escola de Administracao de Empresas de Sao Paulo da Fundacao Getulio Vargas,71,4607,1
+2026,Instituto Militar de Engenharia,72,4774,1
+2026,Universidade Federal Rural de Pernambuco,74,4960,1
+2026,Universidade Federal da Paraiba,76,5068,1
+2026,Universidade Federal de Mato Grosso do Sul,77,5107,2
+2026,Pontificia Universidade Catolica do Rio de Janeiro,78,5111,1
+2026,Universidade Federal de Juiz de Fora,79,5175,2
+2026,Pontificia Universidade Catolica do Parana,81,5220,1
+2026,Universidade Federal de Lavras,81,5220,2
+2026,Universidade Estadual de Maringa,85,5236,1
+2026,Universidade Federal de Pelotas,86,5242,2
+2026,Universidade Federal de Uberlandia,89,5323,2
+2026,Universidade Federal do ABC,90,5378,1
+2026,Universidade Estadual de Londrina,91,5389,2
+2026,Universidade Sao Francisco,92,5573,1
+2026,Universidade de Fortaleza,94,5837,1
+2026,Universidade Tecnologica Federal do Parana,95,5842,1
+2026,Faculdades Pequeno Principe,96,5969,1
+2026,Universidade Tiradentes,98,6240,1
+2026,Universidade Federal do Piaui,100,6292,2
+2026,Universidade do Vale do Rio dos Sinos,101,6366,2
+2026,Universidade Federal de Sergipe,105,6434,2
+2026,Universidade do Estado de Santa Catarina,107,6535,2
+2026,Universidade da Integracao Internacional da Lusofonia Afro-Brasileira,109,6586,2
+2026,Faculdade de Medicina de Sao Jose do Rio Preto,110,6672,1
+2026,Universidade Nove de Julho,111,6686,2
+2026,Universidade Federal do Maranhao,112,6735,2
+2026,Universidade do Extremo Sul Catarinense,113,6771,1
+2026,Universidade Catolica de Brasilia,114,6795,1
+2026,Universidade Estacio de Sa,115,6810,1
+2026,Universidade Federal de Campina Grande,117,6842,2
+2026,Universidade de Caxias do Sul,118,6864,1
+2026,Centro Universitario de Maringa,119,6998,1
+2026,Universidade Federal do Amazonas,121,7020,2
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia de Santa Catarina",122,7032,2
+2026,Universidade Federal de Alagoas,123,7077,2
+2026,Universidade de Marilia,124,7169,1
+2026,Universidade de Pernambuco,125,7176,2
+2026,Universidade Federal de Mato Grosso,127,7203,2
+2026,Universidade Federal Rural do Rio de Janeiro,128,7214,2
+2026,Universidade Federal de Ouro Preto,128,7214,2
+2026,Universidade Federal da Grande Dourados,130,7285,2
+2026,Pontificia Universidade Catolica de Sao Paulo,131,7333,2
+2026,Pontificia Universidade Catolica de Campinas,133,7358,2
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia da Bahia",135,7380,2
+2026,Universidade Paulista,136,7383,2
+2026,Universidade Estadual do Ceara,137,7396,2
+2026,Universidade Estadual do Oeste do Parana,138,7401,2
+2026,Centro Federal de Educacao Tecnologica de Minas Gerais,139,7429,1
+2026,Universidade Federal do Estado do Rio de Janeiro,140,7441,2
+2026,Universidade Presbiteriana Mackenzie,141,7448,2
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio Grande do Norte",142,7455,2
+2026,Universidade Federal de Sao Joao del Rei,143,7475,2
+2026,Universidade Estadual do Centro-Oeste,145,7562,3
+2026,Faculdade de Ciencias Medicas da Santa Casa de Sao Paulo,147,7583,2
+2026,Universidade Estadual do Maranhao,148,7593,2
+2026,Universidade do Estado do Para,149,7626,2
+2026,Universidade Federal do Amapa,150,7672,2
+2026,Universidade Federal de Jatai,150,7672,2
+2026,Universidade do Estado do Amazonas,152,7699,2
+2026,Instituto Federal Catarinense,152,7699,3
+2026,Universidade Estadual de Feira de Santana,154,7718,2
+2026,Universidade Federal Rural da Amazonia,155,7719,3
+2026,Universidade Federal de Alfenas,156,7732,2
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia Goiano",157,7735,2
+2026,Universidade Federal do Tocantins,158,7756,3
+2026,Universidade Federal do Rio Grande,160,7817,2
+2026,"Universidade La Salle, Brazil",160,7817,2
+2026,Universidade Estadual de Ponta Grossa,162,7863,3
+2026,Universidade Estadual de Santa Cruz,163,7884,3
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia do Ceara",164,7891,1
+2026,Faculdade de Medicina do ABC,165,7909,2
+2026,Universidade Federal de Ciencias da Saude de Porto Alegre,166,7921,2
+2026,Universidade Federal do Vale do Sao Francisco,167,7992,2
+2026,Universidade do Sul de Santa Catarina,168,7996,2
+2026,Universidade Federal do Triangulo Mineiro,170,8096,3
+2026,Universidade do Oeste Paulista,172,8136,3
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia do Parana",173,8145,1
+2026,Universidade Federal dos Vales do Jequitinhonha e Mucuri,175,8177,3
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia do Rio de Janeiro",176,8184,1
+2026,Universidade Federal da Integracao Latino-Americana,177,8208,2
+2026,Universidade Federal de Rondonia,178,8220,2
+2026,Pontificia Universidade Catolica de Minas Gerais,179,8271,2
+2026,Universidade Franciscana,180,8283,2
+2026,Centro Federal de Educacao Tecnologica Celso Suckow da Fonseca,180,8283,3
+2026,Universidade de Passo Fundo,182,8298,3
+2026,Universidade do Estado da Bahia,183,8313,3
+2026,Universidade Federal do Oeste da Bahia,184,8332,1
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia da Paraiba",185,8341,2
+2026,Universidade Federal de Roraima,185,8341,3
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia de Sao Paulo",187,8347,2
+2026,Universidade Federal do Oeste do Para,189,8357,2
+2026,Universidade Estadual da Paraiba,190,8362,2
+2026,Universidade de Santa Cruz do Sul,191,8401,3
+2026,Universidade Federal do Reconcavo da Bahia,191,8401,3
+2026,Pontificia Universidade Catolica de Goias,193,8415,2
+2026,Faculdade Sao Leopoldo Mandic,194,8426,2
+2026,Universidade Estadual do Sudoeste da Bahia,195,8455,3
+2026,Universidade do Estado de Mato Grosso,196,8472,2
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia do Para",197,8476,3
+2026,Universidade Federal do Pampa,200,8516,3
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia Espirito Santo",201,8521,2
+2026,Universidade Federal da Fronteira Sul,202,8562,3
+2026,Centro Universitario SENAI CIMATEC,203,8576,1
+2026,Universidade Estadual do Norte Fluminense Darcy Ribeiro,204,8582,3
+2026,Universidade do Vale do Itajai,205,8599,3
+2026,Universidade Regional do Cariri,206,8613,3
+2026,Universidade Estadual de Montes Claros,208,8636,3
+2026,Universidade Federal do Delta do Parnaiba,209,8640,2
+2026,Faculdade de Ciencias Medicas de Minas Gerais,211,8718,2
+2026,Universidade Federal Rural do Semi-Arido,212,8786,3
+2026,Universidade Regional do Noroeste do Estado do Rio Grande do Sul,213,8808,2
+2026,Fundacao Universidade Regional de Blumenau,214,8831,3
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia de Piaui",214,8831,2
+2026,Universidade do Estado de Minas Gerais,216,8847,2
+2026,Universidade Estadual de Mato Grosso do Sul,217,8877,3
+2026,Centro Universitario Christus,218,8883,1
+2026,Universidade Federal do Sul da Bahia,219,8919,3
+2026,Universidade Federal de Itajuba,220,8937,3
+2026,Instituto Tecnologico de Aeronautica,221,8976,2
+2026,Universidade Federal do Acre,222,9010,2
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia de Goias",223,9021,3
+2026,Universidade do Vale do Taquari,225,9109,3
+2026,Escola Bahiana de Medicina e Saude Publica,226,9114,3
+2026,Universidade de Santo Amaro,227,9203,3
+2026,Universidade Positivo,228,9292,3
+2026,Universidade Estadual de Goias,229,9323,3
+2026,Universidade da Regiao de Joinville,230,9341,3
+2026,Universidade Catolica de Pelotas,231,9371,2
+2026,Instituto de Ensino e Pesquisa,232,9402,3
+2026,Universidade Cidade de Sao Paulo,233,9412,3
+2026,Universidade de Ribeirao Preto,234,9445,4
+2026,Universidade Estadual do Piaui,235,9558,3
+2026,Universidade Federal do Cariri,237,9581,4
+2026,Universidade Feevale,238,9586,4
+2026,Universidade Regional Integrada do Alto Uruguai e das Missoes,239,9677,3
+2026,Universidade Tuiuti do Parana,240,9694,4
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia do Maranhao",241,9797,3
+2026,Universidade Evangelica de Goias,243,9803,3
+2026,Universidade Federal do Sul e Sudeste do Para,244,9811,4
+2026,Universidade Federal do Agreste de Pernambuco,247,9872,4
+2026,Universidade Estadual do Vale do Acarau,248,9879,4
+2026,"Instituto Federal de Educacao, Ciencia e Tecnologia de Minas Gerais",250,10039,3
+2026,Centro Universitario da FEI,251,10061,4
+2026,Universidade do Estado do Rio Grande do Norte,252,10067,4
+2026,Centro de Educacao em Saude Abram Szajman,256,10790,2

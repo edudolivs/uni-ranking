@@ -251,6 +251,7 @@ def ler_qs():
             "rank_raw": r["rank_raw"], "rank_min": num(r["rank_min"]), "score_geral": num(r["score_geral"]),
             "ar_score": num(r["ar_score"]), "er_score": num(r["er_score"]),
             "fsr_score": num(r["fsr_score"]), "cpf_score": num(r["cpf_score"]),
+            **{c: num(r.get(c)) for c in ("ifr_score", "isr_score", "irn_score", "eo_score", "sus_score")},
         })
     return regs
 
@@ -399,6 +400,26 @@ def correl_par(serie_a, serie_b, rotulo, usar_ano_de="a"):
     return out
 
 
+# colunas de indicador de cada ranking comparadas com a posição geral no gráfico de "maior e menor correlação"
+COLUNAS_QS = [("ar_score", "Reputação acadêmica"), ("er_score", "Reputação com empregadores"),
+              ("fsr_score", "Proporção docente/aluno"), ("cpf_score", "Citações por docente"),
+              ("ifr_score", "Docentes internacionais"), ("isr_score", "Alunos internacionais"),
+              ("irn_score", "Rede internacional de pesquisa"), ("eo_score", "Empregabilidade"),
+              ("sus_score", "Sustentabilidade")]
+COLUNAS_RUF = [("nota_ensino", "Ensino"), ("nota_pesquisa", "Pesquisa"), ("nota_mercado", "Mercado"),
+               ("nota_inovacao", "Inovação"), ("nota_internacionalizacao", "Internacionalização")]
+
+
+def correl_colunas(registros, campo_rank, colunas, ranking):
+    """Spearman de cada coluna de indicador com a posição geral do ranking, ano a ano."""
+    s_rank = serie_por_ano(registros, "ano", "nome", campo_rank)
+    out = []
+    for campo, nome in colunas:
+        for it in correl_par(s_rank, serie_por_ano(registros, "ano", "nome", campo), f"{ranking}: {nome}"):
+            out.append({**it, "ranking": ranking, "coluna": nome})
+    return out
+
+
 def correlacionar(arwu_br, leiden, qs, scimago, igc, cpc_ies, enade_ies, ruf):
     """Spearman com o que está disponível hoje. 'posição'/'ranking' usa número menor = melhor;
     'nota'/'score'/indicador usa número maior = melhor -- por isso o sinal de rho indica a direção
@@ -415,11 +436,8 @@ def correlacionar(arwu_br, leiden, qs, scimago, igc, cpc_ies, enade_ies, ruf):
     s_cpc = serie_por_ano(cpc_ies, "ano", "nome", "media", filtro=lambda r: r["org"] == "Universidade")
     s_enade = serie_por_ano(enade_ies, "ano", "nome", "media", filtro=lambda r: r["org"] == "Universidade")
     s_ruf_rank = serie_por_ano(ruf, "ano", "nome", "ranking")
-    s_ruf_ensino = serie_por_ano(ruf, "ano", "nome", "nota_ensino")
-    s_ruf_pesquisa = serie_por_ano(ruf, "ano", "nome", "nota_pesquisa")
-    s_ruf_mercado = serie_por_ano(ruf, "ano", "nome", "nota_mercado")
 
-    resultado = {"estabilidade": [], "a_pesquisa_internacional": [], "b_ensino_mercado_brasileiro": [], "entre_rankings": []}
+    resultado = {"estabilidade": [], "a_pesquisa_internacional": [], "inep_x_internacional": [], "colunas_qs_ruf": []}
 
     for serie, rot in [(s_arwu, "ARWU: posição ano a ano"), (s_qs_rank, "QS: posição ano a ano"),
                         (s_scimago, "SCImago: posição global ano a ano"), (s_ruf_rank, "RUF: posição ano a ano")]:
@@ -430,16 +448,14 @@ def correlacionar(arwu_br, leiden, qs, scimago, igc, cpc_ies, enade_ies, ruf):
     resultado["a_pesquisa_internacional"] += correl_par(s_arwu, s_leiden_pp, "ARWU × Leiden: posição × % top 10%")
     resultado["a_pesquisa_internacional"] += correl_par(s_arwu, s_leiden_p, "ARWU × Leiden: posição × publicações")
 
-    resultado["b_ensino_mercado_brasileiro"] += correl_par(s_ruf_rank, s_ruf_ensino, "RUF: posição × nota de ensino")
-    resultado["b_ensino_mercado_brasileiro"] += correl_par(s_ruf_rank, s_ruf_mercado, "RUF: posição × nota de mercado")
-    resultado["b_ensino_mercado_brasileiro"] += correl_par(s_ruf_rank, s_ruf_pesquisa, "RUF: posição × nota de pesquisa")
+    # nota média da universidade nos índices do Inep × posição nos rankings internacionais, mesmo ano
+    for s_pos, ranking in [(s_arwu, "ARWU"), (s_qs_rank, "QS"), (s_scimago, "SCImago")]:
+        for s_ind, indice in [(s_igc, "IGC"), (s_cpc, "CPC"), (s_enade, "Enade")]:
+            for it in correl_par(s_pos, s_ind, f"{indice} × {ranking}"):
+                resultado["inep_x_internacional"].append({**it, "ranking": ranking, "indice": indice})
 
-    resultado["entre_rankings"] += correl_par(s_arwu, s_qs_rank, "ARWU × QS (posição, mesma edição)")
-    resultado["entre_rankings"] += correl_par(s_arwu, s_scimago, "ARWU × SCImago (posição, mesma edição)")
-    resultado["entre_rankings"] += correl_par(s_qs_rank, s_scimago, "QS × SCImago (posição, mesma edição)")
-    resultado["entre_rankings"] += correl_par(s_igc, s_ruf_rank, "IGC × RUF (nota IGC × posição RUF)")
-    resultado["entre_rankings"] += correl_par(s_igc, s_cpc, "IGC × CPC (notas, mesmo ano)")
-    resultado["entre_rankings"] += correl_par(s_igc, s_enade, "IGC × Enade (notas, mesmo ano)")
+    resultado["colunas_qs_ruf"] += correl_colunas(qs, "rank_min", COLUNAS_QS, "QS")
+    resultado["colunas_qs_ruf"] += correl_colunas(ruf, "ranking", COLUNAS_RUF, "RUF")
 
     return resultado
 

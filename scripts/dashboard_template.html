@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rankings Universitários: visão inicial</title>
+<title>Rankings universitários: painel interativo</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
 <style>
 :root {
@@ -79,57 +79,79 @@ tr.destaque td { font-weight: 600; box-shadow: inset 3px 0 0 var(--s2); }
 footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
 #tip { position: fixed; pointer-events: none; opacity: 0; background: var(--surface); color: var(--ink); border: 1px solid var(--axis); border-radius: 6px; padding: 8px 10px; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.18); z-index: 10; max-width: 280px; }
 @media (max-width: 560px) { .grade { grid-template-columns: 1fr; } }
-@media print { .filtros { display: none; } body { background: #fff; } }
+
+/* Navegação por painéis: apenas a visão escolhida aparece. */
+[hidden] { display: none !important; }
+.navegacao { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; padding: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.navegacao button { flex: 0 1 auto; min-height: 42px; padding: 8px 15px; font: inherit; font-size: 13px; font-weight: 600; color: var(--ink-2); background: var(--page); border: 1px solid var(--axis); border-radius: 6px; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+.navegacao button:hover { border-color: var(--s1); color: var(--ink); }
+.navegacao button[aria-pressed="true"] { background: var(--s1); color: #fff; border-color: var(--s1); }
+.navegacao button[aria-pressed="true"]:hover { color: #fff; }
+.navegacao button:focus-visible { outline: 3px solid var(--s2); outline-offset: 2px; }
+.resumo-visao { color: var(--ink-2); font-size: 13px; margin: 4px 4px var(--gap); min-height: 1.45em; }
+#grade-graficos { align-items: start; }
+@media (max-width: 1100px) { .grade { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .navegacao button { flex: 1 1 calc(50% - 8px); } .filtros label { flex: 1 1 180px; min-width: 0; } .filtros select { width: 100%; min-width: 0; } }
+@media print { .filtros, .navegacao { display: none !important; } body { background: #fff; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <h1>Rankings universitários: visão inicial dos dados</h1>
-    <p>Primeira leitura das bases baixadas para o projeto sobre critérios de avaliação em rankings brasileiros e internacionais. Os números abaixo são contagens e distribuições; não há aqui nenhuma conclusão sobre quais critérios pesam mais.</p>
+    <h1>Rankings universitários: painel interativo</h1>
+    <p>Explore a cobertura, a pesquisa científica, os indicadores de ensino e o cruzamento entre instituições. Selecione um painel para escolher as visualizações. Estes resultados são descritivos e não permitem inferir causalidade.</p>
   </header>
 
   <div class="aviso"><b>Dados parciais.</b> Ainda faltam QS, SCImago e RUF. Hoje há ARWU (2021–2026), Leiden Ranking (2022–2025, só universidades do Brasil), IGC (2019 e 2021–2023) e Conceito Enade por curso (2021–2023). As séries têm anos diferentes entre si.</div>
 
-  <section class="filtros" aria-label="Filtros">
-    <label>Edição do Leiden <select id="f-ed"></select></label>
-    <label>Métrica do Leiden <select id="f-met">
+  <nav class="navegacao" aria-label="Navegação entre painéis">
+    <button type="button" data-aba="geral" aria-pressed="true">Visão geral</button>
+    <button type="button" data-aba="pesquisa" aria-pressed="false">Pesquisa e impacto</button>
+    <button type="button" data-aba="ensino" aria-pressed="false">Ensino e avaliação</button>
+    <button type="button" data-aba="comparacao" aria-pressed="false">Comparar universidades</button>
+    <button type="button" data-aba="metodologia" aria-pressed="false">Fontes e limites</button>
+  </nav>
+  <p id="resumo-visao" class="resumo-visao" aria-live="polite">Cobertura das bases disponíveis e evolução das universidades brasileiras nos rankings.</p>
+
+  <section class="filtros" id="filtros-painel" aria-label="Filtros contextuais">
+    <label data-filtro="pesquisa">Edição do Leiden <select id="f-ed"></select></label>
+    <label data-filtro="pesquisa">Métrica do Leiden <select id="f-met">
       <option value="PP_top10">% de artigos entre os 10% mais citados</option>
       <option value="P">Número de publicações (P)</option>
       <option value="MNCS">Citações normalizadas (MNCS)</option>
     </select></label>
-    <label>Categoria administrativa (IGC) <select id="f-cat"></select></label>
-    <span class="dica">Edição e métrica valem para os gráficos “Leiden” e para a dispersão. A categoria vale para o gráfico do IGC.</span>
+    <label data-filtro="ensino">Categoria administrativa (IGC) <select id="f-cat"></select></label>
+    <span class="dica" id="dica-filtros">Selecione os filtros pertinentes à visualização.</span>
   </section>
 
-  <section class="kpis" id="kpis"></section>
+  <section class="kpis" id="kpis" data-visao="geral"></section>
 
-  <section class="grade">
-    <div class="card">
+  <section class="grade" id="grade-graficos">
+    <div class="card" data-visao="geral">
       <h2>Universidades brasileiras em cada ranking</h2>
       <p class="leg">Quantas universidades do Brasil aparecem em cada edição (ARWU: 1.000 por edição; Leiden: apenas as que passam do corte de publicações).</p>
       <div class="caixa" style="height:300px"><canvas id="c-contagem" role="img" aria-label="Linhas com o número de universidades brasileiras por edição no ARWU e no Leiden"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-contagem"></div></details>
     </div>
-    <div class="card">
+    <div class="card" data-visao="pesquisa">
       <h2 id="t-leiden">Leiden: universidades brasileiras</h2>
       <p class="leg" id="l-leiden"></p>
       <div class="caixa" style="height:420px"><canvas id="c-leiden" role="img" aria-label="Barras horizontais com a métrica escolhida do Leiden para as universidades brasileiras"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-leiden"></div></details>
     </div>
-    <div class="card">
+    <div class="card" data-visao="ensino">
       <h2>IGC: faixas por ano</h2>
       <p class="leg" id="l-igc"></p>
       <div class="caixa" style="height:340px"><canvas id="c-igc" role="img" aria-label="Barras empilhadas com a quantidade de instituições por faixa do IGC em cada ano"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-igc"></div></details>
     </div>
-    <div class="card">
+    <div class="card" data-visao="pesquisa">
       <h2 id="t-disp">Leiden: volume × impacto</h2>
       <p class="leg" id="l-disp"></p>
       <div class="caixa" style="height:340px"><canvas id="c-disp" role="img" aria-label="Dispersão com publicações no eixo horizontal e percentual de artigos muito citados no eixo vertical"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-disp"></div></details>
     </div>
-    <div class="card">
+    <div class="card" data-visao="ensino">
       <h2>Enade: cursos avaliados por categoria administrativa</h2>
       <p class="leg">O Enade avalia áreas diferentes em cada ano; não leia a diferença entre anos como crescimento.</p>
       <div class="caixa" style="height:400px"><canvas id="c-enade" role="img" aria-label="Barras horizontais agrupadas com o número de cursos avaliados no Enade por categoria e ano"></canvas></div>
@@ -137,7 +159,7 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
     </div>
   </section>
 
-  <section class="card">
+  <section class="card" data-visao="comparacao">
     <h2>Universidades brasileiras em mais de uma base (cruzamento preliminar)</h2>
     <p class="leg" id="l-cruz"></p>
     <div class="filtros" style="border:0;padding:0;margin-bottom:10px">
@@ -148,12 +170,15 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
     <div class="pager"><span id="pg-info"></span><span><button id="pg-ant">Anterior</button> <button id="pg-prox">Próxima</button></span></div>
   </section>
 
-  <ul class="notas">
+  <section class="card" data-visao="metodologia" aria-label="Fontes e limitações">
+    <h2>Fontes e limites de interpretação</h2>
+    <ul class="notas">
     <li><b>Como o cruzamento é feito:</b> os nomes são normalizados (sem acentos, sem “universidade/university de”, com federal/estadual preservados) e unidos por igualdade. Há um único alias manual (Sao Paulo State University = Unesp). Instituições com nome muito diferente podem ficar de fora.</li>
     <li><b>USP, Unicamp, Unesp e UERJ</b> aparecem no ARWU e no Leiden, mas não nos arquivos do IGC e do Enade usados aqui, provavelmente por pertencerem a sistemas estaduais de ensino. Essa explicação é uma hipótese, não foi verificada.</li>
     <li><b>ARWU</b> só publica posição exata até a 100ª; depois vêm faixas (ex.: 501–600). Os indicadores do ARWU vêm da API como códigos numéricos sem rótulo e não foram usados.</li>
     <li><b>Leiden:</b> universidades do Brasil, área “All sciences”, contagem inteira, período mais recente de cada edição. “% top 10%” é a proporção de publicações entre as 10% mais citadas do mundo na área.</li>
-  </ul>
+    </ul>
+  </section>
   <footer id="rodape"></footer>
 </div>
 <div id="tip"></div>
@@ -408,6 +433,51 @@ $('l-cruz').textContent = `Universidades brasileiras presentes em pelo menos dua
 $('rodape').textContent = 'Fontes: ShanghaiRanking (ARWU), CWTS Leiden Ranking (CC BY 4.0), Inep (IGC e Conceito Enade). Dados processados em 02/10/2026 por scripts/preparar_dados.py.';
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', tudo);
 tudo();
+
+/* ---------- navegação por botões (sem trocar/recalcular os dados) ---------- */
+const resumosVisao = {
+  geral: 'Cobertura das bases disponíveis e evolução das universidades brasileiras nos rankings.',
+  pesquisa: 'Indicadores de produção e impacto científico no Leiden; a relação entre variáveis é descritiva, não causal.',
+  ensino: 'Distribuições do IGC e do Conceito Enade. Áreas avaliadas no Enade variam de um ano para outro.',
+  comparacao: 'Cruze instituições das bases disponíveis; correspondências por nome são preliminares.',
+  metodologia: 'Conheça as fontes, os limites de cobertura e os cuidados necessários para interpretar os resultados.'
+};
+function selecionarVisao(nome) {
+  if (!Object.prototype.hasOwnProperty.call(resumosVisao, nome)) return;
+  document.querySelectorAll('[data-visao]').forEach(el => {
+    el.hidden = el.dataset.visao !== nome;
+  });
+  $('grade-graficos').hidden = nome === 'comparacao' || nome === 'metodologia';
+  $('filtros-painel').hidden = nome !== 'pesquisa' && nome !== 'ensino';
+  document.querySelectorAll('[data-filtro]').forEach(el => {
+    el.hidden = el.dataset.filtro !== nome;
+  });
+  document.querySelectorAll('[data-aba]').forEach(botao => {
+    botao.setAttribute('aria-pressed', String(botao.dataset.aba === nome));
+  });
+  $('resumo-visao').textContent = resumosVisao[nome];
+  $('dica-filtros').textContent = nome === 'pesquisa'
+    ? 'Edição e métrica controlam os gráficos de produção e impacto.'
+    : 'A categoria administrativa controla a distribuição do IGC.';
+  // Chart.js precisa recalcular dimensões ao abrir um painel antes oculto.
+  window.requestAnimationFrame(() => {
+    Object.values(charts).forEach(grafico => {
+      if (!grafico.canvas.closest('[hidden]')) grafico.resize();
+    });
+  });
+}
+document.querySelectorAll('[data-aba]').forEach(botao => {
+  botao.addEventListener('click', () => {
+    selecionarVisao(botao.dataset.aba);
+    window.history.replaceState(null, '', '#' + botao.dataset.aba);
+  });
+});
+window.addEventListener('hashchange', () => {
+  selecionarVisao(window.location.hash.slice(1) || 'geral');
+});
+selecionarVisao(Object.prototype.hasOwnProperty.call(resumosVisao, window.location.hash.slice(1))
+  ? window.location.hash.slice(1) : 'geral');
+
 </script>
 </body>
 </html>

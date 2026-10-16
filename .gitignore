@@ -12,3 +12,6 @@ __pycache__/
 
 # Sistema
 .DS_Store
+
+# Arquivo de dados recebido via Google Drive (não versionar).
+/uniranking.zip

@@ -11,7 +11,9 @@ de coluna automaticamente), aqui cada arquivo tem um mapa de colunas explícito
 
 Indicadores mantidos quando existem no arquivo: Academic Reputation (AR),
 Employer Reputation (ER), Faculty/Student Ratio (FSR), Citations per Faculty
-(CPF). O arquivo 2017-2022 (formato longo, uma linha por universidade-ano) não
+(CPF), com nota e posição; e só a nota de International Faculty Ratio (IFR),
+International Student Ratio (ISR), International Research Network (IRN),
+Employment Outcomes (EO; "ger score" em 2023) e Sustainability (SUS, desde 2024). O arquivo 2017-2022 (formato longo, uma linha por universidade-ano) não
 tem esse detalhe por indicador; fica só com a posição e a nota geral.
 
 Nenhum valor é inventado: indicador ausente no esquema do ano fica nulo.
@@ -24,7 +26,11 @@ RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dados", "
 SAIDA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "dados", "processado", "qs_br.csv")
 
 CAMPOS = ["ano", "nome", "rank_raw", "rank_min", "score_geral",
-          "ar_score", "ar_rank", "er_score", "er_rank", "fsr_score", "fsr_rank", "cpf_score", "cpf_rank"]
+          "ar_score", "ar_rank", "er_score", "er_rank", "fsr_score", "fsr_rank", "cpf_score", "cpf_rank",
+          "ifr_score", "isr_score", "irn_score", "eo_score", "sus_score"]
+
+# indicadores com só a nota (sem a posição); chave = campo de saída
+EXTRAS = ["ifr_score", "isr_score", "irn_score", "eo_score", "sus_score"]
 
 
 def num(x):
@@ -67,6 +73,7 @@ EDICOES = [
         "col_nome": "institution", "col_pais": "location", "col_rank": "Rank", "col_score": "score scaled",
         "col_ar_s": "ar score", "col_ar_r": "ar rank", "col_er_s": "er score", "col_er_r": "er rank",
         "col_fsr_s": "fsr score", "col_fsr_r": "fsr rank", "col_cpf_s": "cpf score", "col_cpf_r": "cpf rank",
+        "extras": {"ifr_score": "ifr score", "isr_score": "isr score", "irn_score": "irn score", "eo_score": "ger score"},
     },
     {
         "arquivo": "2024 QS World University Rankings 1.1 (For qs.com).csv", "encoding": "utf-8-sig", "ano": 2024,
@@ -75,6 +82,9 @@ EDICOES = [
         "col_er_s": "Employer Reputation Score", "col_er_r": "Employer Reputation Rank",
         "col_fsr_s": "Faculty Student Score", "col_fsr_r": "Faculty Student Rank",
         "col_cpf_s": "Citations per Faculty Score", "col_cpf_r": "Citations per Faculty Rank",
+        "extras": {"ifr_score": "International Faculty Score", "isr_score": "International Students Score",
+                   "irn_score": "International Research Network Score", "eo_score": "Employment Outcomes Score",
+                   "sus_score": "Sustainability Score"},
     },
     {
         "arquivo": "QS World University Rankings 2025 (Top global universities).csv", "encoding": "cp1252", "ano": 2025,
@@ -83,18 +93,25 @@ EDICOES = [
         "col_er_s": "Employer_Reputation_Score", "col_er_r": "Employer_Reputation_Rank",
         "col_fsr_s": "Faculty_Student_Score", "col_fsr_r": "Faculty_Student_Rank",
         "col_cpf_s": "Citations_per_Faculty_Score", "col_cpf_r": "Citations_per_Faculty_Rank",
+        "extras": {"ifr_score": "International_Faculty_Score", "isr_score": "International_Students_Score",
+                   "irn_score": "International_Research_Network_Score", "eo_score": "Employment_Outcomes_Score",
+                   "sus_score": "Sustainability_Score"},
     },
     {
         "arquivo": "2026 QS World University Rankings.csv", "encoding": "utf-8-sig", "ano": 2026,
         "col_nome": "Institution Name", "col_pais": "Country/Territory", "col_rank": "2026 Rank", "col_score": "Overall SCORE",
         "col_ar_s": "AR SCORE", "col_ar_r": "AR RANK", "col_er_s": "ER SCORE", "col_er_r": "ER RANK",
         "col_fsr_s": "FSR SCORE", "col_fsr_r": "FSR RANK", "col_cpf_s": "CPF SCORE", "col_cpf_r": "CPF RANK",
+        "extras": {"ifr_score": "IFR SCORE", "isr_score": "ISR SCORE", "irn_score": "IRN SCORE",
+                   "eo_score": "EO SCORE", "sus_score": "SUS SCORE"},
     },
     {
         "arquivo": "2027 QS World University Rankings.csv", "encoding": "utf-8-sig", "ano": 2027,
         "col_nome": "Name", "col_pais": "Country/Territory", "col_rank": "Rank", "col_score": "Overall SCORE",
         "col_ar_s": "AR SCORE", "col_ar_r": "AR RANK", "col_er_s": "ER SCORE", "col_er_r": "ER RANK",
         "col_fsr_s": "FSR SCORE", "col_fsr_r": "FSR RANK", "col_cpf_s": "CPF SCORE", "col_cpf_r": "CPF RANK",
+        "extras": {"ifr_score": "IFR SCORE", "isr_score": "ISR SCORE", "irn_score": "IRN SCORE",
+                   "eo_score": "EO SCORE", "sus_score": "SUS SCORE"},
     },
 ]
 
@@ -124,6 +141,8 @@ def ler_arquivo(cfg):
                 "fsr_rank": num(r.get(cfg["col_fsr_r"])) if cfg["col_fsr_r"] else None,
                 "cpf_score": num(r.get(cfg["col_cpf_s"])) if cfg["col_cpf_s"] else None,
                 "cpf_rank": num(r.get(cfg["col_cpf_r"])) if cfg["col_cpf_r"] else None,
+                **{campo: num(r.get(cfg.get("extras", {}).get(campo))) if campo in cfg.get("extras", {}) else None
+                   for campo in EXTRAS},
             })
     return linhas_lidas, saida
 

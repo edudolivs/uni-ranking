@@ -77,6 +77,9 @@ tr.destaque td { font-weight: 600; box-shadow: inset 3px 0 0 var(--s2); }
 footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
 #tip { position: fixed; pointer-events: none; opacity: 0; background: var(--surface); color: var(--ink); border: 1px solid var(--axis); border-radius: 6px; padding: 8px 10px; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.18); z-index: 10; max-width: 280px; }
 @media (max-width: 560px) { .grade { grid-template-columns: 1fr; } }
+.duas { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+.duas .sub { font-size: 13px; font-weight: 600; color: var(--ink-2); margin: 0 0 4px; }
+@media (max-width: 700px) { .duas { grid-template-columns: 1fr; } }
 
 /* Navegação por painéis: apenas a visão escolhida aparece. */
 [hidden] { display: none !important; }
@@ -190,22 +193,25 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-estab"></div></details>
     </div>
     <div class="card" data-visao="correlacoes">
-      <h2>Hipótese (a): pesquisa/citações × posição, rankings internacionais</h2>
+      <h2>Pesquisa e citações × posição, rankings internacionais</h2>
       <p class="leg">Edição mais recente de cada par. Sinal negativo é o esperado: indicador de pesquisa mais alto associado a posição numericamente menor (melhor).</p>
       <div class="caixa" style="height:260px"><canvas id="c-cor-a" role="img" aria-label="Barras com a correlação de Spearman entre indicadores de pesquisa e posição nos rankings internacionais"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-a"></div></details>
     </div>
     <div class="card" data-visao="correlacoes">
-      <h2>Hipótese (b): ensino/mercado × posição, RUF</h2>
-      <p class="leg">Edição mais recente de cada par.</p>
-      <div class="caixa" style="height:260px"><canvas id="c-cor-b" role="img" aria-label="Barras com a correlação de Spearman entre indicadores de ensino e mercado e a posição no RUF"></canvas></div>
-      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-b"></div></details>
+      <h2>Índices do Inep × posição nos rankings internacionais</h2>
+      <p class="leg" id="l-cor-inep"></p>
+      <div class="caixa" style="height:260px"><canvas id="c-cor-inep" role="img" aria-label="Barras agrupadas com a correlação de Spearman entre a nota média das universidades no IGC, no CPC e no Enade e a posição no ARWU, no QS e no SCImago"></canvas></div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-inep"></div></details>
     </div>
     <div class="card" data-visao="correlacoes">
-      <h2>Correlação de postos entre rankings</h2>
-      <p class="leg">Universidades em comum entre pares de rankings, edição mais recente de cada par.</p>
-      <div class="caixa" style="height:260px"><canvas id="c-cor-entre" role="img" aria-label="Barras com a correlação de Spearman de posição entre pares de rankings"></canvas></div>
-      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-entre"></div></details>
+      <h2>Colunas com maior e menor correlação com a posição: QS e RUF</h2>
+      <p class="leg" id="l-cor-col"></p>
+      <div class="duas">
+        <div><p class="sub" id="s-cor-qs"></p><div class="caixa" style="height:260px"><canvas id="c-cor-qs" role="img" aria-label="Barras com a correlação de Spearman de cada indicador do QS com a posição geral"></canvas></div></div>
+        <div><p class="sub" id="s-cor-ruf"></p><div class="caixa" style="height:260px"><canvas id="c-cor-ruf" role="img" aria-label="Barras com a correlação de Spearman de cada indicador do RUF com a posição geral"></canvas></div></div>
+      </div>
+      <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-cor-col"></div></details>
     </div>
   </section>
 
@@ -577,12 +583,60 @@ function grafBarraCorrelacao(idCanvas, idTabela, itens, campoAno, rotuloAno) {
           return `<b>${r.rotulo}</b><div>rho de Spearman: ${nf2.format(r.rho)}</div><div>${rotuloAno}: ${r[campoAno]}</div><div>n = ${r.n} universidades</div>`; }) } } } });
   $(idTabela).innerHTML = tabelaHTML(['Par', 'rho', rotuloAno, 'n'], ultimos.map(r => [r.rotulo, nf2.format(r.rho), r[campoAno], r.n]));
 }
+// colunas de um ranking na edição mais recente, ordenadas pela força da associação com a posição.
+// O sinal do rho é invertido para leitura (posição: menor = melhor): positivo = nota alta, posição melhor.
+function colunasRanking(itens, ranking) {
+  const doRanking = itens.filter(r => r.ranking === ranking);
+  const ano = Math.max(...doRanking.map(r => r.ano));
+  return { ano, linhas: doRanking.filter(r => r.ano === ano).map(r => ({ ...r, forca: -r.rho })).sort((a, b) => b.forca - a.forca) };
+}
+const rotuloCurtoColuna = { 'Reputação com empregadores': 'Reputação empregadores', 'Rede internacional de pesquisa': 'Rede intern. de pesquisa' };
+function grafColunas(idCanvas, linhas) {
+  const ult = linhas.length - 1;
+  const cor = i => i === 0 ? T.s1 : i === ult ? T.s2 : T.muted + '66';
+  novo(idCanvas, { type: 'bar',
+    data: { labels: linhas.map(r => rotuloCurtoColuna[r.coluna] || r.coluna), datasets: [{ data: linhas.map(r => r.forca),
+      backgroundColor: linhas.map((r, i) => cor(i)), borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 20 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ min: Math.min(0, ...linhas.map(r => r.forca)), max: 1, ticks: { color: T.muted, callback: v => nf1.format(v) } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { display: false },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const i = t.dataPoints[0].dataIndex, r = linhas[i];
+          return `<b>${r.coluna}</b>${i === 0 ? '<div>maior correlação</div>' : i === ult ? '<div>menor correlação</div>' : ''}<div>rho com a posição: ${nf2.format(r.rho)}</div><div>n = ${r.n} universidades</div>`; }) } } } });
+}
+// nota média no Inep (IGC, CPC, Enade) × posição internacional, no ano mais recente de cada par.
+// Mesmo sinal invertido do gráfico de colunas: positivo = nota Inep alta, posição internacional melhor.
+function grafInep(itens) {
+  const rankings = ['ARWU', 'QS', 'SCImago'], indices = ['IGC', 'CPC', 'Enade'];
+  const cores = { IGC: T.s1, CPC: T.ord[4], Enade: T.s2 };
+  const ult = ultimaPorRotulo(itens, 'ano');
+  const achar = (rk, ix) => ult.find(r => r.ranking === rk && r.indice === ix);
+  const anos = [...new Set(ult.map(r => r.ano))].sort();
+  const nRk = rk => Math.max(...ult.filter(r => r.ranking === rk).map(r => r.n));
+  $('l-cor-inep').textContent = `Spearman entre a nota média de cada universidade no Inep e a posição dela em cada ranking internacional, no mesmo ano (${anos.join(', ')}). Sinal invertido para leitura: valor maior = nota alta no Inep acompanha posição internacional melhor. USP, Unicamp, Unesp e UERJ não estão nos arquivos do Inep e ficam fora.`;
+  novo('c-cor-inep', { type: 'bar',
+    data: { labels: rankings.map(rk => `${rk} (n=${nRk(rk)})`),
+      datasets: indices.map(ix => ({ label: ix, data: rankings.map(rk => { const r = achar(rk, ix); return r ? -r.rho : null; }),
+        backgroundColor: cores[ix], borderColor: T.surface, borderWidth: 2, borderRadius: 4, borderSkipped: false, maxBarThickness: 18 })) },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      scales: baseEixos({ min: Math.min(0, ...ult.map(r => -r.rho)), max: 1, ticks: { color: T.muted, callback: v => nf1.format(v) } }, { grid: { display: false }, ticks: { color: T.ink2 } }),
+      plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
+        tooltip: { enabled: false, external: tooltipExterno(t => { const p = t.dataPoints[0], r = achar(rankings[p.dataIndex], p.dataset.label);
+          return `<b>${r.indice} × ${r.ranking} ${r.ano}</b><div>rho com a posição: ${nf2.format(r.rho)}</div><div>n = ${r.n} universidades</div>`; }) } } } });
+  $('tv-cor-inep').innerHTML = tabelaHTML(['Índice do Inep', 'Ranking', 'Ano', 'rho com a posição', 'n'],
+    rankings.flatMap(rk => indices.map(ix => achar(rk, ix)).filter(Boolean).map(r => [r.indice, r.ranking, r.ano, nf2.format(r.rho), r.n])));
+}
 function grafCorrelacoes() {
-  const c = D.correlacoes || { estabilidade: [], a_pesquisa_internacional: [], b_ensino_mercado_brasileiro: [], entre_rankings: [] };
+  const c = D.correlacoes || { estabilidade: [], a_pesquisa_internacional: [], inep_x_internacional: [], colunas_qs_ruf: [] };
   grafBarraCorrelacao('c-cor-estab', 'tv-cor-estab', c.estabilidade, 'para', 'até a edição');
   grafBarraCorrelacao('c-cor-a', 'tv-cor-a', c.a_pesquisa_internacional, 'ano', 'edição');
-  grafBarraCorrelacao('c-cor-b', 'tv-cor-b', c.b_ensino_mercado_brasileiro, 'ano', 'edição');
-  grafBarraCorrelacao('c-cor-entre', 'tv-cor-entre', c.entre_rankings, 'ano', 'edição');
+  grafInep(c.inep_x_internacional);
+  const qsC = colunasRanking(c.colunas_qs_ruf, 'QS'), rufC = colunasRanking(c.colunas_qs_ruf, 'RUF');
+  $('l-cor-col').textContent = `Spearman de cada coluna de indicador com a posição geral, na edição mais recente (QS ${qsC.ano}, RUF ${rufC.ano}). Sinal invertido para leitura: valor maior = nota alta na coluna acompanha posição melhor. Azul = maior correlação; laranja = menor.`;
+  $('s-cor-qs').textContent = `QS ${qsC.ano} (${Math.max(...qsC.linhas.map(r => r.n))} universidades)`;
+  $('s-cor-ruf').textContent = `RUF ${rufC.ano} (${Math.max(...rufC.linhas.map(r => r.n))} universidades)`;
+  grafColunas('c-cor-qs', qsC.linhas); grafColunas('c-cor-ruf', rufC.linhas);
+  $('tv-cor-col').innerHTML = tabelaHTML(['Ranking', 'Coluna', 'Edição', 'rho com a posição', 'n', 'Destaque'],
+    [qsC, rufC].flatMap(g => g.linhas.map((r, i) => [r.ranking, r.coluna, r.ano, nf2.format(r.rho), r.n, i === 0 ? 'maior' : i === g.linhas.length - 1 ? 'menor' : ''])));
 }
 
 /* ---------- tabela de cruzamento ---------- */
@@ -644,7 +698,7 @@ const resumosVisao = {
   pesquisa: 'Indicadores de produção, citações e reputação acadêmica nos rankings internacionais (Leiden, QS, SCImago); a relação entre variáveis é descritiva, não causal.',
   ensino: 'Distribuições do IGC, do CPC, do Conceito Enade e do RUF. Áreas avaliadas no Enade e no CPC variam de um ano para outro.',
   comparacao: 'Cruze instituições das 8 bases disponíveis; correspondências por nome são preliminares.',
-  correlacoes: 'Correlação de Spearman entre posição e características, e entre rankings diferentes, com o que já está disponível. Associações, não causas.',
+  correlacoes: 'Correlação de Spearman entre a posição e as características das universidades, por ranking. Associações, não causas.',
   metodologia: 'Conheça as fontes, os limites de cobertura e os cuidados necessários para interpretar os resultados.'
 };
 function selecionarVisao(nome) {

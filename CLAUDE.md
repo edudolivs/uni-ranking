@@ -69,7 +69,7 @@ python3 scripts/gerar_dashboard.py
 - **Enade** (`dados/enade/conceito_enade_<ano>.xlsx`): uma linha por curso; a aba se chama `PLANILHA_ENADE` ou `Planilha1` conforme o ano. Cada ano avalia áreas diferentes, então totais entre anos não indicam crescimento.
 - **Cruzamento entre bases:** só por nome, via `chave()` em `preparar_dados.py` (sem acentos, sem palavras como "universidade/university/de", `TRAD` traduz state/estadual etc.). Equivalências que os tokens não resolvem vão em `ALIAS`; hoje só Unesp. **USP, Unicamp, Unesp e UERJ não aparecem no IGC/CPC/Enade.** A hipótese, não verificada, é que pertencem a sistemas estaduais. `cruzar()` é genérico para N fontes (hoje 8); cada fonte entra só com a edição/ano mais recente.
 - **Correlação de Spearman** (`correlacionar()` em `preparar_dados.py`): implementada em Python puro (rank médio em empate + Pearson nos postos), sem dependência nova. Cobre estabilidade temporal (posição entre edições consecutivas), indicador×posição nos grupos internacional e brasileiro, e correlação de postos entre pares de rankings. `n` sempre reportado ao lado de `rho`; sem p-value forçado em amostra pequena. Mínimo de 5 universidades em comum para calcular.
-- **Dashboard:** o template usa Chart.js por CDN (precisa de internet ao abrir) e cores da skill `dataviz`, já validadas para daltonismo, nos temas claro e escuro. **Atenção:** `--ord3` é idêntico a `--s1` (mesmo azul) -- não use `ord[2]` num gráfico que já usa `T.s1`, ou as séries ficam indistinguíveis (já aconteceu no gráfico de cobertura; corrigido usando `ord[0]`/`ord[4]`). A UFPB é destacada em laranja (`ehUfpb`). Cada gráfico tem uma tabela-espelho em `<details>`. 6 painéis por botão: Visão geral, Pesquisa e impacto, Ensino e avaliação, Comparar universidades, Correlações, Fontes e limites.
+- **Dashboard:** o template usa Chart.js por CDN (precisa de internet ao abrir) e cores da skill `dataviz`, já validadas para daltonismo, nos temas claro e escuro. **Atenção:** `--ord3` é idêntico a `--s1` (mesmo azul) -- não use `ord[2]` num gráfico que já usa `T.s1`, ou as séries ficam indistinguíveis (já aconteceu no gráfico de cobertura; corrigido usando `ord[0]`). A UFPB é destacada em laranja (`ehUfpb`). Cada gráfico tem uma tabela-espelho em `<details>`. O gráfico de cobertura (Visão geral) mostra só ARWU, Leiden e QS, nos anos com ARWU ou Leiden (SCImago fica fora por não ser um recorte de topo). 6 painéis por botão: Visão geral, Pesquisa e impacto, Ensino e avaliação, Comparar universidades, Correlações, Fontes e limites.
 
 ## O documento (`projeto-de-pesquisa.docx`)
 
@@ -89,9 +89,8 @@ python3 scripts/gerar_dashboard.py
 - Confirmado: Selten et al. (2020) de fato usa correlação de Spearman -- a citação no texto do `.docx` está correta.
 
 **Pendente / em aberto**
-- **Leiden 2019–2020** não foi baixado (2021 já entrou). DOIs no Zenodo: 10.5281/zenodo.3339177 (2019), 10.5281/zenodo.4745545 (2020) -- mesmo padrão de `extrair_leiden.py` já resolve, só falta baixar os xlsx (~200 MB cada).
-- **RUF 2020–2022** seguem sem dado aberto. **RUF 2019 não é a posição geral**, é só a sub-classificação de Mercado (ver `## Arquitetura do pipeline`) -- isso ainda conflita com as "cinco edições anuais consecutivas" da Metodologia; confirme e ajuste o texto ou a janela temporal.
-- **IGC/CPC 2024/2025:** o Inep mostra uma aba de 2025, mas o link do arquivo não foi encontrado nesta rodada.
+- **Bases fechadas (decisão do grupo, 16/10/2026):** as edições já baixadas são todas as que serão usadas. Leiden 2019–2020, RUF 2020–2022 e IGC/CPC 2024–2025 **não** entram; o dashboard não mostra mais aviso de falta de dados.
+- **RUF 2019 não é a posição geral**, é só a sub-classificação de Mercado (ver `## Arquitetura do pipeline`) -- isso ainda conflita com as "cinco edições anuais consecutivas" da Metodologia; confirme e ajuste o texto ou a janela temporal.
 - **No documento:**
   - Os meses do cronograma ainda são os do modelo (Mar–Jul); a pesquisa já roda em set/out/2026 pelas datas de acesso das referências citadas -- precisa dos meses reais.
   - O co-orientador está em branco.

@@ -44,8 +44,6 @@ body { background: var(--page); color: var(--ink); font-family: system-ui, -appl
 header.top { padding: 8px 4px 16px; }
 header.top h1 { font-size: 22px; font-weight: 600; }
 header.top p { color: var(--ink-2); font-size: 14px; margin-top: 4px; max-width: 920px; }
-.aviso { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--s2); border-radius: var(--radius); padding: 10px 14px; font-size: 13px; color: var(--ink-2); margin-bottom: var(--gap); }
-.aviso b { color: var(--ink); }
 .filtros { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; margin-bottom: var(--gap); }
 .filtros label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-2); }
 .filtros select, .filtros input[type="search"] { font: inherit; font-size: 14px; color: var(--ink); background: var(--page); border: 1px solid var(--axis); border-radius: 6px; padding: 6px 10px; min-width: 190px; }
@@ -102,8 +100,6 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
     <p>Explore a cobertura, a pesquisa científica, os indicadores de ensino e o cruzamento entre instituições. Selecione um painel para escolher as visualizações. Estes resultados são descritivos e não permitem inferir causalidade.</p>
   </header>
 
-  <div class="aviso"><b>Dados parciais.</b> ARWU (2021–2026), QS (2017–2027), SCImago (2022–2026), Leiden Ranking (2021–2025, só universidades do Brasil), IGC (2019 e 2021–2023), CPC (2019 e 2021–2023), Conceito Enade por curso (2021–2023) e RUF (2019, só sub-ranking de Mercado; 2023–2025 completo). Ainda faltam Leiden 2019–2020 e RUF 2020–2022. As séries têm anos diferentes entre si.</div>
-
   <nav class="navegacao" aria-label="Navegação entre painéis">
     <button type="button" data-aba="geral" aria-pressed="true">Visão geral</button>
     <button type="button" data-aba="pesquisa" aria-pressed="false">Pesquisa e impacto</button>
@@ -132,8 +128,8 @@ footer { font-size: 12px; color: var(--muted); padding: 12px 4px; }
   <section class="grade" id="grade-graficos">
     <div class="card" data-visao="geral">
       <h2>Universidades brasileiras em cada ranking</h2>
-      <p class="leg">Quantas universidades do Brasil aparecem em cada edição (ARWU e QS: ~1.000-1.500 por edição; Leiden e SCImago: todas que passam do corte da fonte).</p>
-      <div class="caixa" style="height:300px"><canvas id="c-contagem" role="img" aria-label="Linhas com o número de universidades brasileiras por edição em cada ranking"></canvas></div>
+      <p class="leg">Quantas universidades do Brasil aparecem em cada edição do ARWU, do Leiden e do QS.</p>
+      <div class="caixa" style="height:300px"><canvas id="c-contagem" role="img" aria-label="Linhas com o número de universidades brasileiras por edição no ARWU, no Leiden e no QS"></canvas></div>
       <details class="tv"><summary>Ver como tabela</summary><div class="rolagem" id="tv-contagem"></div></details>
     </div>
     <div class="card" data-visao="pesquisa">
@@ -369,15 +365,15 @@ const plugFim = { id: 'fimLinha', afterDatasetsDraw(ch) {
   });
 } };
 function grafContagem() {
-  const anos = [...new Set([...anosArwu, ...edicoes, ...anosQs, ...anosScimago])].sort();
+  // só anos com ARWU ou Leiden: os anos em que só o QS tem dado ficam de fora
+  const anos = [...new Set([...anosArwu, ...edicoes])].sort();
   const arwu = anos.map(a => D.arwu.anos[a] ? D.arwu.anos[a].brasil : null);
   const lei = anos.map(a => edicoes.includes(a) ? leidenEd(a).length : null);
   const qsC = anos.map(a => anosQs.includes(a) ? qsAno(a).length : null);
-  const sciC = anos.map(a => anosScimago.includes(a) ? scimagoAno(a).length : null);
-  // ord3 == s1 no design system (mesmo tom de azul) -- usar ord1/ord5 pra não colidir com a cor do ARWU
+  // ord3 == s1 no design system (mesmo tom de azul) -- usar ord1 pra não colidir com a cor do ARWU
   const series = [
     { label: 'ARWU', data: arwu, cor: T.s1 }, { label: 'Leiden', data: lei, cor: T.s2 },
-    { label: 'QS', data: qsC, cor: T.ord[0] }, { label: 'SCImago', data: sciC, cor: T.ord[4] },
+    { label: 'QS', data: qsC, cor: T.ord[0] },
   ];
   novo('c-contagem', { type: 'line', plugins: [plugFim],
     data: { labels: anos, datasets: series.map(s => ({ label: s.label, data: s.data, borderColor: s.cor, backgroundColor: s.cor, borderWidth: 2, pointRadius: 5, pointHoverRadius: 8, pointBorderColor: T.surface, pointBorderWidth: 2, tension: 0 })) },
@@ -385,8 +381,8 @@ function grafContagem() {
       scales: baseEixos({ grid: { display: false } }, { beginAtZero: true, title: { display: true, text: 'universidades brasileiras', color: T.muted } }),
       plugins: { legend: { position: 'top', align: 'start', labels: { color: T.ink2, usePointStyle: true, boxWidth: 8 } },
         tooltip: { enabled: false, external: tooltipExterno(t => `<b>${t.title[0]}</b>` + t.dataPoints.map(p => `<div>${p.dataset.label}: ${p.parsed.y}</div>`).join('')) } } } });
-  $('tv-contagem').innerHTML = tabelaHTML(['Ano', 'ARWU', 'Leiden', 'QS', 'SCImago'],
-    anos.map((a, i) => [a, arwu[i] ?? '–', lei[i] ?? '–', qsC[i] ?? '–', sciC[i] ?? '–']));
+  $('tv-contagem').innerHTML = tabelaHTML(['Ano', 'ARWU', 'Leiden', 'QS'],
+    anos.map((a, i) => [a, arwu[i] ?? '–', lei[i] ?? '–', qsC[i] ?? '–']));
 }
 
 /* ---------- gráfico 2: barras do Leiden ---------- */

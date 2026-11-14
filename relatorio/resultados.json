@@ -1,0 +1,1231 @@
+{
+ "cobertura": {
+  "ARWU": {
+   "2021": 21,
+   "2022": 21,
+   "2023": 18,
+   "2024": 18,
+   "2025": 18,
+   "2026": 14
+  },
+  "QS": {
+   "2017": 22,
+   "2018": 22,
+   "2019": 22,
+   "2020": 20,
+   "2021": 22,
+   "2022": 27,
+   "2023": 35,
+   "2024": 30,
+   "2025": 35,
+   "2026": 24,
+   "2027": 22
+  },
+  "Leiden": {
+   "2021": 31,
+   "2022": 35,
+   "2023": 37,
+   "2024": 38,
+   "2025": 39
+  },
+  "SCImago": {
+   "2022": 151,
+   "2023": 170,
+   "2024": 166,
+   "2025": 165,
+   "2026": 171
+  },
+  "RUF": {
+   "2023": 203,
+   "2024": 203,
+   "2025": 204
+  }
+ },
+ "ultima_edicao": {
+  "QS": 2027,
+  "RUF": 2025
+ },
+ "concordancia_grupos": [
+  {
+   "par": "RUF × SCImago",
+   "ano": 2023,
+   "rho": 0.797,
+   "n": 134
+  },
+  {
+   "par": "RUF × SCImago",
+   "ano": 2024,
+   "rho": 0.83,
+   "n": 131
+  },
+  {
+   "par": "RUF × SCImago",
+   "ano": 2025,
+   "rho": 0.867,
+   "n": 129
+  },
+  {
+   "par": "RUF × QS",
+   "ano": 2023,
+   "rho": 0.439,
+   "n": 21
+  },
+  {
+   "par": "RUF × QS",
+   "ano": 2024,
+   "rho": 0.578,
+   "n": 18
+  },
+  {
+   "par": "RUF × QS",
+   "ano": 2025,
+   "rho": 0.636,
+   "n": 21
+  },
+  {
+   "par": "RUF × ARWU",
+   "ano": 2023,
+   "rho": 0.864,
+   "n": 16
+  },
+  {
+   "par": "RUF × ARWU",
+   "ano": 2024,
+   "rho": 0.915,
+   "n": 16
+  },
+  {
+   "par": "RUF × ARWU",
+   "ano": 2025,
+   "rho": 0.844,
+   "n": 15
+  },
+  {
+   "par": "RUF × IGC",
+   "ano": 2023,
+   "rho": -0.719,
+   "n": 195
+  }
+ ],
+ "dispersao": {
+  "ano": 2025,
+  "rho": 0.867,
+  "n": 129,
+  "ufpb": {
+   "ruf": 28,
+   "scimago": 3758
+  }
+ },
+ "hipoteses": {
+  "pesquisa": {
+   "internacional": 0.658,
+   "brasileiro": 0.94,
+   "razao_intl_br": 0.7,
+   "razao_br_intl": 1.428
+  },
+  "ensino": {
+   "internacional": 0.41,
+   "brasileiro": 0.919,
+   "razao_intl_br": 0.446,
+   "razao_br_intl": 2.242
+  },
+  "mercado": {
+   "internacional": 0.628,
+   "brasileiro": 0.629,
+   "razao_intl_br": 0.998,
+   "razao_br_intl": 1.002
+  },
+  "internacionalizacao": {
+   "internacional": 0.594,
+   "brasileiro": 0.702,
+   "razao_intl_br": 0.847,
+   "razao_br_intl": 1.18
+  },
+  "a_suportada": false,
+  "b_ensino_suportada": true,
+  "b_mercado_suportada": false,
+  "c_amplitude": {
+   "QS · Reputação acadêmica": {
+    "ranking": "QS",
+    "min": 0.808,
+    "max": 0.961,
+    "edicoes": 5,
+    "amplitude_rel": 0.17
+   },
+   "QS · Reputação com empregadores": {
+    "ranking": "QS",
+    "min": 0.635,
+    "max": 0.888,
+    "edicoes": 5,
+    "amplitude_rel": 0.336
+   },
+   "QS · Proporção docente/aluno": {
+    "ranking": "QS",
+    "min": 0.288,
+    "max": 0.509,
+    "edicoes": 5,
+    "amplitude_rel": 0.539
+   },
+   "QS · Citações por docente": {
+    "ranking": "QS",
+    "min": 0.526,
+    "max": 0.708,
+    "edicoes": 5,
+    "amplitude_rel": 0.294
+   },
+   "QS · Docentes internacionais": {
+    "ranking": "QS",
+    "min": 0.407,
+    "max": 0.744,
+    "edicoes": 5,
+    "amplitude_rel": 0.552
+   },
+   "QS · Alunos internacionais": {
+    "ranking": "QS",
+    "min": 0.456,
+    "max": 0.688,
+    "edicoes": 5,
+    "amplitude_rel": 0.401
+   },
+   "QS · Rede internacional de pesquisa": {
+    "ranking": "QS",
+    "min": 0.592,
+    "max": 0.806,
+    "edicoes": 5,
+    "amplitude_rel": 0.314
+   },
+   "QS · Empregabilidade": {
+    "ranking": "QS",
+    "min": 0.396,
+    "max": 0.636,
+    "edicoes": 5,
+    "amplitude_rel": 0.478
+   },
+   "QS · Sustentabilidade": {
+    "ranking": "QS",
+    "min": 0.537,
+    "max": 0.753,
+    "edicoes": 4,
+    "amplitude_rel": 0.321
+   },
+   "RUF · Ensino": {
+    "ranking": "RUF",
+    "min": 0.91,
+    "max": 0.928,
+    "edicoes": 3,
+    "amplitude_rel": 0.02
+   },
+   "RUF · Pesquisa": {
+    "ranking": "RUF",
+    "min": 0.935,
+    "max": 0.945,
+    "edicoes": 3,
+    "amplitude_rel": 0.011
+   },
+   "RUF · Mercado": {
+    "ranking": "RUF",
+    "min": 0.619,
+    "max": 0.639,
+    "edicoes": 3,
+    "amplitude_rel": 0.032
+   },
+   "RUF · Inovação": {
+    "ranking": "RUF",
+    "min": 0.713,
+    "max": 0.731,
+    "edicoes": 3,
+    "amplitude_rel": 0.025
+   },
+   "RUF · Internacionalização": {
+    "ranking": "RUF",
+    "min": 0.572,
+    "max": 0.769,
+    "edicoes": 3,
+    "amplitude_rel": 0.281
+   },
+   "ARWU×Leiden · % top 10%": {
+    "ranking": "ARWU×Leiden",
+    "min": 0.275,
+    "max": 0.57,
+    "edicoes": 5,
+    "amplitude_rel": 0.662
+   },
+   "ARWU×Leiden · publicações": {
+    "ranking": "ARWU×Leiden",
+    "min": 0.892,
+    "max": 0.932,
+    "edicoes": 5,
+    "amplitude_rel": 0.044
+   }
+  },
+  "c_amp_media_internacional": 0.374,
+  "c_estaveis_internacional": 1,
+  "c_total_internacional": 11,
+  "c_amp_media_brasileiro": 0.074,
+  "c_estaveis_brasileiro": 4,
+  "c_total_brasileiro": 5,
+  "c_diferenca_rel_grupos": {
+   "pesquisa": 0.3,
+   "ensino": 0.554,
+   "mercado": 0.002,
+   "internacionalizacao": 0.154
+  }
+ },
+ "correlacoes": {
+  "estabilidade": [
+   {
+    "rotulo": "ARWU: posição ano a ano",
+    "de": 2021,
+    "para": 2022,
+    "rho": 0.843,
+    "n": 21
+   },
+   {
+    "rotulo": "ARWU: posição ano a ano",
+    "de": 2022,
+    "para": 2023,
+    "rho": 0.91,
+    "n": 18
+   },
+   {
+    "rotulo": "ARWU: posição ano a ano",
+    "de": 2023,
+    "para": 2024,
+    "rho": 0.98,
+    "n": 17
+   },
+   {
+    "rotulo": "ARWU: posição ano a ano",
+    "de": 2024,
+    "para": 2025,
+    "rho": 0.972,
+    "n": 17
+   },
+   {
+    "rotulo": "ARWU: posição ano a ano",
+    "de": 2025,
+    "para": 2026,
+    "rho": 0.971,
+    "n": 14
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2017,
+    "para": 2018,
+    "rho": 0.974,
+    "n": 22
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2018,
+    "para": 2019,
+    "rho": 0.991,
+    "n": 22
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2019,
+    "para": 2020,
+    "rho": 0.938,
+    "n": 20
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2020,
+    "para": 2021,
+    "rho": 0.916,
+    "n": 20
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2021,
+    "para": 2022,
+    "rho": 0.986,
+    "n": 22
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2022,
+    "para": 2023,
+    "rho": 0.892,
+    "n": 27
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2023,
+    "para": 2024,
+    "rho": 0.716,
+    "n": 30
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2024,
+    "para": 2025,
+    "rho": 0.964,
+    "n": 30
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2025,
+    "para": 2026,
+    "rho": 0.925,
+    "n": 16
+   },
+   {
+    "rotulo": "QS: posição ano a ano",
+    "de": 2026,
+    "para": 2027,
+    "rho": 0.938,
+    "n": 13
+   },
+   {
+    "rotulo": "SCImago: posição global ano a ano",
+    "de": 2022,
+    "para": 2023,
+    "rho": 0.906,
+    "n": 145
+   },
+   {
+    "rotulo": "SCImago: posição global ano a ano",
+    "de": 2023,
+    "para": 2024,
+    "rho": 0.847,
+    "n": 163
+   },
+   {
+    "rotulo": "SCImago: posição global ano a ano",
+    "de": 2024,
+    "para": 2025,
+    "rho": 0.923,
+    "n": 157
+   },
+   {
+    "rotulo": "SCImago: posição global ano a ano",
+    "de": 2025,
+    "para": 2026,
+    "rho": 0.931,
+    "n": 164
+   },
+   {
+    "rotulo": "RUF: posição ano a ano",
+    "de": 2023,
+    "para": 2024,
+    "rho": 0.983,
+    "n": 200
+   },
+   {
+    "rotulo": "RUF: posição ano a ano",
+    "de": 2024,
+    "para": 2025,
+    "rho": 0.982,
+    "n": 200
+   }
+  ],
+  "a_pesquisa_internacional": [
+   {
+    "rotulo": "QS: posição × citações/docente",
+    "ano": 2023,
+    "rho": -0.652,
+    "n": 35
+   },
+   {
+    "rotulo": "QS: posição × citações/docente",
+    "ano": 2024,
+    "rho": -0.585,
+    "n": 30
+   },
+   {
+    "rotulo": "QS: posição × citações/docente",
+    "ano": 2025,
+    "rho": -0.708,
+    "n": 35
+   },
+   {
+    "rotulo": "QS: posição × citações/docente",
+    "ano": 2026,
+    "rho": -0.627,
+    "n": 24
+   },
+   {
+    "rotulo": "QS: posição × citações/docente",
+    "ano": 2027,
+    "rho": -0.526,
+    "n": 22
+   },
+   {
+    "rotulo": "QS: posição × reputação acadêmica",
+    "ano": 2023,
+    "rho": -0.808,
+    "n": 35
+   },
+   {
+    "rotulo": "QS: posição × reputação acadêmica",
+    "ano": 2024,
+    "rho": -0.87,
+    "n": 30
+   },
+   {
+    "rotulo": "QS: posição × reputação acadêmica",
+    "ano": 2025,
+    "rho": -0.924,
+    "n": 35
+   },
+   {
+    "rotulo": "QS: posição × reputação acadêmica",
+    "ano": 2026,
+    "rho": -0.934,
+    "n": 24
+   },
+   {
+    "rotulo": "QS: posição × reputação acadêmica",
+    "ano": 2027,
+    "rho": -0.961,
+    "n": 22
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × % top 10%",
+    "ano": 2021,
+    "rho": -0.403,
+    "n": 20
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × % top 10%",
+    "ano": 2022,
+    "rho": -0.275,
+    "n": 20
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × % top 10%",
+    "ano": 2023,
+    "rho": -0.422,
+    "n": 18
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × % top 10%",
+    "ano": 2024,
+    "rho": -0.57,
+    "n": 18
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × % top 10%",
+    "ano": 2025,
+    "rho": -0.559,
+    "n": 18
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × publicações",
+    "ano": 2021,
+    "rho": -0.892,
+    "n": 20
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × publicações",
+    "ano": 2022,
+    "rho": -0.896,
+    "n": 20
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × publicações",
+    "ano": 2023,
+    "rho": -0.932,
+    "n": 18
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × publicações",
+    "ano": 2024,
+    "rho": -0.911,
+    "n": 18
+   },
+   {
+    "rotulo": "ARWU × Leiden: posição × publicações",
+    "ano": 2025,
+    "rho": -0.917,
+    "n": 18
+   }
+  ],
+  "inep_x_internacional": [
+   {
+    "rotulo": "IGC × ARWU",
+    "ano": 2021,
+    "rho": -0.62,
+    "n": 18,
+    "ranking": "ARWU",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "IGC × ARWU",
+    "ano": 2022,
+    "rho": -0.786,
+    "n": 18,
+    "ranking": "ARWU",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "IGC × ARWU",
+    "ano": 2023,
+    "rho": -0.799,
+    "n": 15,
+    "ranking": "ARWU",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "CPC × ARWU",
+    "ano": 2021,
+    "rho": -0.398,
+    "n": 18,
+    "ranking": "ARWU",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "CPC × ARWU",
+    "ano": 2022,
+    "rho": -0.578,
+    "n": 18,
+    "ranking": "ARWU",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "CPC × ARWU",
+    "ano": 2023,
+    "rho": -0.687,
+    "n": 15,
+    "ranking": "ARWU",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "Enade × ARWU",
+    "ano": 2021,
+    "rho": -0.717,
+    "n": 18,
+    "ranking": "ARWU",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "Enade × ARWU",
+    "ano": 2022,
+    "rho": -0.592,
+    "n": 18,
+    "ranking": "ARWU",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "Enade × ARWU",
+    "ano": 2023,
+    "rho": -0.68,
+    "n": 15,
+    "ranking": "ARWU",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "IGC × QS",
+    "ano": 2019,
+    "rho": -0.435,
+    "n": 12,
+    "ranking": "QS",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "IGC × QS",
+    "ano": 2021,
+    "rho": -0.571,
+    "n": 12,
+    "ranking": "QS",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "IGC × QS",
+    "ano": 2022,
+    "rho": -0.714,
+    "n": 16,
+    "ranking": "QS",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "IGC × QS",
+    "ano": 2023,
+    "rho": -0.555,
+    "n": 20,
+    "ranking": "QS",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "CPC × QS",
+    "ano": 2019,
+    "rho": 0.054,
+    "n": 12,
+    "ranking": "QS",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "CPC × QS",
+    "ano": 2021,
+    "rho": -0.374,
+    "n": 12,
+    "ranking": "QS",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "CPC × QS",
+    "ano": 2022,
+    "rho": -0.277,
+    "n": 16,
+    "ranking": "QS",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "CPC × QS",
+    "ano": 2023,
+    "rho": -0.171,
+    "n": 20,
+    "ranking": "QS",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "Enade × QS",
+    "ano": 2021,
+    "rho": -0.697,
+    "n": 12,
+    "ranking": "QS",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "Enade × QS",
+    "ano": 2022,
+    "rho": -0.519,
+    "n": 16,
+    "ranking": "QS",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "Enade × QS",
+    "ano": 2023,
+    "rho": -0.361,
+    "n": 20,
+    "ranking": "QS",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "IGC × SCImago",
+    "ano": 2022,
+    "rho": -0.729,
+    "n": 125,
+    "ranking": "SCImago",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "IGC × SCImago",
+    "ano": 2023,
+    "rho": -0.735,
+    "n": 130,
+    "ranking": "SCImago",
+    "indice": "IGC"
+   },
+   {
+    "rotulo": "CPC × SCImago",
+    "ano": 2022,
+    "rho": -0.576,
+    "n": 125,
+    "ranking": "SCImago",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "CPC × SCImago",
+    "ano": 2023,
+    "rho": -0.617,
+    "n": 130,
+    "ranking": "SCImago",
+    "indice": "CPC"
+   },
+   {
+    "rotulo": "Enade × SCImago",
+    "ano": 2022,
+    "rho": -0.604,
+    "n": 125,
+    "ranking": "SCImago",
+    "indice": "Enade"
+   },
+   {
+    "rotulo": "Enade × SCImago",
+    "ano": 2023,
+    "rho": -0.64,
+    "n": 130,
+    "ranking": "SCImago",
+    "indice": "Enade"
+   }
+  ],
+  "colunas_qs_ruf": [
+   {
+    "rotulo": "QS: Reputação acadêmica",
+    "ano": 2023,
+    "rho": -0.808,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Reputação acadêmica"
+   },
+   {
+    "rotulo": "QS: Reputação acadêmica",
+    "ano": 2024,
+    "rho": -0.87,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Reputação acadêmica"
+   },
+   {
+    "rotulo": "QS: Reputação acadêmica",
+    "ano": 2025,
+    "rho": -0.924,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Reputação acadêmica"
+   },
+   {
+    "rotulo": "QS: Reputação acadêmica",
+    "ano": 2026,
+    "rho": -0.934,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Reputação acadêmica"
+   },
+   {
+    "rotulo": "QS: Reputação acadêmica",
+    "ano": 2027,
+    "rho": -0.961,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Reputação acadêmica"
+   },
+   {
+    "rotulo": "QS: Reputação com empregadores",
+    "ano": 2023,
+    "rho": -0.656,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Reputação com empregadores"
+   },
+   {
+    "rotulo": "QS: Reputação com empregadores",
+    "ano": 2024,
+    "rho": -0.635,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Reputação com empregadores"
+   },
+   {
+    "rotulo": "QS: Reputação com empregadores",
+    "ano": 2025,
+    "rho": -0.741,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Reputação com empregadores"
+   },
+   {
+    "rotulo": "QS: Reputação com empregadores",
+    "ano": 2026,
+    "rho": -0.888,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Reputação com empregadores"
+   },
+   {
+    "rotulo": "QS: Reputação com empregadores",
+    "ano": 2027,
+    "rho": -0.848,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Reputação com empregadores"
+   },
+   {
+    "rotulo": "QS: Proporção docente/aluno",
+    "ano": 2023,
+    "rho": -0.473,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Proporção docente/aluno"
+   },
+   {
+    "rotulo": "QS: Proporção docente/aluno",
+    "ano": 2024,
+    "rho": -0.509,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Proporção docente/aluno"
+   },
+   {
+    "rotulo": "QS: Proporção docente/aluno",
+    "ano": 2025,
+    "rho": -0.461,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Proporção docente/aluno"
+   },
+   {
+    "rotulo": "QS: Proporção docente/aluno",
+    "ano": 2026,
+    "rho": -0.288,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Proporção docente/aluno"
+   },
+   {
+    "rotulo": "QS: Proporção docente/aluno",
+    "ano": 2027,
+    "rho": -0.319,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Proporção docente/aluno"
+   },
+   {
+    "rotulo": "QS: Citações por docente",
+    "ano": 2023,
+    "rho": -0.652,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Citações por docente"
+   },
+   {
+    "rotulo": "QS: Citações por docente",
+    "ano": 2024,
+    "rho": -0.585,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Citações por docente"
+   },
+   {
+    "rotulo": "QS: Citações por docente",
+    "ano": 2025,
+    "rho": -0.708,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Citações por docente"
+   },
+   {
+    "rotulo": "QS: Citações por docente",
+    "ano": 2026,
+    "rho": -0.627,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Citações por docente"
+   },
+   {
+    "rotulo": "QS: Citações por docente",
+    "ano": 2027,
+    "rho": -0.526,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Citações por docente"
+   },
+   {
+    "rotulo": "QS: Docentes internacionais",
+    "ano": 2023,
+    "rho": -0.496,
+    "n": 29,
+    "ranking": "QS",
+    "coluna": "Docentes internacionais"
+   },
+   {
+    "rotulo": "QS: Docentes internacionais",
+    "ano": 2024,
+    "rho": -0.407,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Docentes internacionais"
+   },
+   {
+    "rotulo": "QS: Docentes internacionais",
+    "ano": 2025,
+    "rho": -0.72,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Docentes internacionais"
+   },
+   {
+    "rotulo": "QS: Docentes internacionais",
+    "ano": 2026,
+    "rho": -0.744,
+    "n": 23,
+    "ranking": "QS",
+    "coluna": "Docentes internacionais"
+   },
+   {
+    "rotulo": "QS: Docentes internacionais",
+    "ano": 2027,
+    "rho": -0.686,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Docentes internacionais"
+   },
+   {
+    "rotulo": "QS: Alunos internacionais",
+    "ano": 2023,
+    "rho": -0.525,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Alunos internacionais"
+   },
+   {
+    "rotulo": "QS: Alunos internacionais",
+    "ano": 2024,
+    "rho": -0.545,
+    "n": 25,
+    "ranking": "QS",
+    "coluna": "Alunos internacionais"
+   },
+   {
+    "rotulo": "QS: Alunos internacionais",
+    "ano": 2025,
+    "rho": -0.677,
+    "n": 31,
+    "ranking": "QS",
+    "coluna": "Alunos internacionais"
+   },
+   {
+    "rotulo": "QS: Alunos internacionais",
+    "ano": 2026,
+    "rho": -0.688,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Alunos internacionais"
+   },
+   {
+    "rotulo": "QS: Alunos internacionais",
+    "ano": 2027,
+    "rho": -0.456,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Alunos internacionais"
+   },
+   {
+    "rotulo": "QS: Rede internacional de pesquisa",
+    "ano": 2023,
+    "rho": -0.592,
+    "n": 34,
+    "ranking": "QS",
+    "coluna": "Rede internacional de pesquisa"
+   },
+   {
+    "rotulo": "QS: Rede internacional de pesquisa",
+    "ano": 2024,
+    "rho": -0.624,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Rede internacional de pesquisa"
+   },
+   {
+    "rotulo": "QS: Rede internacional de pesquisa",
+    "ano": 2025,
+    "rho": -0.806,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Rede internacional de pesquisa"
+   },
+   {
+    "rotulo": "QS: Rede internacional de pesquisa",
+    "ano": 2026,
+    "rho": -0.666,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Rede internacional de pesquisa"
+   },
+   {
+    "rotulo": "QS: Rede internacional de pesquisa",
+    "ano": 2027,
+    "rho": -0.724,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Rede internacional de pesquisa"
+   },
+   {
+    "rotulo": "QS: Empregabilidade",
+    "ano": 2023,
+    "rho": -0.396,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Empregabilidade"
+   },
+   {
+    "rotulo": "QS: Empregabilidade",
+    "ano": 2024,
+    "rho": -0.51,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Empregabilidade"
+   },
+   {
+    "rotulo": "QS: Empregabilidade",
+    "ano": 2025,
+    "rho": -0.636,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Empregabilidade"
+   },
+   {
+    "rotulo": "QS: Empregabilidade",
+    "ano": 2026,
+    "rho": -0.558,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Empregabilidade"
+   },
+   {
+    "rotulo": "QS: Empregabilidade",
+    "ano": 2027,
+    "rho": -0.408,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Empregabilidade"
+   },
+   {
+    "rotulo": "QS: Sustentabilidade",
+    "ano": 2024,
+    "rho": -0.537,
+    "n": 30,
+    "ranking": "QS",
+    "coluna": "Sustentabilidade"
+   },
+   {
+    "rotulo": "QS: Sustentabilidade",
+    "ano": 2025,
+    "rho": -0.701,
+    "n": 35,
+    "ranking": "QS",
+    "coluna": "Sustentabilidade"
+   },
+   {
+    "rotulo": "QS: Sustentabilidade",
+    "ano": 2026,
+    "rho": -0.703,
+    "n": 24,
+    "ranking": "QS",
+    "coluna": "Sustentabilidade"
+   },
+   {
+    "rotulo": "QS: Sustentabilidade",
+    "ano": 2027,
+    "rho": -0.753,
+    "n": 22,
+    "ranking": "QS",
+    "coluna": "Sustentabilidade"
+   },
+   {
+    "rotulo": "RUF: Ensino",
+    "ano": 2023,
+    "rho": -0.91,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Ensino"
+   },
+   {
+    "rotulo": "RUF: Ensino",
+    "ano": 2024,
+    "rho": -0.92,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Ensino"
+   },
+   {
+    "rotulo": "RUF: Ensino",
+    "ano": 2025,
+    "rho": -0.928,
+    "n": 204,
+    "ranking": "RUF",
+    "coluna": "Ensino"
+   },
+   {
+    "rotulo": "RUF: Pesquisa",
+    "ano": 2023,
+    "rho": -0.935,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Pesquisa"
+   },
+   {
+    "rotulo": "RUF: Pesquisa",
+    "ano": 2024,
+    "rho": -0.945,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Pesquisa"
+   },
+   {
+    "rotulo": "RUF: Pesquisa",
+    "ano": 2025,
+    "rho": -0.94,
+    "n": 204,
+    "ranking": "RUF",
+    "coluna": "Pesquisa"
+   },
+   {
+    "rotulo": "RUF: Mercado",
+    "ano": 2023,
+    "rho": -0.628,
+    "n": 197,
+    "ranking": "RUF",
+    "coluna": "Mercado"
+   },
+   {
+    "rotulo": "RUF: Mercado",
+    "ano": 2024,
+    "rho": -0.639,
+    "n": 200,
+    "ranking": "RUF",
+    "coluna": "Mercado"
+   },
+   {
+    "rotulo": "RUF: Mercado",
+    "ano": 2025,
+    "rho": -0.619,
+    "n": 198,
+    "ranking": "RUF",
+    "coluna": "Mercado"
+   },
+   {
+    "rotulo": "RUF: Inovação",
+    "ano": 2023,
+    "rho": -0.731,
+    "n": 191,
+    "ranking": "RUF",
+    "coluna": "Inovação"
+   },
+   {
+    "rotulo": "RUF: Inovação",
+    "ano": 2024,
+    "rho": -0.726,
+    "n": 189,
+    "ranking": "RUF",
+    "coluna": "Inovação"
+   },
+   {
+    "rotulo": "RUF: Inovação",
+    "ano": 2025,
+    "rho": -0.713,
+    "n": 177,
+    "ranking": "RUF",
+    "coluna": "Inovação"
+   },
+   {
+    "rotulo": "RUF: Internacionalização",
+    "ano": 2023,
+    "rho": -0.764,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Internacionalização"
+   },
+   {
+    "rotulo": "RUF: Internacionalização",
+    "ano": 2024,
+    "rho": -0.769,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Internacionalização"
+   },
+   {
+    "rotulo": "RUF: Internacionalização",
+    "ano": 2025,
+    "rho": -0.572,
+    "n": 203,
+    "ranking": "RUF",
+    "coluna": "Internacionalização"
+   }
+  ]
+ }
+}

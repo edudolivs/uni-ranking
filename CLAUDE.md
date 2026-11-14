@@ -21,6 +21,9 @@ Projeto de pesquisa da disciplina **Metodologia do Trabalho Científico** (Bacha
 | `pesquisa_aplicada_comprimido.pdf` | Slides da apresentação original (tema antigo). Traz o dicionário de 15 variáveis que o grupo planejou. |
 | `grupo-2-versao-1-projeto-de-pesquisa.docx` | Modelo oficial da UFPB. **Não alterar.** |
 | `projeto-de-pesquisa.docx` | Projeto escrito no formato exato do modelo. Este é o entregável. |
+| `modelo-relatorio.docx` | Modelo oficial do relatório final. **Não alterar.** |
+| `relatorio-de-pesquisa.docx` | Relatório final, gerado por `scripts/gerar_relatorio.py` (não editar à mão; editar o script e regerar). |
+| `grupo-2-projeto-de-pesquisa.pdf` / `grupo-2-projeto-de-pesquisa-correção.md` | Projeto entregue e as correções da orientadora (numeração desalinhada; frase de objetivo no Tema e problema -- erro grave; 7 atividades na metodologia × 8 no cronograma). O relatório já reproduz o projeto corrigido. |
 | `dashboard_rankings.html` | Dashboard gerado (não editar à mão; editar o template e regerar). |
 | `scripts/` | Pipeline de dados e do dashboard. |
 | `dados/` | Bases brutas por fonte e `dados/processado/` com os derivados. |
@@ -30,7 +33,7 @@ Projeto de pesquisa da disciplina **Metodologia do Trabalho Científico** (Bacha
 Não há `requirements.txt`, testes nem linter. Os scripts precisam de `openpyxl`, que o Python do sistema não tem. Editar o docx exige `python-docx`. Use um venv:
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install openpyxl python-docx
+python3 -m venv .venv && .venv/bin/pip install openpyxl python-docx matplotlib pymupdf
 
 # 1. Leiden: extrai só o Brasil das planilhas grandes (uma edição por chamada; segundos cada)
 .venv/bin/python scripts/extrair_leiden.py "dados/leiden/CWTS Leiden Ranking 2024.xlsx" 2024
@@ -43,6 +46,11 @@ python3 -m venv .venv && .venv/bin/pip install openpyxl python-docx
 .venv/bin/python scripts/preparar_dados.py
 # 4. Embute o JSON no template e grava dashboard_rankings.html
 python3 scripts/gerar_dashboard.py
+# 5. Figuras (PNG 300 dpi) e agregados das hipóteses -> relatorio/figuras/ e relatorio/resultados.json
+.venv/bin/python scripts/gerar_figuras.py
+# 6. Relatório final a partir de modelo-relatorio.docx -> relatorio-de-pesquisa.docx
+#    (precisa do LibreOffice no PATH para numerar sumário/listas; sem ele, as páginas saem "00")
+PATH=/Applications/LibreOffice.app/Contents/MacOS:$PATH .venv/bin/python scripts/gerar_relatorio.py
 ```
 
 `preparar_dados.py` imprime contagens de controle. Com os dados atuais, os valores esperados são:
@@ -78,6 +86,13 @@ python3 scripts/gerar_dashboard.py
 - **O sumário é texto estático**, com pontilhado e números de página **estimados**, que precisam ser atualizados à mão. O cronograma é a tabela do modelo (colunas Mar–Jul) e alimenta as 11 atividades numeradas da Metodologia.
 - **Referências:** são 10. Toda citação no texto precisa ter referência e vice-versa. Não invente referências nem dados bibliográficos; confirme DOI, volume e páginas (por exemplo, via `api.crossref.org/works/<doi>`).
 - Edite o documento só quando pedido e não converta para PDF (preferência do usuário).
+
+## O relatório (`relatorio-de-pesquisa.docx`)
+
+- `gerar_relatorio.py` abre o modelo com `python-docx`, mantém capa/folha de rosto/aprovação (blocos posicionados por `PRE_MANTIDOS`, em cm) e reescreve o resto. Todo número do texto vem de `relatorio/resultados.json`; os trechos de código (Quadros 3–6) são lidos dos scripts em tempo de execução (`ast`), então mudar `preparar_dados.py` muda o relatório.
+- Sumário e listas são estáticos; o script renderiza o PDF com o LibreOffice e localiza as páginas com PyMuPDF (3 passadas). Validado com o `validate.py` da skill docx.
+- Hipóteses operacionalizadas (seção 5.4): razão de |ρ| médio entre grupos ≥ 1,10 ("10% mais forte"); amplitude relativa (máx−mín)/média < 0,05 ("varia menos de 5%"). Resultado atual: H(a) refutada, H(b) e H(c) confirmadas em parte.
+- Referências: 12 (as 10 do projeto + Hazelkorn 2015 e Marginson & Van der Wende 2007, que o projeto citava sem listar). A URL de Santos (2015) no PDF do projeto apontava para outra tese; corrigida pelo DOI.
 
 ## Estado atual
 
